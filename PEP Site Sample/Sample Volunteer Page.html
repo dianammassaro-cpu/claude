@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -67,7 +67,7 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 48px; height: 72px;
     }
-    .nav-logo img { height: 34px; }
+    .nav-logo img { height: 52px; }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
     .nav-links a {
       font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
@@ -368,18 +368,18 @@
 <!-- NAV -->
 <nav>
   <a href="Sample Home Page.html" class="nav-logo">
-    <img src="https://www.pep.org/wp-content/uploads/2022/02/PEP_Logo_Fav.png" alt="PEP" style="height:40px;width:auto;" />
+    <img src="https://www.pep.org/wp-content/uploads/2022/02/PEP_Logo_Fav.png" alt="PEP" style="height:52px;width:auto;" />
   </a>
-  <ul class="nav-links">
+    <ul class="nav-links">
+    <li><a href="Sample Home Page.html">Home</a></li>
     <li><a href="about-pep.html">About PEP</a></li>
-    <li><a href="#">Our Programs</a></li>
-    <li><a href="#">Our Impact</a></li>
-    <li><a href="#" class="active">Get Involved</a></li>
-    <li><a href="#">Stories</a></li>
+    <li><a href="our-programs.html">Our Programs</a></li>
+    <li><a href="our-impact.html">Our Impact</a></li>
+    <li><a href="stories.html">Stories</a></li>
   </ul>
   <div class="nav-ctas">
     <a href="#apply" class="btn btn-outline-amber btn-sm">
-      Apply Now <span class="btn-icon">→</span>
+      Volunteer <span class="btn-icon">→</span>
     </a>
     <a href="Sample Donor Page.html" class="btn btn-amber btn-sm">
       Donate <span class="btn-icon">♥</span>
@@ -748,85 +748,18 @@
       </div>
     </div>
 
-    <div class="vol-form">
-      <div class="form-title">Volunteer Interest Form</div>
-      <div class="form-subtitle">Takes 5 minutes. A PEP coordinator will follow up within 2 business days.</div>
-
-      <div class="form-row">
-        <div class="form-group half">
-          <label for="fname">First Name</label>
-          <input type="text" id="fname" placeholder="Jane">
-        </div>
-        <div class="form-group half">
-          <label for="lname">Last Name</label>
-          <input type="text" id="lname" placeholder="Smith">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="email">Work Email</label>
-        <input type="email" id="email" placeholder="jane@company.com">
-      </div>
-      <div class="form-group">
-        <label for="phone">Phone (optional)</label>
-        <input type="tel" id="phone" placeholder="(555) 000-0000">
-      </div>
-      <div class="form-row">
-        <div class="form-group half">
-          <label for="title">Job Title</label>
-          <input type="text" id="title" placeholder="CEO, Attorney, etc.">
-        </div>
-        <div class="form-group half">
-          <label for="company">Company / Organization</label>
-          <input type="text" id="company" placeholder="Acme Corp">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="expertise">Your Area of Expertise</label>
-        <div class="select-wrapper">
-          <select id="expertise">
-            <option value="">Select one…</option>
-            <option>Finance / Accounting</option>
-            <option>Legal / Compliance</option>
-            <option>Sales / Marketing</option>
-            <option>Operations / Supply Chain</option>
-            <option>HR / Talent</option>
-            <option>Entrepreneurship / Startups</option>
-            <option>Technology</option>
-            <option>Real Estate</option>
-            <option>Other</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group" style="margin-bottom:8px;">
-        <label>Roles I'm interested in</label>
-      </div>
-      <div class="checkbox-group">
-        <label class="checkbox-label"><input type="checkbox"> Guest Speaker</label>
-        <label class="checkbox-label"><input type="checkbox"> Business Plan Judge</label>
-        <label class="checkbox-label"><input type="checkbox"> Curriculum Instructor</label>
-        <label class="checkbox-label"><input type="checkbox"> Reentry Mentor</label>
-        <label class="checkbox-label"><input type="checkbox"> Employment Connector</label>
-        <label class="checkbox-label"><input type="checkbox"> Virtual Workshop</label>
-      </div>
-      <div class="form-group">
-        <label for="availability">Availability</label>
-        <div class="select-wrapper">
-          <select id="availability">
-            <option value="">Select…</option>
-            <option>Weekday mornings</option>
-            <option>Weekday afternoons</option>
-            <option>Saturdays</option>
-            <option>Flexible / Tell me when you need me</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="notes">Anything else we should know?</label>
-        <textarea id="notes" placeholder="Group interest, specific topics, prior PEP experience, questions…"></textarea>
-      </div>
-      <button class="form-submit" type="submit">Submit Application</button>
-      <div class="form-note">Your information is never sold or shared. PEP will contact you within 2 business days.</div>
+    <div class="vol-form" id="contact">
+    <div class="form-title">Contact Us</div>
+    <div class="form-subtitle">A PEP coordinator will respond within two business days.</div>
+    <div class="form-row">
+      <div class="form-group half"><label for="fname">First Name</label><input type="text" id="fname" placeholder="Jane"></div>
+      <div class="form-group half"><label for="lname">Last Name</label><input type="text" id="lname" placeholder="Smith"></div>
     </div>
+    <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="jane@company.com"></div>
+    <div class="form-group"><label for="phone">Phone</label><input type="tel" id="phone" placeholder="(555) 000-0000"></div>
+    <div class="form-group"><label for="message">Message</label><textarea id="message" style="min-height:120px;" placeholder="How can we help, or what brings you here?"></textarea></div>
+    <button class="form-submit" type="submit">Send Message</button>
+    <div class="form-note">Your information is never sold or shared. We&rsquo;ll be in touch shortly.</div>
   </div>
 </section>
 
