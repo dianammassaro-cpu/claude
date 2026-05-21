@@ -63,7 +63,7 @@
 
     /* -- HERO -- */
     .hero { position: relative; height: 88vh; min-height: 620px; display: flex; align-items: flex-end; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; background-image: url('https://www.pep.org/wp-content/uploads/2026/05/Lewis-Kdarius-Martin-Kenneth-Alicea-William-4K-scaled.jpg'); background-size: cover; background-position: center 30%; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('https://www.pep.org/wp-content/uploads/2026/05/HallJustin-Rosejoshua-TristainRobert-PieperDavid-4K-scaled.jpg'); background-size: cover; background-position: center 30%; }
     .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,35,115,0.88) 0%, rgba(13,35,115,0.40) 55%, rgba(0,0,0,0.10) 100%); }
     .hero-content { position: relative; z-index: 2; padding: 0 72px 80px; max-width: 860px; }
     .hero-eyebrow { display: inline-block; background: var(--ember); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 14px; border-radius: 2px; margin-bottom: 24px; }
@@ -138,6 +138,13 @@
     .cta-band h2 span { color: var(--amber); }
     .cta-band p { font-size: 18px; color: rgba(255,255,255,0.82); line-height: 1.7; margin-bottom: 40px; }
     .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+
+    /* -- PHASE DIVIDERS -- */
+    .phase-divider { background: var(--navy); padding: 18px 64px; display: flex; align-items: center; gap: 20px; border-top: 3px solid var(--amber); }
+    .phase-divider-icon { width: 42px; height: 42px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--amber); flex-shrink: 0; }
+    .phase-divider-num { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 2px; }
+    .phase-divider-label { font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; color: white; }
 
     /* -- FOOTER -- */
     footer { background: var(--navy); padding: 64px 48px 0; }
@@ -272,6 +279,11 @@
 </section>
 
 
+<!-- PHASE DIVIDER: FORMATION -->
+<div class="phase-divider">
+  <div class="phase-divider-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+  <div><div class="phase-divider-num">Phase One</div><div class="phase-divider-label">Formation &mdash; Inside the Walls</div></div>
+</div>
 <!-- PROGRAM 1: LEADERSHIP ACADEMY -->
 <section class="program-section" id="leadership-academy">
   <div class="program-inner">
@@ -280,9 +292,6 @@
       <h2 class="program-title">Leadership<br/>Academy</h2>
       <p class="program-desc">
         PEP's digital character formation experience, delivered through the Edovo tablet platform to every eligible incarcerated individual in TDCJ &mdash; regardless of security classification, sentence length, or proximity to discharge. For the first time, PEP can reach all 134,000+ people in the Texas prison system, not just those within three years of release.
-      </p>
-      <p class="program-desc">
-        Participants engage immersive, behavior-based scenarios built around PEP's 10 Driving Values. Completion requires written reflection and demonstrated behavioral consistency over time &mdash; creating an objective readiness signal before any in-person resource is deployed. The expanded curriculum adds <em>Driving Values</em> and <em>Idea Development</em> courses, giving participants the foundation they need to thrive in PEP's in-prison programs.
       </p>
       <div class="program-stat-row">
         <div class="program-stat">
@@ -302,10 +311,9 @@
         <li>Available self-paced to all TDCJ inmates &mdash; no transfers, waitlists, or staff mediation</li>
         <li>Filters and prepares applicants before high-touch resources are deployed</li>
         <li>Feeds directly into Incentivized In-Prison Housing and Core Program admissions</li>
-        <li>No large-scale volunteer presence required &mdash; the most cost-efficient growth engine in the model</li>
       </ul>
     </div>
-    <img class="program-img" src="https://www.pep.org/wp-content/uploads/2025/06/Welcome-Photo-1024x503.jpg" alt="PEP Leadership Academy participants" />
+    <img class="program-img" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/05/K3_5565-L.jpg" alt="PEP Leadership Academy participants" />
   </div>
 </section>
 
@@ -319,9 +327,6 @@
       <h2 class="program-title">Incentivized<br/>In-Prison Housing</h2>
       <p class="program-desc">
         PEP's fastest-growing program and the bridge between digital learning and the flagship Core Program. By converting TDCJ Incentivized Housing units into live learning hubs, PEP brings community, peer accountability, and character-based leadership to individuals who were previously unreachable &mdash; those nearing parole, not just those nearing discharge.
-      </p>
-      <p class="program-desc">
-        Each 126-bed pod operates as a micro-campus: participants live, learn, and collaborate daily around PEP's values. Alumni Servant Leaders increasingly facilitate these communities, ensuring transformation takes root from within. Launched in August 2025 at the Estelle Unit, the program is expanding to 7 prisons by 2027 and 15 by 2030.
       </p>
       <div class="program-stat-row">
         <div class="program-stat">
@@ -341,7 +346,6 @@
         <li>Reaches individuals 3 years from parole &mdash; 80% of TDCJ releases &mdash; not just those nearing discharge</li>
         <li>Peer-led model scales without proportional staff increases</li>
         <li>25% of participants advance into the Core Program as they approach eligibility</li>
-        <li>Those who parole directly enter PEP's Collaborative Re-Entry pathway</li>
       </ul>
     </div>
   </div>
@@ -356,9 +360,6 @@
       <h2 class="program-title">Core<br/>Program</h2>
       <p class="program-desc">
         PEP's highest-intensity formation experience and the gold standard of criminal justice programming in America. The Core Program combines Toastmasters, a Baylor University-recognized entrepreneurship curriculum, and direct mentorship from 400+ executive volunteers &mdash; culminating in a Shark Tank&ndash;style Business Plan Competition judged by real industry leaders.
-      </p>
-      <p class="program-desc">
-        What makes the Core Program different is not the curriculum. It is the collision. When a business executive sits across from a man serving time and evaluates his pitch, something deeper than instruction happens &mdash; dignity is conferred, standards are raised, and both walk away changed. Graduates become Servant Leaders, facilitating future classes and carrying PEP's culture forward. Families are engaged throughout and invited to graduation &mdash; often the first time they've seen their loved one in a cap and gown.
       </p>
       <div class="program-stat-row">
         <div class="program-stat">
@@ -378,8 +379,6 @@
         <li>Baylor University-recognized mini-MBA: market analysis, financial modeling, strategic planning</li>
         <li>Business Plan Competition &mdash; team-based, executive-judged, Shark Tank format</li>
         <li>Toastmasters certification and professional communication training</li>
-        <li>Family engagement program and graduation ceremony open to loved ones</li>
-        <li>Graduates become Servant Leaders who mentor the next cohort</li>
       </ul>
     </div>
     <img class="program-img" src="https://www.pep.org/wp-content/uploads/2026/05/Lewis-Kdarius-Martin-Kenneth-Alicea-William-4K-scaled.jpg" alt="PEP Core Program Business Plan Competition" />
@@ -387,18 +386,20 @@
 </section>
 
 
+<!-- PHASE DIVIDER: STABILIZATION -->
+<div class="phase-divider" style="border-top-color:var(--ember)">
+  <div class="phase-divider-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+  <div><div class="phase-divider-num">Phase Two</div><div class="phase-divider-label">Stabilization &mdash; The Bridge</div></div>
+</div>
 <!-- PROGRAM 4: RE-ENTRY SERVICES -->
 <section class="program-section alt" id="reentry">
   <div class="program-inner flip">
-    <img class="program-img" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/05/K3_9102-L.jpg" alt="PEP re-entry support" />
+    <img class="program-img" src="https://www.pep.org/wp-content/uploads/2026/03/Eschool-grad-ntx-26.jpg" alt="PEP re-entry support" />
     <div>
       <span class="program-tag">Phase 2 &middot; Post-Release &middot; First 90 Days</span>
       <h2 class="program-title">Re-Entry<br/>Services</h2>
       <p class="program-desc">
         Nearly half of all returns to prison happen within the first 90 days of release. Most people walk out with $50 and a bus pass &mdash; no ID, no housing, no plan. PEP's Re-Entry Services are designed to meet that moment. Case managers are waiting at the gate.
-      </p>
-      <p class="program-desc">
-        Each graduate is matched with a dedicated Case Manager who assists with transportation, documentation, housing, parole requirements, and employment &mdash; then stays connected through regular check-ins and documented milestones for months afterward. Transitional housing provides safe, affordable homes in Houston and Dallas that reinforce PEP culture and give graduates the stability to start rebuilding. After stabilization, participants enter eSchool: a 12-week program building professional skills, financial literacy, and entrepreneurial foundations.
       </p>
       <div class="program-stat-row">
         <div class="program-stat">
@@ -418,23 +419,23 @@
         <li>Case managers meet participants at release with immediate practical support</li>
         <li>Transitional housing in Houston and Dallas &mdash; structured, culture-reinforcing environment</li>
         <li>eSchool: budgeting, goal-setting, interviewing, resume writing, and job search skills</li>
-        <li>Expanding to serve graduates paroling directly from Incentivized In-Prison Housing</li>
-        <li>Referral partnerships for mental health, healthcare, transportation, and vocational training</li>
       </ul>
     </div>
   </div>
 </section>
 
 
+<!-- PHASE DIVIDER: ENTERPRISE -->
+<div class="phase-divider" style="border-top-color:#2a9d5c">
+  <div class="phase-divider-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+  <div><div class="phase-divider-num">Phase Three</div><div class="phase-divider-label">Enterprise &mdash; Life on the Outside</div></div>
+</div>
 <!-- PROGRAM 5: POST-RELEASE ENTREPRENEURSHIP -->
 <section class="program-section" id="entrepreneurship">
   <div class="program-inner">
     <div>
       <span class="program-tag">Phase 3 &middot; Outside &middot; Entrepreneurship</span>
       <h2 class="program-title">Post-Release<br/>Entrepreneurship</h2>
-      <p class="program-desc">
-        Transformation inside prison is only meaningful if it leads somewhere. PEP's post-release entrepreneurship pathway closes the loop &mdash; converting preparation into visible proof that second chances create jobs, businesses, and generational wealth.
-      </p>
       <p class="program-desc">
         The pathway begins with <strong>Aspiration</strong>, a 4-week cohort where participants clarify a business idea, test market assumptions, and pitch to executive volunteers at a live event. Those who secure a coach advance into <strong>Applied Entrepreneurship</strong> &mdash; a competency-based formation experience where progression is driven by demonstrated mastery, not calendar time. PEP's physical hubs in Houston, Dallas, and Austin function as entrepreneurship centers where stabilization, education, mentorship, and capital come together. By 2030, PEP aims to serve 500 entrepreneurs annually and support 250 new business launches per year.
       </p>
@@ -456,11 +457,9 @@
         <li>Aspiration: 4-week discernment cohort &mdash; idea development, market testing, live pitch event</li>
         <li>Applied Entrepreneurship: competency-based progression with dedicated business coach</li>
         <li>Entrepreneurship hubs in Houston, Dallas, and Austin &mdash; coaching, bookkeeping, networking</li>
-        <li>Milestone-based advancement protects quality &mdash; choosing not to launch is a valid outcome</li>
-        <li>Alumni community provides peer accountability beyond formal program requirements</li>
       </ul>
     </div>
-    <img class="program-img" src="https://www.pep.org/wp-content/uploads/2025/06/Welcome-Photo-1024x503.jpg" alt="PEP entrepreneurship hub" />
+    <img class="program-img" src="https://www.pep.org/wp-content/uploads/2026/05/WorkmanMelvin-4K-scaled.jpg" alt="PEP entrepreneurship hub" />
   </div>
 </section>
 
@@ -474,9 +473,6 @@
       <h2 class="program-title">Entre<br/>Capital</h2>
       <p class="program-desc">
         The only Community Development Financial Institution (CDFI) in the nation exclusively serving returning citizens. Founded in 2019, Entre Capital provides growth financing from $2,500 to $200,000 &mdash; but capital is never deployed alone. Every loan is paired with mandatory coaching, reporting requirements, and clear performance benchmarks.
-      </p>
-      <p class="program-desc">
-        Entre Capital operates with investment logic, not charity. Funds are deployed only when character, competence, and business viability have been demonstrated through PEP's full formation pathway. The result: strong repayment performance, zero borrower recidivism, and meaningful job creation &mdash; proof that disciplined capital paired with formation outperforms traditional re-entry finance approaches.
       </p>
       <div class="program-stat-row">
         <div class="program-stat">
@@ -496,8 +492,7 @@
         <li>Microloans for working capital; larger collateral-backed loans for equipment and vehicles</li>
         <li>Milestone grants tied to demonstrated business progress</li>
         <li>Mandatory 1-on-1 coaching focused on cash flow, operations, and growth discipline</li>
-        <li>Bookkeeping services and peer community for ongoing accountability</li>
-        <li>Targeting $25M+ loan portfolio and national replication by 2034</li>
+
       </ul>
     </div>
   </div>
