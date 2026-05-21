@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Impact &mdash; Prison Entrepreneurship Program</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ember: #E36F1E; --amber: #F6A01A; --navy: #0D2373;
+      --black: #1A1A1A; --gray: #666; --light: #F7F5F2;
+      --rule: #E5E3DF; --white: #FFFFFF; --font: 'Poppins', Arial, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--black); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; }
+
+    /* -- BUTTONS -- */
+    .btn { display: inline-flex; align-items: center; gap: 12px; padding: 14px 28px 14px 32px; border-radius: 999px; font-family: var(--font); font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: transform 0.18s, box-shadow 0.18s; border: none; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+    .btn-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+    .btn-amber { background: var(--amber); color: var(--black); }
+    .btn-amber .btn-icon { background: rgba(0,0,0,0.15); }
+    .btn-navy { background: var(--navy); color: var(--white); }
+    .btn-navy .btn-icon { background: rgba(255,255,255,0.2); }
+    .btn-outline-white { background: transparent; color: var(--white); border: 2.5px solid rgba(255,255,255,0.7); }
+    .btn-outline-white .btn-icon { background: rgba(255,255,255,0.15); }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.1); }
+    .btn-outline-amber { background: transparent; color: var(--amber); border: 2.5px solid var(--amber); }
+    .btn-outline-amber .btn-icon { background: rgba(246,160,26,0.12); color: var(--amber); }
+    .btn-sm { padding: 10px 20px 10px 24px; font-size: 11px; }
+    .btn-sm .btn-icon { width: 24px; height: 24px; font-size: 12px; }
+
+    /* -- NAV -- */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(255,255,255,0.97); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.07); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 72px; }
+    .nav-logo img { height: 52px; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--ember); }
+    .nav-ctas { display: flex; align-items: center; gap: 12px; }
+
+    /* -- HERO -- */
+    .hero { position: relative; height: 72vh; min-height: 520px; display: flex; align-items: flex-end; overflow: hidden; margin-top: 72px; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('https://www.pep.org/wp-content/uploads/2026/05/WorkmanMelvin-4K-scaled.jpg'); background-size: cover; background-position: center 25%; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,35,115,0.90) 0%, rgba(13,35,115,0.45) 55%, rgba(0,0,0,0.10) 100%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 72px 72px; max-width: 800px; }
+    .hero-eyebrow { display: inline-block; background: var(--ember); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 14px; border-radius: 2px; margin-bottom: 20px; }
+    .hero h1 { font-size: clamp(40px, 5vw, 72px); font-weight: 900; line-height: 1.0; color: var(--white); text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 20px; }
+    .hero h1 span { color: var(--amber); }
+    .hero-sub { font-size: 17px; font-weight: 500; color: rgba(255,255,255,0.9); line-height: 1.65; max-width: 560px; text-shadow: 0 1px 4px rgba(0,0,0,0.35); }
+
+    /* -- SECTION DEFAULTS -- */
+    .section-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ember); margin-bottom: 14px; }
+    .section-title { font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; color: var(--navy); line-height: 1.1; margin-bottom: 16px; }
+
+    /* -- BIG NUMBERS -- */
+    .big-numbers { background: var(--navy); padding: 80px 64px; }
+    .big-numbers-header { text-align: center; margin-bottom: 56px; }
+    .big-numbers-header .section-title { color: var(--white); }
+    .big-numbers-header p { font-size: 17px; color: rgba(255,255,255,0.6); max-width: 580px; margin: 0 auto; line-height: 1.8; }
+    .numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; max-width: 1200px; margin: 0 auto; }
+    .number-cell { background: rgba(255,255,255,0.05); padding: 48px 36px; text-align: center; }
+    .number-accent { display: block; width: 28px; height: 3px; background: var(--amber); margin: 0 auto 20px; border-radius: 2px; }
+    .number-val { font-size: clamp(42px, 5vw, 64px); font-weight: 900; color: var(--amber); line-height: 1; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .number-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.8); margin-bottom: 8px; }
+    .number-sub { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+    /* -- ROI SECTION -- */
+    .roi { background: var(--white); padding: 96px 64px; }
+    .roi-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .roi-visual { background: var(--light); padding: 48px 44px; border-radius: 8px; }
+    .roi-bar-group { display: flex; flex-direction: column; gap: 24px; margin-top: 32px; }
+    .roi-bar-item { display: flex; flex-direction: column; gap: 8px; }
+    .roi-bar-header { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; }
+    .roi-bar-label { color: var(--gray); }
+    .roi-bar-val { color: var(--navy); font-size: 15px; }
+    .roi-track { height: 10px; background: var(--rule); border-radius: 5px; overflow: hidden; }
+    .roi-fill { height: 100%; border-radius: 5px; }
+    .roi-fill.f1 { background: var(--rule); width: 11.2%; }
+    .roi-fill.f2 { background: var(--navy); width: 21.5%; opacity: 0.6; }
+    .roi-fill.f3 { background: var(--amber); width: 100%; }
+    .roi-text p { font-size: 16px; color: var(--gray); line-height: 1.85; margin-bottom: 20px; }
+    .roi-callout { background: var(--navy); border-radius: 8px; padding: 28px 32px; margin-top: 32px; }
+    .roi-callout p { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.7; }
+    .roi-callout strong { color: var(--amber); }
+
+    /* -- OUTCOMES -- */
+    .outcomes { background: var(--light); padding: 96px 64px; }
+    .outcomes-inner { max-width: 1160px; margin: 0 auto; }
+    .outcomes-header { text-align: center; margin-bottom: 64px; }
+    .outcomes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--rule); border: 1px solid var(--rule); }
+    .outcome-card { background: var(--white); padding: 48px 36px; }
+    .outcome-icon { width: 52px; height: 52px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; color: var(--amber); font-size: 22px; font-weight: 900; }
+    .outcome-num { font-size: clamp(32px, 3.5vw, 48px); font-weight: 900; color: var(--navy); line-height: 1; margin-bottom: 10px; letter-spacing: -0.01em; }
+    .outcome-label { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--black); margin-bottom: 10px; }
+    .outcome-desc { font-size: 14px; color: var(--gray); line-height: 1.65; }
+
+    /* -- RECIDIVISM COMPARISON -- */
+    .recid { background: var(--white); padding: 96px 64px; border-top: 1px solid var(--rule); }
+    .recid-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .recid-chart { display: flex; flex-direction: column; gap: 20px; }
+    .recid-bar { display: flex; flex-direction: column; gap: 8px; }
+    .recid-bar-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray); }
+    .recid-bar-val { font-size: 36px; font-weight: 900; color: var(--navy); line-height: 1; margin-bottom: 4px; }
+    .recid-bar-val.highlight { color: var(--ember); }
+    .recid-track { height: 14px; background: var(--rule); border-radius: 7px; overflow: hidden; }
+    .recid-fill { height: 100%; border-radius: 7px; }
+    .recid-fill.pep { background: var(--amber); width: 10%; }
+    .recid-fill.tx  { background: rgba(13,35,115,0.35); width: 21%; }
+    .recid-fill.us  { background: var(--ember); width: 62%; }
+    .recid-note { font-size: 12px; color: var(--gray); margin-top: 16px; }
+
+    /* -- CTA BAND -- */
+    .cta-band { position: relative; padding: 100px 48px; text-align: center; overflow: hidden; }
+    .cta-band-bg { position: absolute; inset: 0; background-image: url('https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/05/K4_9470-L.jpg'); background-size: cover; background-position: center; }
+    .cta-band-overlay { position: absolute; inset: 0; background: rgba(13,35,115,0.78); }
+    .cta-band-content { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+    .cta-band h2 { font-size: clamp(28px, 4vw, 52px); font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; color: var(--white); line-height: 1.0; margin-bottom: 20px; }
+    .cta-band h2 span { color: var(--amber); }
+    .cta-band p { font-size: 18px; color: rgba(255,255,255,0.82); line-height: 1.7; margin-bottom: 40px; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* -- FOOTER -- */
+    footer { background: var(--navy); padding: 64px 48px 0; }
+    .footer-top { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.10); }
+    .footer-brand img { height: 30px; margin-bottom: 18px; }
+    .footer-brand p { font-size: 14px; color: rgba(255,255,255,0.50); line-height: 1.8; margin-bottom: 24px; max-width: 280px; }
+    .footer-social { display: flex; gap: 10px; }
+    .social-btn { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.55); transition: background 0.2s; }
+    .social-btn:hover { background: var(--ember); color: #fff; }
+    .footer-col h4 { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.30); margin-bottom: 18px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a { font-size: 14px; color: rgba(255,255,255,0.55); transition: color 0.2s; }
+    .footer-col a:hover { color: var(--amber); }
+    .footer-bottom { max-width: 1160px; margin: 0 auto; padding: 28px 0; display: flex; justify-content: space-between; font-size: 13px; color: rgba(255,255,255,0.30); }
+    .footer-bottom-links { display: flex; gap: 24px; }
+    .footer-bottom-links a { color: rgba(255,255,255,0.30); }
+    .footer-bottom-links a:hover { color: var(--amber); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="Sample Home Page.html" class="nav-logo">
+    <img src="https://www.pep.org/wp-content/uploads/2022/02/PEP_Logo_Fav.png" alt="PEP" style="height:52px;width:auto;" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="Sample Home Page.html">Home</a></li>
+    <li><a href="about-pep.html">About PEP</a></li>
+    <li><a href="our-programs.html">Our Programs</a></li>
+    <li><a href="our-impact.html" class="active">Our Impact</a></li>
+    <li><a href="stories.html">Stories</a></li>
+  </ul>
+  <div class="nav-ctas">
+    <a href="Sample Volunteer Page.html" class="btn btn-outline-amber btn-sm">Volunteer <span class="btn-icon">→</span></a>
+    <a href="Sample Donor Page.html" class="btn btn-amber btn-sm">Donate <span class="btn-icon">♥</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Our Impact</span>
+    <h1>Two decades.<br/><span>Measurable</span><br/>transformation.</h1>
+    <p class="hero-sub">PEP's results aren't anecdotal. They're independently verified, consistently replicated, and among the highest in criminal justice reform.</p>
+  </div>
+</section>
+
+<!-- BIG NUMBERS -->
+<section class="big-numbers">
+  <div class="big-numbers-header">
+    <p class="section-eyebrow">The Numbers</p>
+    <h2 class="section-title">Results that speak for themselves</h2>
+    <p>Every metric below is sourced from independent analysis or official TDCJ data. PEP does not self-report outcomes.</p>
+  </div>
+  <div class="numbers-grid">
+    <div class="number-cell">
+      <span class="number-accent"></span>
+      <div class="number-val">&lt;10%</div>
+      <div class="number-label">Recidivism Rate</div>
+      <div class="number-sub">Sustained for 15+ consecutive years vs. 62% nationally</div>
+    </div>
+    <div class="number-cell">
+      <span class="number-accent"></span>
+      <div class="number-val">100%</div>
+      <div class="number-label">Job Placement</div>
+      <div class="number-sub">Every graduate employed within 90 days of release</div>
+    </div>
+    <div class="number-cell">
+      <span class="number-accent"></span>
+      <div class="number-val">4,040+</div>
+      <div class="number-label">Lives Changed</div>
+      <div class="number-sub">Men who completed PEP since its founding in 2004</div>
+    </div>
+    <div class="number-cell">
+      <span class="number-accent"></span>
+      <div class="number-val">700+</div>
+      <div class="number-label">Businesses Launched</div>
+      <div class="number-sub">Alumni-owned companies operating across Texas and beyond</div>
+    </div>
+    <div class="number-cell">
+      <span class="number-accent"></span>
+      <div class="number-val">$8.94</div>
+      <div class="number-label">Return on Investment</div>
+      <div class="number-sub">Economic return to Texas for every $1 invested in PEP</div>
+    </div>
+    <div class="number-cell">
+      <span class="number-accent"></span>
+      <div class="number-val">$4,500</div>
+      <div class="number-label">Cost Per Participant</div>
+      <div class="number-sub">vs. $32,000+ per year to keep someone incarcerated</div>
+    </div>
+    <div class="number-cell">
+      <span class="number-accent"></span>
+      <div class="number-val">46%</div>
+      <div class="number-label">Homeownership</div>
+      <div class="number-sub">Of graduates achieve homeownership post-release</div>
+    </div>
+    <div class="number-cell">
+      <span class="number-accent"></span>
+      <div class="number-val">11%</div>
+      <div class="number-label">Wage Premium</div>
+      <div class="number-sub">Higher wages than traditionally-employed peers</div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI BREAKDOWN -->
+<section class="roi">
+  <div class="roi-inner">
+    <div class="roi-text">
+      <p class="section-eyebrow">The Economic Case</p>
+      <h2 class="section-title">This isn't charity. It's a return on investment.</h2>
+      <p>Independent economic analysis commissioned by PEP quantifies what happens when a man doesn't return to prison: he pays taxes, employs others, raises children, and buys a home. Together, these outcomes generate $8.94 for every $1 invested.</p>
+      <p>PEP receives zero government funding. Every dollar comes from donors who have reviewed the analysis and made a rational investment decision.</p>
+      <div class="roi-callout">
+        <p>A <strong>$100,000 gift</strong> to PEP generates an estimated <strong>$894,000</strong> in total economic value for the State of Texas.</p>
+      </div>
+    </div>
+    <div class="roi-visual">
+      <p class="section-eyebrow">Return Comparison</p>
+      <p style="font-size:14px;color:var(--gray);margin-bottom:4px;">Per $1 invested in PEP</p>
+      <div class="roi-bar-group">
+        <div class="roi-bar-item">
+          <div class="roi-bar-header"><span class="roi-bar-label">Your investment</span><span class="roi-bar-val">$1.00</span></div>
+          <div class="roi-track"><div class="roi-fill f1"></div></div>
+        </div>
+        <div class="roi-bar-item">
+          <div class="roi-bar-header"><span class="roi-bar-label">Avoided incarceration costs</span><span class="roi-bar-val">$1.92</span></div>
+          <div class="roi-track"><div class="roi-fill f2"></div></div>
+        </div>
+        <div class="roi-bar-item">
+          <div class="roi-bar-header"><span class="roi-bar-label">Full economic return</span><span class="roi-bar-val">$8.94</span></div>
+          <div class="roi-track"><div class="roi-fill f3"></div></div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--gray);margin-top:20px;">Source: Independent economic analysis, 2023. Full methodology available on request.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RECIDIVISM COMPARISON -->
+<section class="recid">
+  <div class="recid-inner">
+    <div>
+      <p class="section-eyebrow">Recidivism in Context</p>
+      <h2 class="section-title">The gap that defines PEP</h2>
+      <p style="font-size:16px;color:var(--gray);line-height:1.85;margin-bottom:24px;">Recidivism is the most important measure of any criminal justice program. Nationally, 62% of people released from prison are re-arrested within 3 years. In Texas, the rate is 20&ndash;22%. PEP's rate, sustained for over 15 years, is below 10% &mdash; and falling.</p>
+      <p style="font-size:16px;color:var(--gray);line-height:1.85;">That gap isn't explained by selection bias alone. PEP participants are drawn from the same Texas prison population. The difference is the model.</p>
+    </div>
+    <div class="recid-chart">
+      <div class="recid-bar">
+        <div class="recid-bar-label">PEP graduates</div>
+        <div class="recid-bar-val">&lt;10%</div>
+        <div class="recid-track"><div class="recid-fill pep"></div></div>
+      </div>
+      <div class="recid-bar">
+        <div class="recid-bar-label">Texas average</div>
+        <div class="recid-bar-val">20&ndash;22%</div>
+        <div class="recid-track"><div class="recid-fill tx"></div></div>
+      </div>
+      <div class="recid-bar">
+        <div class="recid-bar-label">National average</div>
+        <div class="recid-bar-val highlight">62%</div>
+        <div class="recid-track"><div class="recid-fill us"></div></div>
+      </div>
+      <p class="recid-note">3-year re-arrest rate. Source: Bureau of Justice Statistics (national); TDCJ (Texas); PEP internal data (PEP graduates).</p>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES GRID -->
+<section class="outcomes">
+  <div class="outcomes-inner">
+    <div class="outcomes-header">
+      <p class="section-eyebrow">Beyond Recidivism</p>
+      <h2 class="section-title">Life outcomes that compound over time</h2>
+      <p style="font-size:16px;color:var(--gray);max-width:600px;margin:0 auto;line-height:1.8;">Staying out of prison is the floor, not the ceiling. PEP tracks what graduates build after release.</p>
+    </div>
+    <div class="outcomes-grid">
+      <div class="outcome-card">
+        <div class="outcome-icon">✦</div>
+        <div class="outcome-num">100%</div>
+        <div class="outcome-label">Employment</div>
+        <div class="outcome-desc">Every PEP graduate who completes the re-entry program is employed within 90 days. Not most. Every one.</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon">⌂</div>
+        <div class="outcome-num">46%</div>
+        <div class="outcome-label">Homeownership</div>
+        <div class="outcome-desc">Nearly half of PEP graduates achieve homeownership &mdash; a milestone that anchors families and builds generational wealth.</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon">↑</div>
+        <div class="outcome-num">11%</div>
+        <div class="outcome-label">Wage Premium</div>
+        <div class="outcome-desc">Graduates earn 11% more than traditionally-employed peers on average &mdash; a direct result of PEP's business and professional training.</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon">★</div>
+        <div class="outcome-num">700+</div>
+        <div class="outcome-label">Businesses</div>
+        <div class="outcome-desc">Alumni-owned companies have been launched since 2004, creating jobs and tax revenue across Texas communities.</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon">♦</div>
+        <div class="outcome-num">0%</div>
+        <div class="outcome-label">Entre Capital Recidivism</div>
+        <div class="outcome-desc">Not a single Entre Capital borrower has returned to prison. Capital paired with formation produces extraordinary outcomes.</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon">✿</div>
+        <div class="outcome-num">94%</div>
+        <div class="outcome-label">Volunteer Return Rate</div>
+        <div class="outcome-desc">94% of PEP volunteers say they would return. The program transforms more than just participants &mdash; it transforms everyone it touches.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="cta-band-bg"></div>
+  <div class="cta-band-overlay"></div>
+  <div class="cta-band-content">
+    <h2>Invest in results that <span>last.</span></h2>
+    <p>PEP is entirely privately funded. Your donation doesn't support overhead &mdash; it goes directly into programming with a proven, measurable return for Texas.</p>
+    <div class="cta-btns">
+      <a href="Sample Donor Page.html" class="btn btn-amber">Donate Now <span class="btn-icon">♥</span></a>
+      <a href="Sample Volunteer Page.html" class="btn btn-outline-white">Volunteer with PEP <span class="btn-icon">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="https://www.pep.org/wp-content/uploads/2025/07/PEP_Logo_White.png" alt="PEP" />
+      <p>Transform Lives, Restore Families, Rebuild Communities.<br/>A 501(c)(3) non-profit serving Texas since 2004.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="https://www.linkedin.com/company/prison-entrepreneurship-program" title="LinkedIn">in</a>
+        <a class="social-btn" href="https://www.instagram.com/prisonentrepreneurshipprogram" title="Instagram">ig</a>
+        <a class="social-btn" href="https://www.facebook.com/PrisonEntrepreneurship" title="Facebook">f</a>
+        <a class="social-btn" href="https://twitter.com/peptweets" title="X">𝕏</a>
+        <a class="social-btn" href="https://www.youtube.com/@PepOrgTX" title="YouTube">▶</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>About</h4><ul><li><a href="about-pep.html">About PEP</a></li><li><a href="about-pep.html#mission">Our Mission</a></li><li><a href="about-pep.html#leadership">Leadership</a></li></ul></div>
+    <div class="footer-col"><h4>Programs</h4><ul><li><a href="our-programs.html#leadership-academy">Leadership Academy</a></li><li><a href="our-programs.html#core-program">Core Program</a></li><li><a href="our-programs.html#reentry">Re-Entry Services</a></li><li><a href="our-programs.html#entre-capital">Entre Capital</a></li></ul></div>
+    <div class="footer-col"><h4>Get Involved</h4><ul><li><a href="Sample Donor Page.html">Donate</a></li><li><a href="Sample Volunteer Page.html">Volunteer</a></li><li><a href="#">Corporate Partners</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:info@pep.org">info@pep.org</a></li><li><a href="tel:8327670928">Houston: 832-767-0928</a></li><li><a href="tel:2145759909">N. Texas: 214-575-9909</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Prison Entrepreneurship Program. All rights reserved.</span>
+    <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms</a><a href="#">Financials</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
