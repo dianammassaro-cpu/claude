@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Programs â€&#x201D; Prison Entrepreneurship Program</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ember:  #E36F1E;
+      --amber:  #F6A01A;
+      --navy:   #0D2373;
+      --black:  #1A1A1A;
+      --gray:   #666;
+      --light:  #F7F5F2;
+      --rule:   #E5E3DF;
+      --white:  #FFFFFF;
+      --font:   'Poppins', Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--black); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; }
+
+    /* â&#x201D;€â&#x201D;€ BUTTONS â&#x201D;€â&#x201D;€ */
+    .btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 14px 28px 14px 32px; border-radius: 999px;
+      font-family: var(--font); font-weight: 700; font-size: 13px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      cursor: pointer; transition: transform 0.18s, box-shadow 0.18s; border: none;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+    .btn-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+    .btn-amber  { background: var(--amber);  color: var(--black); }
+    .btn-amber  .btn-icon { background: rgba(0,0,0,0.15); }
+    .btn-navy   { background: var(--navy);   color: var(--white); }
+    .btn-navy   .btn-icon { background: rgba(255,255,255,0.2); }
+    .btn-outline-white { background: transparent; color: var(--white); border: 2.5px solid rgba(255,255,255,0.7); }
+    .btn-outline-white .btn-icon { background: rgba(255,255,255,0.15); }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.1); }
+    .btn-outline-amber { background: transparent; color: var(--amber); border: 2.5px solid var(--amber); }
+    .btn-outline-amber .btn-icon { background: rgba(246,160,26,0.12); color: var(--amber); }
+    .btn-sm { padding: 10px 20px 10px 24px; font-size: 11px; }
+    .btn-sm .btn-icon { width: 24px; height: 24px; font-size: 12px; }
+
+    /* â&#x201D;€â&#x201D;€ NAV â&#x201D;€â&#x201D;€ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 72px;
+    }
+    .nav-logo img { height: 34px; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--ember); }
+    .nav-ctas { display: flex; align-items: center; gap: 12px; }
+
+    /* â&#x201D;€â&#x201D;€ HERO â&#x201D;€â&#x201D;€ */
+    .hero { position: relative; height: 88vh; min-height: 620px; display: flex; align-items: flex-end; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('https://www.pep.org/wp-content/uploads/2026/05/Lewis-Kdarius-Martin-Kenneth-Alicea-William-4K-scaled.jpg'); background-size: cover; background-position: center 30%; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,35,115,0.88) 0%, rgba(13,35,115,0.40) 55%, rgba(0,0,0,0.10) 100%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 72px 80px; max-width: 860px; }
+    .hero-eyebrow { display: inline-block; background: var(--ember); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 14px; border-radius: 2px; margin-bottom: 24px; }
+    .hero h1 { font-size: clamp(44px, 5.5vw, 80px); font-weight: 900; line-height: 1.0; color: var(--white); text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 24px; }
+    .hero h1 span { color: var(--amber); }
+    .hero-sub { font-size: 18px; font-weight: 500; color: rgba(255,255,255,1); line-height: 1.65; max-width: 560px; margin-bottom: 40px; text-shadow: 0 1px 4px rgba(0,0,0,0.35); }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* â&#x201D;€â&#x201D;€ SECTION BASE â&#x201D;€â&#x201D;€ */
+    .section-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ember); margin-bottom: 14px; }
+    .section-title { font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; color: var(--navy); line-height: 1.1; margin-bottom: 16px; }
+
+    /* â&#x201D;€â&#x201D;€ INTRO CARD â&#x201D;€â&#x201D;€ */
+    .intro-card { background: var(--white); border-radius: 12px; margin: -60px 64px 0; padding: 56px 80px; text-align: center; position: relative; z-index: 10; box-shadow: 0 8px 48px rgba(0,0,0,0.10); }
+    .intro-card h2 { font-size: clamp(20px, 2.5vw, 28px); font-weight: 700; color: var(--navy); max-width: 800px; margin: 0 auto 18px; line-height: 1.4; }
+    .intro-card h2 em { font-style: normal; color: var(--ember); }
+    .intro-card p { font-size: 17px; color: var(--gray); max-width: 700px; margin: 0 auto; line-height: 1.8; }
+
+    /* â&#x201D;€â&#x201D;€ JOURNEY PIPELINE â&#x201D;€â&#x201D;€ */
+    .journey { padding: 80px 64px; background: var(--navy); }
+    .journey-inner { max-width: 1160px; margin: 0 auto; }
+    .journey-header { text-align: center; margin-bottom: 56px; }
+    .journey-header .section-title { color: var(--white); }
+    .journey-header p { font-size: 17px; color: rgba(255,255,255,0.65); max-width: 600px; margin: 0 auto; line-height: 1.8; }
+    .pipeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .pipeline-phase { background: rgba(255,255,255,0.06); padding: 40px 36px; position: relative; }
+    .pipeline-phase:first-child { border-radius: 8px 0 0 8px; }
+    .pipeline-phase:last-child { border-radius: 0 8px 8px 0; }
+    .phase-label { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber); margin-bottom: 20px; }
+    .phase-title { font-size: 22px; font-weight: 800; color: var(--white); text-transform: uppercase; margin-bottom: 20px; line-height: 1.1; }
+    .phase-programs { list-style: none; }
+    .phase-programs li { font-size: 14px; color: rgba(255,255,255,0.70); padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08); line-height: 1.4; display: flex; align-items: flex-start; gap: 10px; }
+    .phase-programs li:last-child { border-bottom: none; }
+    .phase-programs li::before { content: 'â†&#x2019;'; color: var(--ember); font-weight: 700; flex-shrink: 0; }
+    .pipeline-arrow { display: flex; align-items: center; justify-content: center; font-size: 28px; color: var(--amber); position: absolute; right: -16px; top: 50%; transform: translateY(-50%); z-index: 2; display: none; }
+
+    /* â&#x201D;€â&#x201D;€ PROGRAM SECTIONS (alternating) â&#x201D;€â&#x201D;€ */
+    .program-section { padding: 96px 64px; }
+    .program-section.alt { background: var(--light); }
+    .program-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .program-inner.flip { direction: rtl; }
+    .program-inner.flip > * { direction: ltr; }
+    .program-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ember); background: rgba(227,111,30,0.10); padding: 5px 12px; border-radius: 3px; margin-bottom: 16px; }
+    .program-title { font-size: clamp(26px, 3vw, 38px); font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; color: var(--navy); line-height: 1.05; margin-bottom: 18px; }
+    .program-desc { font-size: 16px; color: var(--gray); line-height: 1.85; margin-bottom: 24px; }
+    .program-outcomes { list-style: none; margin-bottom: 28px; }
+    .program-outcomes li { font-size: 14px; color: #444; padding: 8px 0; border-bottom: 1px solid var(--rule); display: flex; gap: 12px; align-items: flex-start; line-height: 1.5; }
+    .program-outcomes li:last-child { border-bottom: none; }
+    .program-outcomes li::before { content: 'âœ&#x201C;'; color: var(--ember); font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+    .program-stat-row { display: flex; gap: 2px; margin-bottom: 32px; }
+    .program-stat { background: var(--navy); padding: 20px 24px; flex: 1; border-radius: 2px; }
+    .program-stat:first-child { border-radius: 6px 2px 2px 6px; }
+    .program-stat:last-child { border-radius: 2px 6px 6px 2px; }
+    .program-stat-num { font-size: clamp(22px, 2.5vw, 30px); font-weight: 900; color: var(--amber); line-height: 1; margin-bottom: 6px; }
+    .program-stat-label { font-size: 11px; color: rgba(255,255,255,0.65); line-height: 1.4; }
+    .program-img { width: 100%; height: 480px; object-fit: cover; border-radius: 8px; }
+    .program-img-alt { width: 100%; height: 480px; object-fit: cover; border-radius: 8px; background: var(--navy); display: flex; align-items: center; justify-content: center; }
+
+    /* â&#x201D;€â&#x201D;€ STAT STRIP â&#x201D;€â&#x201D;€ */
+    .stat-strip { background: var(--rule); display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    .stat-cell { background: var(--white); padding: 48px 36px; }
+    .stat-cell-accent { display: block; width: 28px; height: 3px; background: var(--ember); border-radius: 2px; margin-bottom: 18px; }
+    .stat-cell-num { font-size: clamp(36px, 4vw, 52px); font-weight: 900; color: var(--black); line-height: 1; margin-bottom: 10px; }
+    .stat-cell-label { font-size: 14px; color: var(--gray); line-height: 1.5; }
+
+    /* â&#x201D;€â&#x201D;€ CTA BAND â&#x201D;€â&#x201D;€ */
+    .cta-band { position: relative; padding: 120px 48px; text-align: center; overflow: hidden; }
+    .cta-band-bg { position: absolute; inset: 0; background-image: url('https://www.pep.org/wp-content/uploads/2025/06/Welcome-Photo-1024x503.jpg'); background-size: cover; background-position: center; }
+    .cta-band-overlay { position: absolute; inset: 0; background: rgba(13,35,115,0.75); }
+    .cta-band-content { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+    .cta-band h2 { font-size: clamp(28px, 4vw, 52px); font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; color: var(--white); line-height: 1.0; margin-bottom: 20px; }
+    .cta-band h2 span { color: var(--amber); }
+    .cta-band p { font-size: 18px; color: rgba(255,255,255,0.82); line-height: 1.7; margin-bottom: 40px; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* â&#x201D;€â&#x201D;€ FOOTER â&#x201D;€â&#x201D;€ */
+    footer { background: var(--navy); padding: 64px 48px 0; }
+    .footer-top { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.10); }
+    .footer-brand img { height: 30px; margin-bottom: 18px; }
+    .footer-brand p { font-size: 14px; color: rgba(255,255,255,0.50); line-height: 1.8; margin-bottom: 24px; max-width: 280px; }
+    .footer-social { display: flex; gap: 10px; }
+    .social-btn { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.55); transition: background 0.2s; }
+    .social-btn:hover { background: var(--ember); color: #fff; }
+    .footer-col h4 { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.30); margin-bottom: 18px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a { font-size: 14px; color: rgba(255,255,255,0.55); transition: color 0.2s; }
+    .footer-col a:hover { color: var(--amber); }
+    .footer-bottom { max-width: 1160px; margin: 0 auto; padding: 28px 0; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.30); }
+    .footer-bottom-links { display: flex; gap: 24px; }
+    .footer-bottom-links a { color: rgba(255,255,255,0.30); }
+    .footer-bottom-links a:hover { color: var(--amber); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="Sample Home Page.html" class="nav-logo">
+    <img src="https://www.pep.org/wp-content/uploads/2022/02/PEP_Logo_Fav.png" alt="PEP" style="height:40px;width:auto;" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="about-pep.html">About PEP</a></li>
+    <li><a href="our-programs.html" class="active">Our Programs</a></li>
+    <li><a href="#">Our Impact</a></li>
+    <li><a href="#">Get Involved</a></li>
+    <li><a href="#">Stories</a></li>
+  </ul>
+  <div class="nav-ctas">
+    <a href="Sample Volunteer Page.html" class="btn btn-outline-amber btn-sm">Volunteer <span class="btn-icon">â†&#x2019;</span></a>
+    <a href="Sample Donor Page.html" class="btn btn-amber btn-sm">Donate <span class="btn-icon">â™¥</span></a>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Our Programs</span>
+    <h1>From prison<br/>to <span>purpose.</span></h1>
+    <p class="hero-sub">
+      A continuous, vertically integrated system â€&#x201D; beginning with character formation inside TDCJ and walking alongside graduates long after release.
+    </p>
+    <div class="hero-btns">
+      <a href="Sample Donor Page.html" class="btn btn-amber">Support the Mission <span class="btn-icon">â™¥</span></a>
+      <a href="Sample Volunteer Page.html" class="btn btn-outline-white">Volunteer with PEP <span class="btn-icon">â†&#x2019;</span></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- INTRO CARD -->
+<div class="intro-card">
+  <h2>Not a program. <em>A pipeline.</em></h2>
+  <p>
+    PEP's model is designed as a single, connected journey â€&#x201D; not a collection of standalone services. Every phase builds on the last: digital formation unlocks readiness, in-prison programming deepens character, re-entry services stabilize the critical first 90 days, and post-release entrepreneurship converts transformation into lasting economic participation.
+  </p>
+</div>
+
+
+<!-- STAT STRIP -->
+<div class="stat-strip">
+  <div class="stat-cell">
+    <span class="stat-cell-accent"></span>
+    <div class="stat-cell-num">134K+</div>
+    <div class="stat-cell-label">TDCJ inmates now reachable through digital programs</div>
+  </div>
+  <div class="stat-cell">
+    <span class="stat-cell-accent"></span>
+    <div class="stat-cell-num">&lt;10%</div>
+    <div class="stat-cell-label">3-year recidivism rate â€&#x201D; sustained for 15+ years</div>
+  </div>
+  <div class="stat-cell">
+    <span class="stat-cell-accent"></span>
+    <div class="stat-cell-num">$4,500</div>
+    <div class="stat-cell-label">Cost per participant â€&#x201D; vs. $32,000/yr to incarcerate</div>
+  </div>
+  <div class="stat-cell">
+    <span class="stat-cell-accent"></span>
+    <div class="stat-cell-num">$8.94</div>
+    <div class="stat-cell-label">Returned for every $1 invested (Baylor University)</div>
+  </div>
+</div>
+
+
+<!-- JOURNEY PIPELINE -->
+<section class="journey">
+  <div class="journey-inner">
+    <div class="journey-header">
+      <p class="section-eyebrow">The PEP Journey</p>
+      <h2 class="section-title">Three phases. One mission.</h2>
+      <p>PEP meets people where they are â€&#x201D; inside prison, at the gate, and years after release â€&#x201D; with programming that compounds over time.</p>
+    </div>
+    <div class="pipeline">
+      <div class="pipeline-phase">
+        <div class="phase-label">Phase 1 â€&#x201D; Inside</div>
+        <div class="phase-title">Formation</div>
+        <ul class="phase-programs">
+          <li>Leadership Academy â€&#x201D; digital character formation via tablet, available to all 134K+ TDCJ inmates</li>
+          <li>Incentivized In-Prison Housing â€&#x201D; peer-led dormitory communities building accountability</li>
+          <li>Core Program â€&#x201D; Baylor-recognized business education culminating in a Business Plan Competition</li>
+        </ul>
+      </div>
+      <div class="pipeline-phase">
+        <div class="phase-label">Phase 2 â€&#x201D; Transition</div>
+        <div class="phase-title">Stabilization</div>
+        <ul class="phase-programs">
+          <li>Re-Entry Services â€&#x201D; case managers meet graduates at the gate with housing, ID, and a plan</li>
+          <li>Transitional Housing â€&#x201D; safe, culture-reinforcing homes in Houston and Dallas</li>
+          <li>eSchool â€&#x201D; 12-week life skills and business literacy program in the first 90 days</li>
+        </ul>
+      </div>
+      <div class="pipeline-phase">
+        <div class="phase-label">Phase 3 â€&#x201D; Outside</div>
+        <div class="phase-title">Enterprise</div>
+        <ul class="phase-programs">
+          <li>Aspiration â€&#x201D; 4-week entrepreneurial discernment cohort with executive pitch event</li>
+          <li>Applied Entrepreneurship â€&#x201D; competency-based formation with 1-on-1 coaching</li>
+          <li>Entre Capital â€&#x201D; growth financing from $2,500â€&#x201C;$200,000 paired with 50 hours of coaching</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PROGRAM 1: LEADERSHIP ACADEMY -->
+<section class="program-section" id="leadership-academy">
+  <div class="program-inner">
+    <div>
+      <span class="program-tag">Phase 1 Â· Digital Â· Inside Prison</span>
+      <h2 class="program-title">Leadership<br/>Academy</h2>
+      <p class="program-desc">
+        PEP's digital character formation experience, delivered through the Edovo tablet platform to every eligible incarcerated individual in TDCJ â€&#x201D; regardless of security classification, sentence length, or proximity to discharge. For the first time, PEP can reach all 134,000+ people in the Texas prison system, not just those within three years of release.
+      </p>
+      <p class="program-desc">
+        Participants engage immersive, behavior-based scenarios built around PEP's 10 Driving Values. Completion requires written reflection and demonstrated behavioral consistency over time â€&#x201D; creating an objective readiness signal before any in-person resource is deployed. The expanded curriculum adds <em>Driving Values</em> and <em>Idea Development</em> courses, giving participants the foundation they need to thrive in PEP's in-prison programs.
+      </p>
+      <div class="program-stat-row">
+        <div class="program-stat">
+          <div class="program-stat-num">134K+</div>
+          <div class="program-stat-label">Total addressable market across TDCJ</div>
+        </div>
+        <div class="program-stat">
+          <div class="program-stat-num">2,196</div>
+          <div class="program-stat-label">Projected completions in 2026</div>
+        </div>
+        <div class="program-stat">
+          <div class="program-stat-num">54%</div>
+          <div class="program-stat-label">Projected completion rate by 2028</div>
+        </div>
+      </div>
+      <ul class="program-outcomes">
+        <li>Available self-paced to all TDCJ inmates â€&#x201D; no transfers, waitlists, or staff mediation</li>
+        <li>Filters and prepares applicants before high-touch resources are deployed</li>
+        <li>Feeds directly into Incentivized In-Prison Housing and Core Program admissions</li>
+        <li>No large-scale volunteer presence required â€&#x201D; the most cost-efficient growth engine in the model</li>
+      </ul>
+    </div>
+    <img class="program-img" src="https://www.pep.org/wp-content/uploads/2025/06/Welcome-Photo-1024x503.jpg" alt="PEP Leadership Academy participants" />
+  </div>
+</section>
+
+
+<!-- PROGRAM 2: INCENTIVIZED IN-PRISON HOUSING -->
+<section class="program-section alt" id="incentivized-housing">
+  <div class="program-inner flip">
+    <img class="program-img" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/05/K3_9102-L.jpg" alt="PEP in-prison community" />
+    <div>
+      <span class="program-tag">Phase 1 Â· In-Prison Â· Community</span>
+      <h2 class="program-title">Incentivized<br/>In-Prison Housing</h2>
+      <p class="program-desc">
+        PEP's fastest-growing program and the bridge between digital learning and the flagship Core Program. By converting TDCJ Incentivized Housing units into live learning hubs, PEP brings community, peer accountability, and character-based leadership to individuals who were previously unreachable â€&#x201D; those nearing parole, not just those nearing discharge.
+      </p>
+      <p class="program-desc">
+        Each 126-bed pod operates as a micro-campus: participants live, learn, and collaborate daily around PEP's values. Alumni Servant Leaders increasingly facilitate these communities, ensuring transformation takes root from within. Launched in August 2025 at the Estelle Unit, the program is expanding to 7 prisons by 2027 and 15 by 2030.
+      </p>
+      <div class="program-stat-row">
+        <div class="program-stat">
+          <div class="program-stat-num">&lt;$500</div>
+          <div class="program-stat-label">Cost per participant per year</div>
+        </div>
+        <div class="program-stat">
+          <div class="program-stat-num">126</div>
+          <div class="program-stat-label">Beds per pod</div>
+        </div>
+        <div class="program-stat">
+          <div class="program-stat-num">1,890</div>
+          <div class="program-stat-label">Projected participants by 2030</div>
+        </div>
+      </div>
+      <ul class="program-outcomes">
+        <li>Reaches individuals 3 years from parole â€&#x201D; 80% of TDCJ releases â€&#x201D; not just those nearing discharge</li>
+        <li>Peer-led model scales without proportional staff increases</li>
+        <li>25% of participants advance into the Core Program as they approach eligibility</li>
+        <li>Those who parole directly enter PEP's Collaborative Re-Entry pathway</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- PROGRAM 3: CORE PROGRAM -->
+<section class="program-section" id="core-program">
+  <div class="program-inner">
+    <div>
+      <span class="program-tag">Phase 1 Â· Flagship Â· In-Prison</span>
+      <h2 class="program-title">Core<br/>Program</h2>
+      <p class="program-desc">
+        PEP's highest-intensity formation experience and the gold standard of criminal justice programming in America. The Core Program combines Toastmasters, a Baylor University-recognized entrepreneurship curriculum, and direct mentorship from 400+ executive volunteers â€&#x201D; culminating in a Shark Tankâ€&#x201C;style Business Plan Competition judged by real industry leaders.
+      </p>
+      <p class="program-desc">
+        What makes the Core Program different is not the curriculum. It is the collision. When a business executive sits across from a man serving time and evaluates his pitch, something deeper than instruction happens â€&#x201D; dignity is conferred, standards are raised, and both walk away changed. Graduates become Servant Leaders, facilitating future classes and carrying PEP's culture forward. Families are engaged throughout and invited to graduation â€&#x201D; often the first time they've seen their loved one in a cap and gown.
+      </p>
+      <div class="program-stat-row">
+        <div class="program-stat">
+          <div class="program-stat-num">&lt;10%</div>
+          <div class="program-stat-label">3-year recidivism â€&#x201D; held for 15+ consecutive years</div>
+        </div>
+        <div class="program-stat">
+          <div class="program-stat-num">400+</div>
+          <div class="program-stat-label">Executive volunteers per year</div>
+        </div>
+        <div class="program-stat">
+          <div class="program-stat-num">700+</div>
+          <div class="program-stat-label">Alumni businesses launched</div>
+        </div>
+      </div>
+      <ul class="program-outcomes">
+        <li>Baylor University-recognized mini-MBA: market analysis, financial modeling, strategic planning</li>
+        <li>Business Plan Competition â€&#x201D; team-based, executive-judged, Shark Tank format</li>
+        <li>Toastmasters certification and professional communication training</li>
+        <li>Family engagement program and graduation ceremony open to loved ones</li>
+        <li>Graduates become Servant Leaders who mentor the next cohort</li>
+      </ul>
+    </div>
+    <img class="program-img" src="https://www.pep.org/wp-content/uploads/2026/05/Lewis-Kdarius-Martin-Kenneth-Alicea-William-4K-scaled.jpg" alt="PEP Core Program Business Plan Competition" />
+  </div>
+</section>
+
+
+<!-- PROGRAM 4: RE-ENTRY SERVICES -->
+<section class="program-section alt" id="reentry">
+  <div class="program-inner flip">
+    <img class="program-img" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/05/K3_9102-L.jpg" alt="PEP re-entry support" />
+    <div>
+      <span class="program-tag">Phase 2 Â· Post-Release Â· First 90 Days</span>
+      <h2 class="program-title">Re-Entry<br/>Services</h2>
+      <p class="program-desc">
+        Nearly half of all returns to prison happen within the first 90 days of release. Most people walk out with $50 and a bus pass â€&#x201D; no ID, no housing, no plan. PEP's Re-Entry Services are designed to meet that moment. Case managers are waiting at the gate.
+      </p>
+      <p class="program-desc">
+        Each graduate is matched with a dedicated Case Manager who assists with transportation, documentation, housing, parole requirements, and employment â€&#x201D; then stays connected through regular check-ins and documented milestones for months afterward. Transitional housing provides safe, affordable homes in Houston and Dallas that reinforce PEP culture and give graduates the stability to start rebuilding. After stabilization, participants enter eSchool: a 12-week program building professional skills, financial literacy, and entrepreneurial foundations.
+      </p>
+      <div class="program-stat-row">
+        <div class="program-stat">
+          <div class="program-stat-num">82â†&#x2019;200+</div>
+          <div class="program-stat-label">Transitional beds expanding statewide by 2028</div>
+        </div>
+        <div class="program-stat">
+          <div class="program-stat-num">90</div>
+          <div class="program-stat-label">Days to employment â€&#x201D; 100% placement rate</div>
+        </div>
+        <div class="program-stat">
+          <div class="program-stat-num">12 wks</div>
+          <div class="program-stat-label">eSchool life skills and business literacy program</div>
+        </div>
+      </div>
+      <ul class="program-outcomes">
+        <li>Case managers meet participants at release with immediate practical support</li>
+        <li>Transitional housing in Houston and Dallas â€&#x201D; structured, culture-reinforcing environment</li>
+        <li>eSchool: budgeting, goal-setting, interviewing, resume writing, and job search skills</li>
+        <li>Expanding to serve graduates paroling directly from Incentivized In-Prison Housing</li>
+        <li>Referral partnerships for mental health, healthcare, transportation, and vocational training</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- PROGRAM 5: POST-RELEASE ENTREPRENEURSHIP -->
+<section class="program-section" id="entrepreneurship">
+  <div class="program-inner">
+    <div>
+      <span class="program-tag">Phase 3 Â· Outside Â· Entrepreneurship</span>
+      <h2 class="program-title">Post-Release<br/>Entrepreneurship</h2>
+      <p class="program-desc">
+        Transformation inside prison is only meaningful if it leads somewhere. PEP's post-release entrepreneurship pathway closes the loop â€&#x201D; converting preparation into visible proof that second chances create jobs, businesses, and generational wealth.
+      </p>
+      <p class="program-desc">
+        The pathway begins with <strong>Aspiration</strong>, a 4-week cohort where participants clarify a business idea, test market assumptions, and pitch to executive volunteers at a live event. Those who secure a coach advance into <strong>Applied Entrepreneurship</strong> â€&#x201D; a competency-based formation experience where progression is driven by demonstrated mastery, not calendar time. PEP's physical hubs in Houston, Dallas, and Austin function as entrepreneurship centers where stabilization, education, mentorship, and capital come together. By 2030, PEP aims to serve 500 entrepreneurs annually and support 250 new business launches per year.
+      </p>
+      <div class="program-stat-row">
+        <div class="program-stat">
+          <div class="program-stat-num">500</div>
+          <div class="program-stat-label">Entrepreneurs served annually â€&#x201D; 2030 target</div>
+        </div>
+        <div class="program-stat">
+          <div class="program-stat-num">250</div>
+          <div class="program-stat-label">New businesses launched per year â€&#x201D; 2030 target</div>
+        </div>
+        <div class="program-stat">
+          <div class="program-stat-num">900+</div>
+          <div class="program-stat-label">Jobs created or retained annually â€&#x201D; 2030 target</div>
+        </div>
+      </div>
+      <ul class="program-outcomes">
+        <li>Aspiration: 4-week discernment cohort â€&#x201D; idea development, market testing, live pitch event</li>
+        <li>Applied Entrepreneurship: competency-based progression with dedicated business coach</li>
+        <li>Entrepreneurship hubs in Houston, Dallas, and Austin â€&#x201D; coaching, bookkeeping, networking</li>
+        <li>Milestone-based advancement protects quality â€&#x201D; choosing not to launch is a valid outcome</li>
+        <li>Alumni community provides peer accountability beyond formal program requirements</li>
+      </ul>
+    </div>
+    <img class="program-img" src="https://www.pep.org/wp-content/uploads/2025/06/Welcome-Photo-1024x503.jpg" alt="PEP entrepreneurship hub" />
+  </div>
+</section>
+
+
+<!-- PROGRAM 6: ENTRE CAPITAL -->
+<section class="program-section alt" id="entre-capital">
+  <div class="program-inner flip">
+    <img class="program-img" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/06/Brobert.png" alt="Bryan Robert, Entre Capital Executive Director" style="object-position: top;" />
+    <div>
+      <span class="program-tag">Phase 3 Â· Financing Â· CDFI</span>
+      <h2 class="program-title">Entre<br/>Capital</h2>
+      <p class="program-desc">
+        The only Community Development Financial Institution (CDFI) in the nation exclusively serving returning citizens. Founded in 2019, Entre Capital provides growth financing from $2,500 to $200,000 â€&#x201D; but capital is never deployed alone. Every loan is paired with mandatory coaching, reporting requirements, and clear performance benchmarks.
+      </p>
+      <p class="program-desc">
+        Entre Capital operates with investment logic, not charity. Funds are deployed only when character, competence, and business viability have been demonstrated through PEP's full formation pathway. The result: strong repayment performance, zero borrower recidivism, and meaningful job creation â€&#x201D; proof that disciplined capital paired with formation outperforms traditional re-entry finance approaches.
+      </p>
+      <div class="program-stat-row">
+        <div class="program-stat">
+          <div class="program-stat-num">$2.5Kâ€&#x201C;$200K</div>
+          <div class="program-stat-label">Loan range for justice-impacted entrepreneurs</div>
+        </div>
+        <div class="program-stat">
+          <div class="program-stat-num">50 hrs</div>
+          <div class="program-stat-label">Average coaching hours per borrower per year</div>
+        </div>
+        <div class="program-stat">
+          <div class="program-stat-num">0%</div>
+          <div class="program-stat-label">Borrower recidivism rate</div>
+        </div>
+      </div>
+      <ul class="program-outcomes">
+        <li>Microloans for working capital; larger collateral-backed loans for equipment and vehicles</li>
+        <li>Milestone grants tied to demonstrated business progress</li>
+        <li>Mandatory 1-on-1 coaching focused on cash flow, operations, and growth discipline</li>
+        <li>Bookkeeping services and peer community for ongoing accountability</li>
+        <li>Targeting $25M+ loan portfolio and national replication by 2034</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-band-bg"></div>
+  <div class="cta-band-overlay"></div>
+  <div class="cta-band-content">
+    <h2>Be part of the <span>solution.</span></h2>
+    <p>PEP's programs work because of people who believe in them â€&#x201D; volunteers who show up, donors who invest, and employers who open their doors. Every role matters.</p>
+    <div class="cta-btns">
+      <a href="Sample Donor Page.html" class="btn btn-amber">Donate Now <span class="btn-icon">â™¥</span></a>
+      <a href="Sample Volunteer Page.html" class="btn btn-outline-white">Volunteer with PEP <span class="btn-icon">â†&#x2019;</span></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="https://www.pep.org/wp-content/uploads/2025/07/PEP_Logo_White.png" alt="PEP" />
+      <p>Transform Lives, Restore Families, Rebuild Communities.<br/>A 501(c)(3) non-profit serving Texas since 2004.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="https://www.linkedin.com/company/prison-entrepreneurship-program" title="LinkedIn">in</a>
+        <a class="social-btn" href="https://www.instagram.com/prisonentrepreneurshipprogram" title="Instagram">ig</a>
+        <a class="social-btn" href="https://www.facebook.com/PrisonEntrepreneurship" title="Facebook">f</a>
+        <a class="social-btn" href="https://twitter.com/peptweets" title="X">ð•</a>
+        <a class="social-btn" href="https://www.youtube.com/@PepOrgTX" title="YouTube">â&ndash;¶</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="about-pep.html">About PEP</a></li>
+        <li><a href="about-pep.html#mission">Our Mission</a></li>
+        <li><a href="about-pep.html#leadership">Leadership</a></li>
+        <li><a href="about-pep.html#impact">Our Impact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul>
+        <li><a href="our-programs.html#leadership-academy">Leadership Academy</a></li>
+        <li><a href="our-programs.html#core-program">Core Program</a></li>
+        <li><a href="our-programs.html#reentry">Re-Entry Services</a></li>
+        <li><a href="our-programs.html#entrepreneurship">Post-Release Entrepreneurship</a></li>
+        <li><a href="our-programs.html#entre-capital">Entre Capital</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="Sample Donor Page.html">Donate</a></li>
+        <li><a href="Sample Volunteer Page.html">Volunteer</a></li>
+        <li><a href="#">Corporate Partners</a></li>
+        <li><a href="#">Advocate</a></li>
+        <li><a href="#">Newsletter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:info@pep.org">info@pep.org</a></li>
+        <li><a href="tel:8327670928">Houston: 832-767-0928</a></li>
+        <li><a href="tel:2145759909">N. Texas: 214-575-9909</a></li>
+        <li style="margin-top:12px; font-size:13px; line-height:1.7; color:rgba(255,255,255,0.30);">
+          6501 Navigation Blvd, Ste. H7<br/>Houston, TX 77011
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Prison Entrepreneurship Program. All rights reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms</a>
+      <a href="#">Financials</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
