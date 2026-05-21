@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About PEP — Prison Entrepreneurship Program</title>
+  <title>About PEP &mdash; Prison Entrepreneurship Program</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -67,7 +67,7 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 48px; height: 72px;
     }
-    .nav-logo img { height: 34px; }
+    .nav-logo img { height: 52px; }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
     .nav-links a {
       font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
@@ -196,7 +196,6 @@
     /* ── STAFF DIRECTORY ── */
     .staff { padding: 80px 64px; background: var(--light); }
     .staff-inner { max-width: 1160px; margin: 0 auto; }
-    .staff-header { margin-bottom: 52px; padding-bottom: 28px; border-bottom: 1px solid var(--rule); }
     .dept-section { margin-bottom: 52px; }
     .dept-label {
       font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
@@ -219,7 +218,6 @@
     .board { background: var(--navy); padding: 96px 64px; }
     .board-inner { max-width: 1160px; margin: 0 auto; }
     .board .section-eyebrow { color: var(--amber); }
-    .board .section-title { color: var(--white); }
     .board-lead { font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.8; max-width: 640px; margin-bottom: 56px; }
     .board-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
@@ -230,6 +228,10 @@
       transition: background 0.2s;
     }
     .board-card:hover { background: rgba(34,119,242,0.2); }
+    .staff-card { background: var(--white); padding: 22px 24px; transition: background 0.15s; display: flex; flex-direction: column; }
+    .staff-photo { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; object-position: top center; margin-bottom: 12px; border: 2px solid var(--rule); background: var(--light); flex-shrink: 0; }
+    .board-card { background: rgba(13,35,115,0.7); padding: 32px 28px; transition: background 0.2s; display: flex; flex-direction: column; }
+    .board-photo { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; object-position: top center; margin-bottom: 14px; border: 2px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); flex-shrink: 0; }
     .board-name { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 6px; line-height: 1.2; }
     .board-title { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
     .board-model {
@@ -244,7 +246,7 @@
     footer { background: var(--navy); padding: 64px 64px 0; border-top: 1px solid rgba(255,255,255,0.08); }
     .footer-top {
       max-width: 1160px; margin: 0 auto;
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 48px;
       padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.10);
     }
     .footer-brand img { height: 30px; margin-bottom: 18px; }
@@ -276,14 +278,14 @@
 <!-- NAV -->
 <nav>
   <a href="Sample Home Page.html" class="nav-logo">
-    <img src="https://www.pep.org/wp-content/uploads/2022/02/PEP_Logo_Fav.png" alt="PEP" style="height:40px;width:auto;" />
+    <img src="https://www.pep.org/wp-content/uploads/2022/02/PEP_Logo_Fav.png" alt="PEP" style="height:52px;width:auto;" />
   </a>
-  <ul class="nav-links">
-    <li><a href="About PEP.html" class="active">About PEP</a></li>
-    <li><a href="#">Our Programs</a></li>
-    <li><a href="#">Our Impact</a></li>
-    <li><a href="#">Get Involved</a></li>
-    <li><a href="#">Stories</a></li>
+    <ul class="nav-links">
+    <li><a href="Sample Home Page.html">Home</a></li>
+    <li><a href="about-pep.html" class="active">About PEP</a></li>
+    <li><a href="our-programs.html">Our Programs</a></li>
+    <li><a href="our-impact.html">Our Impact</a></li>
+    <li><a href="stories.html">Stories</a></li>
   </ul>
   <div class="nav-ctas">
     <a href="Sample Volunteer Page.html" class="btn btn-outline-amber btn-sm">
@@ -321,7 +323,7 @@
   <p>
     Founded in 2004, the Prison Entrepreneurship Program is a fully privately-funded 501(c)(3) nonprofit
     operating inside Texas Department of Criminal Justice units. We build genuine relationships between
-    incarcerated entrepreneurs and business executives — beginning inside the walls, and continuing with
+    incarcerated entrepreneurs and business executives &mdash; beginning inside the walls, and continuing with
     a community that walks alongside graduates long after release. The result is one of the most
     measurably effective criminal justice programs in America.
   </p>
@@ -338,7 +340,7 @@
   <div class="stat-cell">
     <span class="stat-cell-accent"></span>
     <div class="stat-cell-num">&lt;10%</div>
-    <div class="stat-cell-label">Recidivism rate — vs. 62% nationally</div>
+    <div class="stat-cell-label">Recidivism rate &mdash; vs. 62% nationally</div>
   </div>
   <div class="stat-cell">
     <span class="stat-cell-accent"></span>
@@ -348,7 +350,7 @@
   <div class="stat-cell">
     <span class="stat-cell-accent"></span>
     <div class="stat-cell-num">100%</div>
-    <div class="stat-cell-label">Job placement within 90 days — every class</div>
+    <div class="stat-cell-label">Job placement within 90 days &mdash; every class</div>
   </div>
 </div>
 
@@ -361,13 +363,13 @@
       <h2 class="section-title">Built on a belief that<br/>every person has potential.</h2>
       <p>
         PEP was founded on a simple but radical premise: that the men inside Texas prisons are
-        not problems to be managed — they are potential waiting to be unlocked. What was needed
+        not problems to be managed &mdash; they are potential waiting to be unlocked. What was needed
         wasn't charity. It was opportunity, accountability, and the belief that transformation
         is possible for anyone willing to do the work.
       </p>
       <p>
         Over two decades, we have built a program that operates in two phases. <strong>Inside,</strong>
-        we deliver rigorous business education, character formation, and servant leadership —
+        we deliver rigorous business education, character formation, and servant leadership &mdash;
         taught by real executives who volunteer their time. Men compete in a Business Plan Competition
         judged by their peers and industry leaders. The standards are high. The results reflect it.
       </p>
@@ -379,7 +381,7 @@
       </p>
       <p>
         We receive <strong>no government funding.</strong> Every dollar comes from individuals,
-        corporations, and foundations who believe in results — and PEP delivers them.
+        corporations, and foundations who believe in results &mdash; and PEP delivers them.
       </p>
     </div>
     <div class="about-fact-stack">
@@ -401,14 +403,14 @@
         <div class="about-fact-num">46%</div>
         <div class="about-fact-label">
           <strong>Graduate Homeownership Rate</strong>
-          Nearly half of PEP alumni own a home — a marker of genuine long-term stability.
+          Nearly half of PEP alumni own a home &mdash; a marker of genuine long-term stability.
         </div>
       </div>
       <div class="about-fact">
         <div class="about-fact-num">$0</div>
         <div class="about-fact-label">
           <strong>Government Funding Received</strong>
-          PEP is 100% privately funded — no government money, no dilution of mission.
+          PEP is 100% privately funded &mdash; no government money, no dilution of mission.
         </div>
       </div>
     </div>
@@ -423,188 +425,213 @@
       <p class="section-eyebrow">Our Team</p>
       <h2 class="section-title">Leadership.</h2>
       <p class="section-lead" style="max-width:580px;">
-        PEP is led by a team of experienced practitioners — many of them alumni, volunteers,
+        PEP is led by a team of experienced practitioners &mdash; many of them alumni, volunteers,
         or long-tenured staff who have devoted their careers to this mission.
       </p>
     </div>
+  </div>
+</section>
 
-    <div class="exec-grid">
-      <div class="exec-card">
-        <div class="exec-title">Chief Executive Officer</div>
-        <div class="exec-name">Chris Valka</div>
-        <div class="exec-divider"></div>
-        <div class="exec-bio">
-          Chris leads PEP's overall mission and strategy, ensuring that the program continues
-          to deliver measurable transformation for participants, their families, and the communities
-          they return to. Under his leadership, PEP maintains its commitment to servant leadership
-          and entrepreneurial excellence.
-        </div>
-      </div>
-      <div class="exec-card">
-        <div class="exec-title">Chief Operating Officer</div>
-        <div class="exec-name">Phi Tran</div>
-        <div class="exec-divider"></div>
-        <div class="exec-bio">
-          Phi oversees PEP's day-to-day operations across both in-prison and reentry programs,
-          ensuring every part of the organization runs with the same standards of excellence
-          we expect of our participants.
+
+<!-- STAFF DIRECTORY -->
+<section class="staff">
+  <div class="staff-inner">
+
+    <div class="dept-section">
+      <div class="dept-label">Executive</div>
+      <div class="staff-grid">
+        <div class="staff-card">
+          <img class="staff-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/05/CValka-HS.png" alt="Chris Valka" />
+          <div class="staff-name">Chris Valka</div>
+          <div class="staff-title">Chief Executive Officer</div>
         </div>
       </div>
     </div>
 
-    <!-- STAFF: Finance & Operations -->
     <div class="dept-section">
       <div class="dept-label">Finance &amp; Operations</div>
       <div class="staff-grid">
         <div class="staff-card">
+          <img class="staff-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/05/2024-Web-Head-Shots15.png" alt="Phi Tran" />
+          <div class="staff-name">Phi Tran</div>
+          <div class="staff-title">Chief Operating Officer</div>
+        </div>
+        <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/07/sheldon_alston_squared-1-scaled.jpg" alt="Sheldon Alston" />
           <div class="staff-name">Sheldon Alston</div>
           <div class="staff-title">Controller</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/06/Mhan.png" alt="Max Han" />
           <div class="staff-name">Max Han</div>
           <div class="staff-title">Office Manager</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/06/Robie-HS-2025.png" alt="Robie Lawhon" />
           <div class="staff-name">Robie Lawhon</div>
           <div class="staff-title">Accounting Clerk</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/06/2024-Web-Head-Shots14.png" alt="Edison Nguyen" />
           <div class="staff-name">Edison Nguyen</div>
           <div class="staff-title">IT Specialist</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2024/03/2024-Web-Head-Shots-233.png" alt="Madonna Riley" />
           <div class="staff-name">Madonna Riley</div>
           <div class="staff-title">Grants Manager</div>
         </div>
       </div>
     </div>
 
-    <!-- STAFF: In-Prison Programs -->
     <div class="dept-section">
       <div class="dept-label">In-Prison Programs</div>
       <div class="staff-grid">
         <div class="staff-card">
+          <img class="staff-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/05/2024-Web-Head-Shots4-1.png" alt="Gerald Dooley" />
           <div class="staff-name">Gerald Dooley</div>
           <div class="staff-title">Manager of In-Prison Initiatives</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/05/2024-Web-Head-Shots-07242.png" alt="Jorge Castillo" />
           <div class="staff-name">Jorge Castillo</div>
-          <div class="staff-title">In-Prison Manager — Lychner Unit</div>
+          <div class="staff-title">In-Prison Manager &mdash; Lychner Unit</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/06/Martin-H.png" alt="Martin Herrera" />
           <div class="staff-name">Martin Herrera</div>
-          <div class="staff-title">In-Prison Manager — Bell Unit</div>
+          <div class="staff-title">In-Prison Manager &mdash; Bell Unit</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/06/2024-Web-Head-Shots_0524.png" alt="Adam Woods" />
           <div class="staff-name">Adam Woods</div>
-          <div class="staff-title">In-Prison Manager — Estes Unit</div>
+          <div class="staff-title">In-Prison Manager &mdash; Estes Unit</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/06/2024-Web-Head-Shots12-1.png" alt="Mi Lai" />
           <div class="staff-name">Mi Lai</div>
           <div class="staff-title">Manager of Business Education</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/06/2024-Web-Head-Shots-232.png" alt="Jeff Humphrey" />
           <div class="staff-name">Jeff Humphrey</div>
           <div class="staff-title">Manager of Correspondence Course</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/06/David.webp" alt="David Flores" />
           <div class="staff-name">David Flores</div>
-          <div class="staff-title">Character Development Specialist — Estes Unit</div>
+          <div class="staff-title">Character Development Specialist &mdash; Estes Unit</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/07/DJ-email.jpg" alt="Donald Jones" />
           <div class="staff-name">Donald Jones</div>
-          <div class="staff-title">Character Development Specialist — Lychner Unit</div>
+          <div class="staff-title">Character Development Specialist &mdash; Lychner Unit</div>
         </div>
       </div>
     </div>
 
-    <!-- STAFF: Reentry & Life Caddies -->
     <div class="dept-section">
       <div class="dept-label">Reentry &amp; Life Caddies</div>
       <div class="staff-grid">
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/05/2024-Web-Head-Shots3-1.png" alt="Timothy Daniels" />
           <div class="staff-name">Timothy Daniels</div>
           <div class="staff-title">Director of Reentry</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/06/2024-Web-Head-Shots13-1.png" alt="Jason Moore" />
           <div class="staff-name">Jason Moore</div>
-          <div class="staff-title">Re-Entry Manager — Dallas</div>
+          <div class="staff-title">Re-Entry Manager &mdash; Dallas</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/05/SBailey_HS.png" alt="Shawn Bailey" />
           <div class="staff-name">Shawn Bailey</div>
           <div class="staff-title">Life Caddie</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/06/2024-Web-Head-Shots_05242.png" alt="Clinton Free" />
           <div class="staff-name">Clinton Free</div>
           <div class="staff-title">Life Caddie</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/06/2024-Web-Head-Shots11.png" alt="Jeremy Jones" />
           <div class="staff-name">Jeremy Jones</div>
           <div class="staff-title">Life Caddie</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2024/03/2024-Web-Head-Shots-162.png" alt="Julio Medina" />
           <div class="staff-name">Julio Medina</div>
           <div class="staff-title">Life Caddie</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/11/Oliver-M.jpg" alt="Oliver Menjivar" />
           <div class="staff-name">Oliver Menjivar</div>
           <div class="staff-title">Life Caddie</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2024/03/2024-Web-Head-Shots-1.png" alt="Ernest Taylor" />
           <div class="staff-name">Ernest Taylor</div>
           <div class="staff-title">Life Caddie</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/07/Steven_Maxwell-1.jpg" alt="Te'John Thomas" />
           <div class="staff-name">Te'John Thomas</div>
           <div class="staff-title">Life Caddie</div>
         </div>
       </div>
     </div>
 
-    <!-- STAFF: External Relations & Development -->
     <div class="dept-section">
       <div class="dept-label">External Relations &amp; Development</div>
       <div class="staff-grid">
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/05/2024-Web-Head-Shots6.png" alt="Michael Etcheson" />
           <div class="staff-name">Michael Etcheson</div>
           <div class="staff-title">Executive Relations Manager</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/06/2024-Web-Head-Shots_05243.png" alt="Al Massey" />
           <div class="staff-name">Al Massey</div>
           <div class="staff-title">Executive Relations Manager</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/07/Steven_Maxwell-1.jpg" alt="Steven Maxwell" />
           <div class="staff-name">Steven Maxwell</div>
-          <div class="staff-title">Volunteer &amp; Event Coordinator — Houston</div>
+          <div class="staff-title">Volunteer &amp; Event Coordinator &mdash; Houston</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/09/MSchlegel.png" alt="Michael Schlegel" />
           <div class="staff-name">Michael Schlegel</div>
-          <div class="staff-title">Volunteer &amp; Event Coordinator — Dallas</div>
+          <div class="staff-title">Volunteer &amp; Event Coordinator &mdash; Dallas</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/06/2024-Web-Head-Shots-164.webp" alt="Apple Soto" />
           <div class="staff-name">Apple Soto</div>
           <div class="staff-title">Donor Engagement Coordinator</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/09/CTucker.png" alt="Charae Tucker" />
           <div class="staff-name">Charae Tucker</div>
           <div class="staff-title">Business Coach Program Coordinator</div>
         </div>
       </div>
     </div>
 
-    <!-- STAFF: Family Services & Entre Capital -->
     <div class="dept-section" style="margin-bottom:0;">
       <div class="dept-label">Family Services &amp; Entre Capital</div>
       <div class="staff-grid">
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/07/Theresa-Black2-scaled-e1753114195827.jpg" alt="Theresa Black" />
           <div class="staff-name">Theresa Black</div>
-          <div class="staff-title">Family Liaison — Bell Unit</div>
+          <div class="staff-title">Family Liaison &mdash; Bell Unit</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/07/Laura-Stiehl-scaled-e1753114272505.jpg" alt="Laura Stiehl" />
           <div class="staff-name">Laura Stiehl</div>
-          <div class="staff-title">Family Liaison — Estes Unit</div>
+          <div class="staff-title">Family Liaison &mdash; Estes Unit</div>
         </div>
         <div class="staff-card">
+          <img class="staff-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/06/Brobert.png" alt="Bryan Robert" />
           <div class="staff-name">Bryan Robert</div>
           <div class="staff-title">Executive Director, Entre Capital</div>
         </div>
@@ -621,60 +648,73 @@
     <p class="section-eyebrow">Board of Directors</p>
     <h2 class="section-title" style="color:var(--white);">Experienced leaders.<br/>Invested partners.</h2>
     <p class="board-lead">
-      PEP's board operates as a working board — members offer expertise and frequent interaction
+      PEP's board operates as a working board &mdash; members offer expertise and frequent interaction
       with PEP management to extend the team's capacity. Every board member provides financial
       support and is deeply engaged in the organization's mission and direction.
     </p>
     <div class="board-grid">
       <div class="board-card">
+        <img class="board-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/06/bob_barkley.png" alt="Bob Barkley" />
         <div class="board-name">Bob Barkley</div>
         <div class="board-title">Principal (Retired)<br/>Barrow, Hanley, Mewhinney &amp; Strauss, Inc.</div>
       </div>
       <div class="board-card">
+        <img class="board-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/06/LisaB.jpeg" alt="Lisa Barksdale" />
         <div class="board-name">Lisa Barksdale</div>
         <div class="board-title">SVP, Commercial Credit Executive<br/>Bank of America</div>
       </div>
       <div class="board-card">
+        <img class="board-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/06/OliverB.jpeg" alt="Oliver Bell" />
         <div class="board-name">Oliver Bell</div>
         <div class="board-title">CEO<br/>Oliver Bell Inc.</div>
       </div>
       <div class="board-card">
+        <img class="board-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/06/Charles-B.jpeg" alt="Charles Blain" />
         <div class="board-name">Charles Blain</div>
         <div class="board-title">Houston Director<br/>Urban Reform Institute</div>
       </div>
       <div class="board-card">
+        <img class="board-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/06/DougalC.jpeg" alt="Dougal Cameron" />
         <div class="board-name">Dougal Cameron</div>
         <div class="board-title">CEO<br/>Cameron Management</div>
       </div>
       <div class="board-card">
+        <img class="board-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/06/TravisC.jpeg" alt="Travis Chulick" />
         <div class="board-name">Travis Chulick</div>
         <div class="board-title">VP, Private Infrastructure<br/>Brookfield Asset Management</div>
       </div>
       <div class="board-card">
+        <img class="board-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/06/MikeC.jpeg" alt="Mike Coffey" />
         <div class="board-name">Mike Coffey</div>
         <div class="board-title">Owner<br/>Intex Commercial Flooring</div>
       </div>
       <div class="board-card">
+        <img class="board-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/06/Pat-Gotcher.jpeg" alt="Pat Gotcher" />
         <div class="board-name">Pat Gotcher</div>
         <div class="board-title">CEO (Retired)<br/>LifeSynch, Inc.</div>
       </div>
       <div class="board-card">
+        <img class="board-photo" src="https://www.pep.org/wp-content/uploads/2025/07/SteveH.jpeg" alt="Steve Heussner" />
         <div class="board-name">Steve Heussner</div>
         <div class="board-title">Principal<br/>Alkeme Financial Services</div>
       </div>
       <div class="board-card">
+        <img class="board-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/06/MikeH.jpeg" alt="Mike Humphrey" />
         <div class="board-name">Mike Humphrey</div>
         <div class="board-title">General Partner<br/>Fieron Growth Partners</div>
       </div>
       <div class="board-card">
+        <img class="board-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/06/mackneff.jpg" alt="Charles Neff" />
         <div class="board-name">Charles "Mack" Neff</div>
         <div class="board-title">CEO (Retired)<br/>Integrity Bank</div>
       </div>
       <div class="board-card">
+        <img class="board-photo" src="https://www.pep.org/wp-content/uploads/2025/07/SteveR.jpeg" alt="Steve Rohr" />
         <div class="board-name">Steve Rohr</div>
         <div class="board-title">General Counsel<br/>TSA Energy</div>
       </div>
       <div class="board-card">
+        <img class="board-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/06/AllisonS.jpeg" alt="Allison Schlender" />
         <div class="board-name">Allison Schlender</div>
         <div class="board-title">Director, National Sales<br/>The Coca-Cola Company</div>
       </div>
@@ -682,7 +722,7 @@
     <div class="board-model">
       <p>
         <strong>Working Board Model:</strong> PEP's board is not passive. Members engage directly
-        with management, offering domain expertise in finance, law, operations, and strategy —
+        with management, offering domain expertise in finance, law, operations, and strategy &mdash;
         extending the leadership team's bandwidth and accountability at every level of the organization.
       </p>
     </div>
@@ -704,6 +744,16 @@
         <a class="social-btn" href="https://www.youtube.com/@PepOrgTX">▶</a>
       </div>
     </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="about-pep.html">About PEP</a></li>
+        <li><a href="about-pep.html#mission">Our Mission</a></li>
+        <li><a href="about-pep.html#leadership">Leadership</a></li>
+        <li><a href="about-pep.html#impact">Our Impact</a></li>
+      </ul>
+    </div>
+
     <div class="footer-col">
       <h4>Programs</h4>
       <ul>
