@@ -278,6 +278,27 @@
     .footer-bottom-links { display: flex; gap: 24px; }
     .footer-bottom-links a { color: rgba(255,255,255,0.30); }
     .footer-bottom-links a:hover { color: var(--amber); }
+
+    /* ── FINANCIALS SECTION ── */
+    .financials { background: var(--light); padding: 80px 24px; }
+    .financials-inner { max-width: 1100px; margin: 0 auto; }
+    .financials-header { margin-bottom: 48px; }
+    .financials-roi { background: var(--navy); color: var(--white); border-radius: 16px; padding: 48px; margin-bottom: 48px; display: flex; align-items: center; gap: 48px; }
+    .financials-roi-number { font-size: 72px; font-weight: 900; color: var(--amber); line-height: 1; flex-shrink: 0; }
+    .financials-roi-text h3 { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+    .financials-roi-text p { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.7; max-width: 540px; }
+    .financials-docs { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 40px; }
+    @media (max-width: 640px) { .financials-docs { grid-template-columns: 1fr; } .financials-roi { flex-direction: column; } }
+    .financials-doc-group { background: var(--white); border-radius: 12px; padding: 32px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+    .financials-doc-group h3 { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ember); margin-bottom: 20px; }
+    .financials-doc-list { list-style: none; }
+    .financials-doc-list li { border-bottom: 1px solid var(--light); padding: 10px 0; }
+    .financials-doc-list li:last-child { border-bottom: none; }
+    .financials-doc-list a { font-size: 15px; color: var(--navy); font-weight: 600; display: flex; align-items: center; gap: 10px; transition: color 0.2s; }
+    .financials-doc-list a:hover { color: var(--ember); }
+    .financials-doc-list a::before { content: "↓"; font-size: 13px; background: var(--light); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .financials-contact { background: var(--white); border-radius: 12px; padding: 32px 40px; text-align: center; box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+    .financials-contact p { font-size: 16px; color: var(--gray); margin-bottom: 20px; max-width: 580px; margin-left: auto; margin-right: auto; }
   </style>
 </head>
 <body>
@@ -293,6 +314,7 @@
     <li><a href="our-programs.html">Our Programs</a></li>
     <li><a href="our-impact.html">Our Impact</a></li>
     <li><a href="stories.html">Stories</a></li>
+    <li><a href="newsroom.html">Newsroom</a></li>
   </ul>
   <div class="nav-ctas">
     <a href="Sample Volunteer Page.html" class="btn btn-outline-amber btn-sm">
@@ -736,6 +758,74 @@
   </div>
 </section>
 
+
+<!-- FINANCIALS -->
+<section class="financials" id="financials">
+  <div class="financials-inner">
+
+    <div class="financials-header">
+      <p class="section-eyebrow">Financial Transparency</p>
+      <h2 class="section-title">Accountability you can<br/>measure.</h2>
+      <p class="section-lead">
+        PEP honors its donors&rsquo; trust by delivering outstanding results and ROI.
+        Our financials are available for public review.
+      </p>
+    </div>
+
+    <div class="financials-roi">
+      <div class="financials-roi-number">$8.94</div>
+      <div class="financials-roi-text">
+        <h3>Returned for every dollar invested</h3>
+        <p>
+          When you account for reduced incarceration costs, increased tax revenue,
+          and strengthened families, PEP delivers $8.94 in societal value for every
+          dollar contributed — making it one of the highest-yield philanthropic
+          investments in criminal justice reform.
+        </p>
+      </div>
+    </div>
+
+    <div class="financials-docs">
+
+      <div class="financials-doc-group">
+        <h3>IRS Form 990</h3>
+        <ul class="financials-doc-list">
+          <li><a href="https://www.pep.org/fin/" target="_blank">FY 2024 Form 990</a></li>
+          <li><a href="https://www.pep.org/fin/" target="_blank">FY 2023 Form 990</a></li>
+          <li><a href="https://www.pep.org/fin/" target="_blank">FY 2022 Form 990</a></li>
+          <li><a href="https://www.pep.org/fin/" target="_blank">FY 2021 Form 990</a></li>
+          <li><a href="https://www.pep.org/fin/" target="_blank">FY 2020 Form 990</a></li>
+          <li><a href="https://www.pep.org/fin/" target="_blank">FY 2019 Form 990</a></li>
+        </ul>
+      </div>
+
+      <div class="financials-doc-group">
+        <h3>Audited Financial Statements</h3>
+        <ul class="financials-doc-list">
+          <li><a href="https://www.pep.org/fin/" target="_blank">FY 2024 Audited Financials</a></li>
+          <li><a href="https://www.pep.org/fin/" target="_blank">FY 2023 Audited Financials</a></li>
+          <li><a href="https://www.pep.org/fin/" target="_blank">FY 2022 Audited Financials</a></li>
+          <li><a href="https://www.pep.org/fin/" target="_blank">FY 2021 Audited Financials</a></li>
+          <li><a href="https://www.pep.org/fin/" target="_blank">FY 2020 Audited Financials</a></li>
+          <li><a href="https://www.pep.org/fin/" target="_blank">FY 2019 Audited Financials</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="financials-contact">
+      <p>
+        To request additional audited financials, tax returns, or financial data,
+        please contact us directly.
+      </p>
+      <a href="mailto:financials@pep.org" class="btn btn-navy">
+        financials@pep.org
+        <span class="btn-icon">✉</span>
+      </a>
+    </div>
+
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
