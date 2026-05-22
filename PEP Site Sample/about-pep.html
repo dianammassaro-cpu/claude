@@ -229,7 +229,14 @@
     }
     .board-card:hover { background: rgba(34,119,242,0.2); }
     .staff-card { background: var(--white); padding: 22px 24px; transition: background 0.15s; display: flex; flex-direction: column; }
-    .staff-photo { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; object-position: top center; margin-bottom: 12px; border: 2px solid var(--rule); background: var(--light); flex-shrink: 0; }
+    .staff-photo { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; object-position: top center; margin-bottom: 14px; border: 2px solid var(--rule); background: var(--light); flex-shrink: 0; }
+    .staff-li {
+      display: inline-flex; align-items: center; gap: 5px; margin-top: 8px;
+      font-size: 11px; font-weight: 600; color: var(--navy); opacity: 0.45;
+      transition: opacity 0.15s;
+    }
+    .staff-li:hover { opacity: 0.85; }
+    .staff-li svg { flex-shrink: 0; }
     .board-card { background: rgba(13,35,115,0.7); padding: 32px 28px; transition: background 0.2s; display: flex; flex-direction: column; }
     .board-photo { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; object-position: top center; margin-bottom: 14px; border: 2px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); flex-shrink: 0; }
     .board-name { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 6px; line-height: 1.2; }
@@ -249,7 +256,7 @@
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 48px;
       padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.10);
     }
-    .footer-brand img { height: 30px; margin-bottom: 18px; }
+    .footer-brand img { height: 44px; margin-bottom: 18px; }
     .footer-brand p { font-size: 14px; color: rgba(255,255,255,0.50); line-height: 1.8; margin-bottom: 24px; max-width: 280px; }
     .footer-social { display: flex; gap: 10px; }
     .social-btn {
@@ -309,10 +316,6 @@
       We unite executives and inmates through entrepreneurial passion and servant leadership
       to transform lives, restore families and rebuild communities.
     </p>
-    <div class="hero-btns">
-      <a href="Sample Donor Page.html" class="btn btn-amber">Support the Mission <span class="btn-icon">♥</span></a>
-      <a href="Sample Volunteer Page.html" class="btn btn-outline-white">Volunteer with PEP <span class="btn-icon">→</span></a>
-    </div>
   </div>
 </section>
 
@@ -334,17 +337,17 @@
 <div class="stat-strip">
   <div class="stat-cell">
     <span class="stat-cell-accent"></span>
-    <div class="stat-cell-num">4,040+</div>
+    <div class="stat-cell-num">3,850+</div>
     <div class="stat-cell-label">Men served since PEP was founded</div>
   </div>
   <div class="stat-cell">
     <span class="stat-cell-accent"></span>
     <div class="stat-cell-num">&lt;10%</div>
-    <div class="stat-cell-label">Recidivism rate &mdash; vs. 62% nationally</div>
+    <div class="stat-cell-label">Recidivism rate &mdash; vs. 60% nationally</div>
   </div>
   <div class="stat-cell">
     <span class="stat-cell-accent"></span>
-    <div class="stat-cell-num">700+</div>
+    <div class="stat-cell-num">740+</div>
     <div class="stat-cell-label">Businesses launched by PEP alumni</div>
   </div>
   <div class="stat-cell">
@@ -376,7 +379,7 @@
       <p>
         <strong>Outside,</strong> we don't disappear at the gate. PEP surrounds graduates with
         housing, employment, mentorship, and capital. Entre Capital provides financing for
-        alumni entrepreneurs. Life Caddies walk alongside graduates through the critical
+        alumni entrepreneurs. Case Managers walk alongside graduates through the critical
         post-release window. An alumni community becomes a second family.
       </p>
       <p>
@@ -420,13 +423,20 @@
 <!-- EXECUTIVE LEADERSHIP -->
 <section class="leadership" id="leadership">
   <div class="leadership-inner">
-    <div class="leadership-header">
-      <p class="section-eyebrow">Our Team</p>
-      <h2 class="section-title">Leadership.</h2>
-      <p class="section-lead" style="max-width:580px;">
-        PEP is led by a team of experienced practitioners &mdash; many of them alumni, volunteers,
-        or long-tenured staff who have devoted their careers to this mission.
-      </p>
+    <div class="leadership-header" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
+      <div>
+        <p class="section-eyebrow">Our Team</p>
+        <h2 class="section-title">Leadership.</h2>
+        <p class="section-lead" style="max-width:580px;">
+          PEP is led by a team of experienced practitioners &mdash; many of them alumni
+          or long-tenured staff who have devoted their careers to this mission.
+        </p>
+      </div>
+      <div style="border-radius:8px;overflow:hidden;aspect-ratio:4/3;background:var(--light);">
+        <img src="https://www.pep.org/wp-content/uploads/2025/06/Welcome-Photo-1024x503.jpg"
+          alt="PEP Leadership Team"
+          style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" />
+      </div>
     </div>
   </div>
 </section>
@@ -494,12 +504,7 @@
         <div class="staff-card">
           <img class="staff-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/05/2024-Web-Head-Shots-07242.png" alt="Jorge Castillo" />
           <div class="staff-name">Jorge Castillo</div>
-          <div class="staff-title">In-Prison Manager &mdash; Lychner Unit</div>
-        </div>
-        <div class="staff-card">
-          <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/06/Martin-H.png" alt="Martin Herrera" />
-          <div class="staff-name">Martin Herrera</div>
-          <div class="staff-title">In-Prison Manager &mdash; Bell Unit</div>
+          <div class="staff-title">Character Development Specialist &mdash; Lychner Unit</div>
         </div>
         <div class="staff-card">
           <img class="staff-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/06/2024-Web-Head-Shots_0524.png" alt="Adam Woods" />
@@ -524,13 +529,13 @@
         <div class="staff-card">
           <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/07/DJ-email.jpg" alt="Donald Jones" />
           <div class="staff-name">Donald Jones</div>
-          <div class="staff-title">Character Development Specialist &mdash; Lychner Unit</div>
+          <div class="staff-title">In-Prison Manager &mdash; Lychner Unit</div>
         </div>
       </div>
     </div>
 
     <div class="dept-section">
-      <div class="dept-label">Reentry &amp; Life Caddies</div>
+      <div class="dept-label">Reentry &amp; Case Management</div>
       <div class="staff-grid">
         <div class="staff-card">
           <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/05/2024-Web-Head-Shots3-1.png" alt="Timothy Daniels" />
@@ -545,37 +550,37 @@
         <div class="staff-card">
           <img class="staff-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/05/SBailey_HS.png" alt="Shawn Bailey" />
           <div class="staff-name">Shawn Bailey</div>
-          <div class="staff-title">Life Caddie</div>
+          <div class="staff-title">Case Manager</div>
         </div>
         <div class="staff-card">
           <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/06/2024-Web-Head-Shots_05242.png" alt="Clinton Free" />
           <div class="staff-name">Clinton Free</div>
-          <div class="staff-title">Life Caddie</div>
+          <div class="staff-title">Case Manager</div>
         </div>
         <div class="staff-card">
           <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/06/2024-Web-Head-Shots11.png" alt="Jeremy Jones" />
           <div class="staff-name">Jeremy Jones</div>
-          <div class="staff-title">Life Caddie</div>
+          <div class="staff-title">Case Manager</div>
         </div>
         <div class="staff-card">
           <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2024/03/2024-Web-Head-Shots-162.png" alt="Julio Medina" />
           <div class="staff-name">Julio Medina</div>
-          <div class="staff-title">Life Caddie</div>
+          <div class="staff-title">Case Manager</div>
         </div>
         <div class="staff-card">
           <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/11/Oliver-M.jpg" alt="Oliver Menjivar" />
           <div class="staff-name">Oliver Menjivar</div>
-          <div class="staff-title">Life Caddie</div>
+          <div class="staff-title">Case Manager</div>
         </div>
         <div class="staff-card">
           <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2024/03/2024-Web-Head-Shots-1.png" alt="Ernest Taylor" />
           <div class="staff-name">Ernest Taylor</div>
-          <div class="staff-title">Life Caddie</div>
+          <div class="staff-title">Case Manager</div>
         </div>
         <div class="staff-card">
           <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/07/Steven_Maxwell-1.jpg" alt="Te'John Thomas" />
           <div class="staff-name">Te'John Thomas</div>
-          <div class="staff-title">Life Caddie</div>
+          <div class="staff-title">Case Manager</div>
         </div>
       </div>
     </div>
@@ -617,7 +622,7 @@
         <div class="staff-card">
           <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/07/Theresa-Black2-scaled-e1753114195827.jpg" alt="Theresa Black" />
           <div class="staff-name">Theresa Black</div>
-          <div class="staff-title">Family Liaison &mdash; Bell Unit</div>
+          <div class="staff-title">Family Liaison &mdash; Lychner Unit</div>
         </div>
         <div class="staff-card">
           <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/07/Laura-Stiehl-scaled-e1753114272505.jpg" alt="Laura Stiehl" />
@@ -728,13 +733,6 @@
         <div class="board-title">Director, National Sales<br/>The Coca-Cola Company</div>
       </div>
     </div>
-    <div class="board-model">
-      <p>
-        <strong>Working Board Model:</strong> PEP's board is not passive. Members engage directly
-        with management, offering domain expertise in finance, law, operations, and strategy &mdash;
-        extending the leadership team's bandwidth and accountability at every level of the organization.
-      </p>
-    </div>
   </div>
 </section>
 
@@ -805,5 +803,18 @@
   </div>
 </footer>
 
+<script>
+// LinkedIn placeholder icons — replace href="#" with real LinkedIn URLs when available
+document.querySelectorAll('.staff-card').forEach(function(card) {
+  var nameEl = card.querySelector('.staff-name');
+  if (!nameEl) return;
+  var a = document.createElement('a');
+  a.className = 'staff-li';
+  a.href = '#';
+  a.title = 'LinkedIn profile';
+  a.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn';
+  card.appendChild(a);
+});
+</script>
 </body>
 </html>
