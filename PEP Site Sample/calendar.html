@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Calendar | Prison Entrepreneurship Program</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ember: #E36F1E; --amber: #F6A01A; --navy: #0D2373;
+      --black: #1A1A1A; --gray: #666; --light: #F7F5F2; --white: #FFFFFF;
+      --font: 'Poppins', Arial, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--black); background: var(--white); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--white); border-bottom: 1px solid rgba(0,0,0,0.07); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 64px; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--ember); }
+    .nav-ctas { display: flex; gap: 12px; align-items: center; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 24px; border-radius: 999px; font-family: var(--font); font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: transform 0.18s, box-shadow 0.18s; border: none; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+    .btn-icon { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .btn-amber { background: var(--amber); color: var(--black); }
+    .btn-amber .btn-icon { background: rgba(0,0,0,0.15); }
+    .btn-outline-amber { background: transparent; color: var(--black); border: 2px solid var(--amber); }
+    .btn-ember { background: var(--ember); color: var(--white); }
+    .btn-navy { background: var(--navy); color: var(--white); }
+    .btn-outline-navy { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    /* HERO */
+    .page-hero { background: var(--navy); padding: 120px 24px 64px; text-align: center; }
+    .page-hero .eyebrow { color: var(--amber); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 16px; }
+    .page-hero h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 900; color: var(--white); line-height: 1.1; margin-bottom: 20px; }
+    .page-hero p { font-size: 18px; color: rgba(255,255,255,0.70); max-width: 560px; margin: 0 auto; line-height: 1.7; }
+
+    /* FILTER BAR */
+    .filter-bar { background: var(--white); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 0 24px; display: flex; justify-content: center; gap: 0; flex-wrap: wrap; }
+    .filter-tab { padding: 18px 24px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray); border-bottom: 3px solid transparent; cursor: pointer; transition: color 0.2s, border-color 0.2s; white-space: nowrap; }
+    .filter-tab.active, .filter-tab:hover { color: var(--ember); border-bottom-color: var(--ember); }
+
+    /* CALENDAR LAYOUT */
+    .calendar-layout { max-width: 1200px; margin: 0 auto; padding: 56px 24px 80px; display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; }
+    @media (max-width: 900px) { .calendar-layout { grid-template-columns: 1fr; } }
+
+    /* EVENT LIST */
+    .events-list { display: flex; flex-direction: column; gap: 0; }
+    .month-header { font-size: 22px; font-weight: 800; color: var(--navy); padding: 28px 0 16px; border-top: 2px solid var(--navy); margin-top: 16px; }
+    .month-header:first-child { margin-top: 0; border-top: none; padding-top: 0; }
+    .event-row { display: flex; gap: 24px; padding: 24px 0; border-bottom: 1px solid rgba(0,0,0,0.07); transition: background 0.15s; }
+    .event-row:hover { background: var(--light); margin: 0 -16px; padding: 24px 16px; border-radius: 8px; border-bottom-color: transparent; }
+    .event-date-block { flex-shrink: 0; width: 64px; text-align: center; }
+    .event-month { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ember); }
+    .event-day { font-size: 36px; font-weight: 900; color: var(--navy); line-height: 1; }
+    .event-body { flex: 1; }
+    .event-type-badge { display: inline-block; padding: 3px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+    .badge-volunteer { background: rgba(227,111,30,0.12); color: var(--ember); }
+    .badge-graduation { background: rgba(13,35,115,0.10); color: var(--navy); }
+    .badge-fundraiser { background: rgba(246,160,26,0.20); color: #b07600; }
+    .badge-outreach { background: rgba(46,160,67,0.12); color: #1a7a30; }
+    .badge-workshop { background: rgba(100,100,200,0.12); color: #4444aa; }
+    .event-title { font-size: 18px; font-weight: 700; color: var(--black); margin-bottom: 6px; line-height: 1.3; }
+    .event-details { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--gray); margin-bottom: 12px; }
+    .event-detail { display: flex; align-items: center; gap: 5px; }
+    .event-desc { font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 14px; max-width: 580px; }
+    .event-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-sm { padding: 8px 18px; font-size: 11px; }
+    .btn-sm .btn-icon { width: 20px; height: 20px; font-size: 11px; }
+
+    /* SIDEBAR */
+    .calendar-sidebar { position: sticky; top: 80px; }
+    .sidebar-card { background: var(--light); border-radius: 12px; padding: 28px; margin-bottom: 24px; }
+    .sidebar-card h3 { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ember); margin-bottom: 16px; }
+    .sidebar-card p { font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 16px; }
+    .sidebar-mini-cal { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; text-align: center; }
+    .mini-cal-dow { font-size: 10px; font-weight: 700; color: var(--gray); padding: 4px 0; }
+    .mini-cal-day { font-size: 12px; padding: 5px 3px; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
+    .mini-cal-day:hover { background: rgba(0,0,0,0.06); }
+    .mini-cal-day.has-event { background: var(--amber); color: var(--black); font-weight: 700; }
+    .mini-cal-day.today { border: 2px solid var(--ember); }
+    .mini-cal-day.empty { color: transparent; cursor: default; }
+    .legend-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; color: var(--gray); }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+    /* SIGN-UP BAND */
+    .signup-band { background: linear-gradient(135deg, var(--ember) 0%, #c45a10 100%); padding: 64px 24px; text-align: center; }
+    .signup-band h2 { font-size: clamp(24px,4vw,40px); font-weight: 800; color: var(--white); margin-bottom: 14px; }
+    .signup-band p { font-size: 16px; color: rgba(255,255,255,0.80); max-width: 520px; margin: 0 auto 32px; line-height: 1.7; }
+
+    /* FOOTER */
+    footer { background: var(--black); padding: 56px 24px 32px; }
+    .footer-top { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.10); }
+    @media (max-width: 768px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+    .footer-brand img { height: 30px; margin-bottom: 18px; }
+    .footer-brand p { font-size: 14px; color: rgba(255,255,255,0.50); line-height: 1.8; margin-bottom: 24px; max-width: 280px; }
+    .footer-social { display: flex; gap: 10px; }
+    .social-btn { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.55); transition: background 0.2s, color 0.2s; }
+    .social-btn:hover { background: var(--ember); color: #fff; }
+    .footer-col h4 { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.30); margin-bottom: 18px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a { font-size: 14px; color: rgba(255,255,255,0.55); transition: color 0.2s; }
+    .footer-col a:hover { color: var(--amber); }
+    .footer-bottom { max-width: 1160px; margin: 0 auto; padding-top: 28px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.30); }
+    .footer-bottom-links { display: flex; gap: 24px; }
+    .footer-bottom-links a { color: rgba(255,255,255,0.30); }
+    .footer-bottom-links a:hover { color: var(--amber); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="Sample Home Page.html" class="nav-logo">
+    <img src="https://www.pep.org/wp-content/uploads/2022/02/PEP_Logo_Fav.png" alt="PEP" style="height:40px; width:auto;" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="Sample Home Page.html">Home</a></li>
+    <li><a href="about-pep.html">About PEP</a></li>
+    <li><a href="our-programs.html">Our Programs</a></li>
+    <li><a href="our-impact.html">Our Impact</a></li>
+    <li><a href="stories.html">Stories</a></li>
+    <li><a href="newsroom.html">Newsroom</a></li>
+  </ul>
+  <div class="nav-ctas">
+    <a href="Sample Volunteer Page.html" class="btn btn-outline-amber" style="padding:10px 22px 10px 26px; font-size:11px;">
+      Volunteer <span class="btn-icon" style="width:26px;height:26px;background:rgba(246,160,26,0.15);color:var(--amber);">&#8594;</span>
+    </a>
+    <a href="Sample Donor Page.html" class="btn btn-amber" style="padding:10px 22px 10px 26px; font-size:11px;">
+      Donate <span class="btn-icon" style="width:26px;height:26px;">&#9829;</span>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <p class="eyebrow">Get Involved</p>
+  <h1>Event Calendar</h1>
+  <p>Join PEP at graduation ceremonies, volunteer orientations, fundraising events, and community outreach programs throughout the year.</p>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="filter-tab active">All Events</div>
+  <div class="filter-tab">Volunteer</div>
+  <div class="filter-tab">Graduation</div>
+  <div class="filter-tab">Fundraisers</div>
+  <div class="filter-tab">Workshops</div>
+  <div class="filter-tab">Outreach</div>
+</div>
+
+<!-- CALENDAR LAYOUT -->
+<div class="calendar-layout">
+
+  <!-- EVENT LIST -->
+  <div class="events-list">
+
+    <div class="month-header">June 2026</div>
+
+    <div class="event-row">
+      <div class="event-date-block">
+        <div class="event-month">Jun</div>
+        <div class="event-day">7</div>
+      </div>
+      <div class="event-body">
+        <span class="event-type-badge badge-volunteer">Volunteer Orientation</span>
+        <div class="event-title">Houston Volunteer Orientation &mdash; Lychner Unit</div>
+        <div class="event-details">
+          <span class="event-detail">&#128337; 9:00 AM &ndash; 12:00 PM</span>
+          <span class="event-detail">&#128205; Lychner State Jail, Humble, TX</span>
+          <span class="event-detail">&#128100; 24 spots available</span>
+        </div>
+        <p class="event-desc">
+          New volunteers are required to attend an orientation before visiting any TDCJ unit. This session covers program expectations, facility rules, and how to make the most of your volunteer experience.
+        </p>
+        <div class="event-actions">
+          <a href="Sample Volunteer Page.html" class="btn btn-ember btn-sm">Register <span class="btn-icon">&#8594;</span></a>
+          <a href="#" class="btn btn-outline-navy btn-sm">Learn More <span class="btn-icon" style="background:rgba(13,35,115,0.08);">&#8505;</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-date-block">
+        <div class="event-month">Jun</div>
+        <div class="event-day">14</div>
+      </div>
+      <div class="event-body">
+        <span class="event-type-badge badge-workshop">Business Workshop</span>
+        <div class="event-title">Pitch Day &mdash; Business Plan Presentations at Darrington Unit</div>
+        <div class="event-details">
+          <span class="event-detail">&#128337; 1:00 PM &ndash; 5:00 PM</span>
+          <span class="event-detail">&#128205; Darrington Unit, Rosharon, TX</span>
+          <span class="event-detail">&#128100; Business coach volunteers needed</span>
+        </div>
+        <p class="event-desc">
+          PEP participants present their business plans to a panel of volunteer executives. Coaches provide live feedback and scoring. This is one of PEP&rsquo;s most impactful volunteer opportunities.
+        </p>
+        <div class="event-actions">
+          <a href="Sample Volunteer Page.html" class="btn btn-ember btn-sm">Volunteer as Coach <span class="btn-icon">&#8594;</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-date-block">
+        <div class="event-month">Jun</div>
+        <div class="event-day">21</div>
+      </div>
+      <div class="event-body">
+        <span class="event-type-badge badge-fundraiser">Fundraiser</span>
+        <div class="event-title">Summer Benefit Dinner &mdash; Houston</div>
+        <div class="event-details">
+          <span class="event-detail">&#128337; 6:30 PM &ndash; 9:30 PM</span>
+          <span class="event-detail">&#128205; The Junior League of Houston</span>
+          <span class="event-detail">&#128181; Tables from $5,000 &bull; Individual tickets from $250</span>
+        </div>
+        <p class="event-desc">
+          Join PEP&rsquo;s supporters for an evening of storytelling, celebration, and fundraising. Hear directly from alumni entrepreneurs and make a tangible difference in the lives of men seeking a second chance.
+        </p>
+        <div class="event-actions">
+          <a href="Sample Donor Page.html" class="btn btn-amber btn-sm">Buy Tickets <span class="btn-icon">&#8594;</span></a>
+          <a href="#" class="btn btn-outline-navy btn-sm">Sponsor a Table <span class="btn-icon" style="background:rgba(13,35,115,0.08);">&#9733;</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="month-header">July 2026</div>
+
+    <div class="event-row">
+      <div class="event-date-block">
+        <div class="event-month">Jul</div>
+        <div class="event-day">12</div>
+      </div>
+      <div class="event-body">
+        <span class="event-type-badge badge-graduation">Graduation Ceremony</span>
+        <div class="event-title">PEP Class 63 Graduation &mdash; Darrington Unit</div>
+        <div class="event-details">
+          <span class="event-detail">&#128337; 10:00 AM &ndash; 2:00 PM</span>
+          <span class="event-detail">&#128205; Darrington Unit, Rosharon, TX</span>
+          <span class="event-detail">&#128100; Family &amp; sponsor guests welcome</span>
+        </div>
+        <p class="event-desc">
+          PEP&rsquo;s graduation ceremonies are among the most moving events in Texas philanthropy. Watch as men transform before your eyes, hearing them speak with confidence, conviction, and purpose about their futures.
+        </p>
+        <div class="event-actions">
+          <a href="Sample Volunteer Page.html" class="btn btn-ember btn-sm">RSVP <span class="btn-icon">&#8594;</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-date-block">
+        <div class="event-month">Jul</div>
+        <div class="event-day">19</div>
+      </div>
+      <div class="event-body">
+        <span class="event-type-badge badge-volunteer">Volunteer Orientation</span>
+        <div class="event-title">Dallas Volunteer Orientation &mdash; Estes Unit</div>
+        <div class="event-details">
+          <span class="event-detail">&#128337; 9:00 AM &ndash; 12:00 PM</span>
+          <span class="event-detail">&#128205; Estes Unit, Venus, TX</span>
+          <span class="event-detail">&#128100; 20 spots available</span>
+        </div>
+        <p class="event-desc">
+          Required orientation for all new volunteers serving at the Estes Unit. Learn the program structure, how to maximize your impact, and what to expect inside a TDCJ facility.
+        </p>
+        <div class="event-actions">
+          <a href="Sample Volunteer Page.html" class="btn btn-ember btn-sm">Register <span class="btn-icon">&#8594;</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-date-block">
+        <div class="event-month">Jul</div>
+        <div class="event-day">26</div>
+      </div>
+      <div class="event-body">
+        <span class="event-type-badge badge-outreach">Community Outreach</span>
+        <div class="event-title">Reentry Resource Fair &mdash; Houston East Side</div>
+        <div class="event-details">
+          <span class="event-detail">&#128337; 10:00 AM &ndash; 3:00 PM</span>
+          <span class="event-detail">&#128205; Resurrection Metropolitan Community Church, Houston</span>
+          <span class="event-detail">&#128100; Open to PEP alumni &amp; families</span>
+        </div>
+        <p class="event-desc">
+          A community resource fair for recently released PEP alumni and their families, featuring employers, housing providers, legal aid services, and mental health resources.
+        </p>
+        <div class="event-actions">
+          <a href="#" class="btn btn-ember btn-sm">Get Directions <span class="btn-icon">&#8594;</span></a>
+          <a href="Sample Volunteer Page.html" class="btn btn-outline-navy btn-sm">Volunteer at Fair <span class="btn-icon" style="background:rgba(13,35,115,0.08);">&#128100;</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="month-header">August 2026</div>
+
+    <div class="event-row">
+      <div class="event-date-block">
+        <div class="event-month">Aug</div>
+        <div class="event-day">8</div>
+      </div>
+      <div class="event-body">
+        <span class="event-type-badge badge-workshop">Business Workshop</span>
+        <div class="event-title">Entre Capital Demo Day &mdash; Alumni Pitch Competition</div>
+        <div class="event-details">
+          <span class="event-detail">&#128337; 2:00 PM &ndash; 6:00 PM</span>
+          <span class="event-detail">&#128205; Ion Houston, 4201 Main St, Houston, TX</span>
+          <span class="event-detail">&#128181; Free to attend &bull; Investor seating available</span>
+        </div>
+        <p class="event-desc">
+          Eight PEP alumni entrepreneurs pitch their businesses to a live audience of investors, business leaders, and supporters. Entre Capital will announce funding decisions on-stage.
+        </p>
+        <div class="event-actions">
+          <a href="#" class="btn btn-ember btn-sm">RSVP <span class="btn-icon">&#8594;</span></a>
+          <a href="#" class="btn btn-amber btn-sm">Investor Info <span class="btn-icon">&#128181;</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-date-block">
+        <div class="event-month">Aug</div>
+        <div class="event-day">22</div>
+      </div>
+      <div class="event-body">
+        <span class="event-type-badge badge-fundraiser">Fundraiser</span>
+        <div class="event-title">North Texas Golf Classic &mdash; Annual Charity Tournament</div>
+        <div class="event-details">
+          <span class="event-detail">&#128337; 7:30 AM Shotgun Start</span>
+          <span class="event-detail">&#128205; Stonebriar Country Club, Frisco, TX</span>
+          <span class="event-detail">&#128181; Foursomes from $2,500 &bull; Sponsorships available</span>
+        </div>
+        <p class="event-desc">
+          PEP&rsquo;s annual golf tournament raises critical funds for reentry programming in North Texas. Enjoy 18 holes, lunch, dinner, and an awards ceremony with alumni speakers.
+        </p>
+        <div class="event-actions">
+          <a href="Sample Donor Page.html" class="btn btn-amber btn-sm">Register Foursome <span class="btn-icon">&#8594;</span></a>
+          <a href="#" class="btn btn-outline-navy btn-sm">Sponsorships <span class="btn-icon" style="background:rgba(13,35,115,0.08);">&#9733;</span></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="calendar-sidebar">
+
+    <div class="sidebar-card">
+      <h3>June 2026</h3>
+      <div class="sidebar-mini-cal">
+        <div class="mini-cal-dow">S</div><div class="mini-cal-dow">M</div><div class="mini-cal-dow">T</div><div class="mini-cal-dow">W</div><div class="mini-cal-dow">T</div><div class="mini-cal-dow">F</div><div class="mini-cal-dow">S</div>
+        <div class="mini-cal-day empty"></div><div class="mini-cal-day">1</div><div class="mini-cal-day">2</div><div class="mini-cal-day">3</div><div class="mini-cal-day">4</div><div class="mini-cal-day">5</div><div class="mini-cal-day">6</div>
+        <div class="mini-cal-day has-event">7</div><div class="mini-cal-day">8</div><div class="mini-cal-day">9</div><div class="mini-cal-day">10</div><div class="mini-cal-day">11</div><div class="mini-cal-day">12</div><div class="mini-cal-day">13</div>
+        <div class="mini-cal-day has-event">14</div><div class="mini-cal-day">15</div><div class="mini-cal-day">16</div><div class="mini-cal-day">17</div><div class="mini-cal-day">18</div><div class="mini-cal-day">19</div><div class="mini-cal-day">20</div>
+        <div class="mini-cal-day has-event">21</div><div class="mini-cal-day">22</div><div class="mini-cal-day today">23</div><div class="mini-cal-day">24</div><div class="mini-cal-day">25</div><div class="mini-cal-day">26</div><div class="mini-cal-day">27</div>
+        <div class="mini-cal-day">28</div><div class="mini-cal-day">29</div><div class="mini-cal-day">30</div><div class="mini-cal-day empty"></div><div class="mini-cal-day empty"></div><div class="mini-cal-day empty"></div><div class="mini-cal-day empty"></div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Event Types</h3>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--ember);"></div> Volunteer Opportunity</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--navy);"></div> Graduation Ceremony</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--amber);"></div> Fundraising Event</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#2e9e43;"></div> Community Outreach</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#6464cc;"></div> Business Workshop</div>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Stay Updated</h3>
+      <p>Get event reminders and PEP news delivered to your inbox.</p>
+      <a href="#" class="btn btn-navy btn-sm" style="width:100%; justify-content:center;">
+        Subscribe to Updates <span class="btn-icon" style="background:rgba(255,255,255,0.15);">&#8594;</span>
+      </a>
+    </div>
+
+    <div class="sidebar-card" style="background:var(--navy); color:var(--white);">
+      <h3 style="color:var(--amber);">Questions?</h3>
+      <p style="color:rgba(255,255,255,0.65); margin-bottom:14px;">Contact our events team for group tickets, sponsorships, or volunteer accommodations.</p>
+      <a href="mailto:events@pep.org" style="color:var(--amber); font-weight:700; font-size:14px;">events@pep.org</a>
+    </div>
+
+  </aside>
+
+</div>
+
+<!-- SIGN UP BAND -->
+<div class="signup-band">
+  <h2>Ready to make a difference?</h2>
+  <p>Whether you volunteer inside the walls or show up at a graduation, your presence transforms a man&rsquo;s future.</p>
+  <a href="Sample Volunteer Page.html" class="btn btn-white" style="background:var(--white); color:var(--ember);">
+    Sign Up to Volunteer <span class="btn-icon" style="background:rgba(227,111,30,0.15);">&#8594;</span>
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="https://www.pep.org/wp-content/uploads/2025/07/PEP_Logo_White.png" alt="PEP" />
+      <p>Transform Lives, Restore Families, Rebuild Communities.<br/>A 501(c)(3) non-profit serving Texas since 2004.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="https://www.linkedin.com/company/prison-entrepreneurship-program">in</a>
+        <a class="social-btn" href="https://www.instagram.com/prisonentrepreneurshipprogram">ig</a>
+        <a class="social-btn" href="https://www.facebook.com/PrisonEntrepreneurship">f</a>
+        <a class="social-btn" href="https://twitter.com/peptweets">&#120143;</a>
+        <a class="social-btn" href="https://www.youtube.com/@PepOrgTX">&#9654;</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="about-pep.html">About PEP</a></li>
+        <li><a href="about-pep.html#financials">Financials</a></li>
+        <li><a href="about-pep.html#leadership">Leadership</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul>
+        <li><a href="our-programs.html">All Programs</a></li>
+        <li><a href="#">Entre Capital</a></li>
+        <li><a href="#">Reentry Services</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="Sample Donor Page.html">Donate</a></li>
+        <li><a href="Sample Volunteer Page.html">Volunteer</a></li>
+        <li><a href="calendar.html">Event Calendar</a></li>
+        <li><a href="newsroom.html">Newsroom</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:info@pep.org">info@pep.org</a></li>
+        <li><a href="tel:8327670928">Houston: 832-767-0928</a></li>
+        <li><a href="tel:2145759909">N. Texas: 214-575-9909</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Prison Entrepreneurship Program. All rights reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms</a>
+      <a href="about-pep.html#financials">Financials</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
