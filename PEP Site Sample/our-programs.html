@@ -146,6 +146,20 @@
     .phase-divider-num { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 2px; }
     .phase-divider-label { font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; color: white; }
 
+    /* -- PAGE SUBNAV -- */
+    .page-subnav { background: var(--white); border-bottom: 2px solid var(--rule); padding: 0 64px; display: flex; align-items: center; position: sticky; top: 72px; z-index: 100; overflow-x: auto; }
+    .page-subnav a { padding: 16px 18px; font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--gray); border-bottom: 2px solid transparent; margin-bottom: -2px; white-space: nowrap; transition: color 0.2s, border-color 0.2s; }
+    .page-subnav a:hover { color: var(--ember); border-bottom-color: var(--ember); }
+    .subnav-divider { width: 1px; height: 28px; background: var(--rule); margin: 0 8px; flex-shrink: 0; }
+    .subnav-subsidiary { color: var(--amber) !important; }
+    .subnav-subsidiary:hover { color: var(--ember) !important; }
+
+    /* -- ENTRE CAPITAL SUBSIDIARY BANNER -- */
+    .subsidiary-banner { background: var(--amber); padding: 10px 64px; display: flex; align-items: center; gap: 14px; }
+    .subsidiary-banner-label { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(0,0,0,0.60); }
+    .subsidiary-banner-name { font-size: 14px; font-weight: 800; color: var(--black); letter-spacing: 0.02em; }
+    .subsidiary-banner-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase; background: rgba(0,0,0,0.12); color: var(--black); padding: 3px 10px; border-radius: 2px; }
+
     /* -- FOOTER -- */
     footer { background: var(--navy); padding: 64px 48px 0; }
     .footer-top { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.10); }
@@ -174,7 +188,7 @@
   </a>
     <ul class="nav-links">
     <li><a href="Sample Home Page.html">Home</a></li>
-    <li><a href="about-pep.html">About PEP</a></li>
+    <li><a href="about-pep.html">About</a></li>
     <li><a href="our-programs.html" class="active">Programs</a></li>
     <li><a href="our-impact.html">Impact</a></li>
     <li><a href="stories.html">Stories</a></li>
@@ -182,11 +196,21 @@
     <li><a href="calendar.html">Calendar</a></li>
   </ul>
   <div class="nav-ctas">
-    <a href="Sample Volunteer Page.html" class="btn btn-outline-amber btn-sm">Volunteer <span class="btn-icon">&#x2192;</span></a>
+    <a href="volunteer.html" class="btn btn-outline-amber btn-sm">Volunteer <span class="btn-icon">&#x2192;</span></a>
     <a href="Sample Donor Page.html" class="btn btn-amber btn-sm">Donate <span class="btn-icon">&#x2665;</span></a>
   </div>
 </nav>
 
+
+<!-- PAGE SUBNAV -->
+<nav class="page-subnav">
+  <a href="#leadership-academy">Leadership Academy</a>
+  <a href="#core-program">Core Program</a>
+  <a href="#reentry">Reentry Services</a>
+  <a href="#family-reunification">Family Reunification</a>
+  <div class="subnav-divider"></div>
+  <a href="#entre-capital" class="subnav-subsidiary">Entre Capital ↗</a>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
@@ -463,6 +487,52 @@
 </section>
 
 
+<!-- PROGRAM: FAMILY REUNIFICATION -->
+<section class="program-section" id="family-reunification">
+  <div class="program-inner">
+    <div>
+      <span class="program-tag">Phase 2 &amp; 3 &middot; Reentry &middot; Post-Release</span>
+      <h2 class="program-title">Family<br/>Reunification</h2>
+      <p class="program-desc">
+        47% of the men we serve are parents. When a man is incarcerated, the weight doesn't fall on him alone &mdash; it falls on his children, his partner, and his community. PEP walks alongside families throughout the entire journey: before release, at the gate, and long after.
+      </p>
+      <p class="program-desc">
+        Family is not a secondary concern. It is a primary motivator. Men who maintain strong family connections have better reentry outcomes &mdash; and PEP is built around that reality. Family Liaisons at each unit provide direct support, connection, and guidance to the families of participants.
+      </p>
+      <div class="program-stat-row">
+        <div class="program-stat">
+          <div class="program-stat-num">47%</div>
+          <div class="program-stat-label">of PEP participants are parents</div>
+        </div>
+        <div class="program-stat">
+          <div class="program-stat-num">46%</div>
+          <div class="program-stat-label">of alumni achieve homeownership</div>
+        </div>
+        <div class="program-stat">
+          <div class="program-stat-num">22%</div>
+          <div class="program-stat-label">household income drop after parental incarceration &mdash; PEP reverses this</div>
+        </div>
+      </div>
+      <ul class="program-outcomes">
+        <li>Family Liaisons at Lychner and Estes Units provide direct support to families of participants</li>
+        <li>Family orientation sessions help loved ones understand the PEP journey and what to expect at release</li>
+        <li>Reentry plans are built with family stability as a primary metric &mdash; not just employment</li>
+        <li>Transitional housing is designed to reunify, not just shelter &mdash; prioritizing proximity to family</li>
+        <li>Alumni community becomes an extended family network for men and their households</li>
+      </ul>
+    </div>
+    <img class="program-img" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/05/K3_0820-L.jpg" alt="PEP family reunification" />
+  </div>
+</section>
+
+
+<!-- ENTRE CAPITAL SUBSIDIARY BANNER -->
+<div class="subsidiary-banner">
+  <span class="subsidiary-banner-label">A PEP Wholly-Owned Subsidiary</span>
+  <span class="subsidiary-banner-name">Entre Capital CDFI</span>
+  <span class="subsidiary-banner-tag">Community Development Financial Institution</span>
+</div>
+
 <!-- PROGRAM 6: ENTRE CAPITAL -->
 <section class="program-section alt" id="entre-capital">
   <div class="program-inner flip">
@@ -507,7 +577,7 @@
     <p>PEP's programs work because of people who believe in them &mdash; volunteers who show up, donors who invest, and employers who open their doors. Every role matters.</p>
     <div class="cta-btns">
       <a href="Sample Donor Page.html" class="btn btn-amber">Donate Now <span class="btn-icon">&#x2665;</span></a>
-      <a href="Sample Volunteer Page.html" class="btn btn-outline-white">Volunteer with PEP <span class="btn-icon">&#x2192;</span></a>
+      <a href="volunteer.html" class="btn btn-outline-white">Volunteer with PEP <span class="btn-icon">&#x2192;</span></a>
     </div>
   </div>
 </section>
@@ -530,10 +600,11 @@
     <div class="footer-col">
       <h4>About</h4>
       <ul>
-        <li><a href="about-pep.html">About PEP</a></li>
-        <li><a href="about-pep.html#mission">Our Mission</a></li>
+        <li><a href="about-pep.html">About</a></li>
+        <li><a href="about-pep.html#mission-values">Mission &amp; Values</a></li>
         <li><a href="about-pep.html#leadership">Leadership</a></li>
-        <li><a href="about-pep.html#impact">Impact</a></li>
+        <li><a href="about-pep.html#board">Board</a></li>
+        <li><a href="about-pep.html#financials">Financials</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -542,31 +613,34 @@
         <li><a href="our-programs.html#leadership-academy">Leadership Academy</a></li>
         <li><a href="our-programs.html#core-program">Core Program</a></li>
         <li><a href="our-programs.html#reentry">Reentry Services</a></li>
-        <li><a href="our-programs.html#entrepreneurship">Post-Release Entrepreneurship</a></li>
+        <li><a href="our-programs.html#family-reunification">Family Reunification</a></li>
         <li><a href="our-programs.html#entre-capital">Entre Capital</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Get Involved</h4>
       <ul>
+        <li><a href="our-programs.html">The Men We Serve</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="index.html#families">For Families</a></li>
         <li><a href="Sample Donor Page.html">Donate</a></li>
-        <li><a href="Sample Volunteer Page.html">Volunteer</a></li>
-        <li><a href="#">Advocate</a></li>
-        <li><a href="#">Newsletter</a></li>
         <li><a href="newsroom.html">Newsroom</a></li>
-    <li><a href="calendar.html">Calendar</a></li>
-        <li><a href="calendar.html">Event Calendar</a></li>
+        <li><a href="calendar.html">Calendar</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
       <ul>
-        <li><a href="contact.html">Contact Us</a></li>
         <li><a href="mailto:info@pep.org">info@pep.org</a></li>
-        <li><a href="tel:8327670928">Houston: 832-767-0928</a></li>
-        <li><a href="tel:2145759909">N. Texas: 214-575-9909</a></li>
-        <li style="margin-top:12px; font-size:13px; line-height:1.7; color:rgba(255,255,255,0.30);">
+        <li style="margin-top:8px; font-size:13px; line-height:1.7; color:rgba(255,255,255,0.55);">
+          <strong style="color:rgba(255,255,255,0.70);">Houston</strong><br/>
+          <a href="tel:8327670928">832-767-0928</a><br/>
           6501 Navigation Blvd, Ste. H7<br/>Houston, TX 77011
+        </li>
+        <li style="margin-top:12px; font-size:13px; line-height:1.7; color:rgba(255,255,255,0.55);">
+          <strong style="color:rgba(255,255,255,0.70);">North Texas</strong><br/>
+          <a href="tel:2145759909">214-575-9909</a><br/>
+          2435 N Central Expy #150<br/>Richardson, TX 75080
         </li>
       </ul>
     </div>
