@@ -305,7 +305,11 @@
     .mvv-value-tag { padding: 6px 14px; border: 1px solid rgba(246,160,26,0.35); border-radius: 3px; font-size: 12px; font-weight: 600; color: var(--amber); letter-spacing: 0.04em; }
 
     /* ── EXEC FEATURE CARDS ── */
-    .exec-feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+    .exec-feature-grid { display: flex; justify-content: center; margin-bottom: 32px; }
+    .exec-feature-grid .exec-feature-card { max-width: 560px; width: 100%; }
+    .staff-card-wide { grid-column: span 2; display: flex; flex-direction: row; gap: 20px; align-items: flex-start; padding: 24px 28px; }
+    .staff-card-wide .staff-photo { width: 88px; height: 88px; flex-shrink: 0; }
+    .staff-card-wide .staff-card-bio { font-size: 13px; color: var(--gray); line-height: 1.6; margin-top: 6px; }
     .exec-feature-card { background: var(--white); border: 1px solid var(--rule); border-radius: 8px; padding: 32px; display: flex; gap: 24px; align-items: flex-start; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
     .exec-feature-photo { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; object-position: top center; flex-shrink: 0; border: 3px solid var(--ember); }
     .exec-feature-name { font-size: 20px; font-weight: 800; color: var(--black); margin-bottom: 4px; }
@@ -552,20 +556,20 @@
             <p class="exec-feature-bio">Chris leads PEP's mission to scale entrepreneurship and servant leadership as the primary pathway from incarceration to lasting economic mobility across Texas — and beyond.</p>
           </div>
         </div>
-        <div class="exec-feature-card">
-          <img class="exec-feature-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/05/2024-Web-Head-Shots15.png" alt="Phi Tran" />
-          <div>
-            <div class="exec-feature-name">Phi Tran</div>
-            <div class="exec-feature-title">Chief Operating Officer</div>
-            <p class="exec-feature-bio">Phi oversees PEP's operations, finance, and organizational infrastructure — ensuring the systems, culture, and accountability structures are in place for the mission to scale with excellence.</p>
-          </div>
-        </div>
       </div>
     </div>
 
     <div class="dept-section">
       <div class="dept-label">Finance &amp; Operations</div>
       <div class="staff-grid">
+        <div class="staff-card staff-card-wide">
+          <img class="staff-photo" src="https://pep2025dev.wpenginepowered.com/wp-content/uploads/2025/05/2024-Web-Head-Shots15.png" alt="Phi Tran" />
+          <div>
+            <div class="staff-name">Phi Tran</div>
+            <div class="staff-title" style="color:var(--ember);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;font-size:11px;margin-bottom:6px;">Chief Operating Officer</div>
+            <p class="staff-card-bio">Phi oversees PEP's operations, finance, and organizational infrastructure — ensuring the systems, culture, and accountability structures are in place for the mission to scale with excellence.</p>
+          </div>
+        </div>
         <div class="staff-card">
           <img class="staff-photo" src="https://www.pep.org/wp-content/uploads/2025/07/sheldon_alston_squared-1-scaled.jpg" alt="Sheldon Alston" />
           <div class="staff-name">Sheldon Alston</div>
