@@ -1,0 +1,847 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Volunteer &mdash; Prison Entrepreneurship Program</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ember:   #E36F1E;
+      --amber:   #F6A01A;
+      --navy:    #0D2373;
+      --black:   #1A1A1A;
+      --gray:    #666;
+      --light:   #F7F5F2;
+      --rule:    #E5E3DF;
+      --white:   #FFFFFF;
+      --font:    'Poppins', Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--black); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; }
+
+    /* ── PILL BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 14px 28px 14px 32px; border-radius: 999px;
+      font-family: var(--font); font-weight: 700; font-size: 13px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      cursor: pointer; transition: transform 0.18s, box-shadow 0.18s; border: none;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+    .btn-icon {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0;
+    }
+    .btn-amber { background: var(--amber); color: var(--black); }
+    .btn-amber .btn-icon { background: rgba(0,0,0,0.15); }
+    .btn-ember { background: var(--ember); color: var(--white); }
+    .btn-ember .btn-icon { background: rgba(255,255,255,0.25); }
+    .btn-navy  { background: var(--navy);  color: var(--white); }
+    .btn-navy  .btn-icon { background: rgba(255,255,255,0.2); }
+    .btn-outline-white {
+      background: transparent; color: var(--white);
+      border: 2.5px solid rgba(255,255,255,0.7);
+    }
+    .btn-outline-white .btn-icon { background: rgba(255,255,255,0.15); }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.1); }
+    .btn-outline-amber {
+      background: transparent; color: var(--amber);
+      border: 2.5px solid var(--amber);
+    }
+    .btn-outline-amber .btn-icon { background: rgba(246,160,26,0.12); color: var(--amber); }
+    .btn-sm { padding: 10px 20px 10px 24px; font-size: 11px; }
+    .btn-sm .btn-icon { width: 24px; height: 24px; font-size: 12px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 72px;
+    }
+    .nav-logo img { height: 64px; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--black); transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--ember); }
+    .nav-ctas { display: flex; align-items: center; gap: 12px; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; height: 88vh; min-height: 620px;
+      display: flex; align-items: flex-end; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://www.pep.org/wp-content/uploads/2026/05/Lewis-Kdarius-Martin-Kenneth-Alicea-William-4K-scaled.jpg');
+      background-size: cover; background-position: center 35%;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,35,115,0.85) 0%, rgba(13,35,115,0.35) 55%, rgba(0,0,0,0.10) 100%);
+    }
+    .hero-content { position: relative; z-index: 2; padding: 0 72px 80px; max-width: 820px; }
+    .hero-eyebrow {
+      display: inline-block; background: var(--ember); color: #fff;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 2px; margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(44px, 5.5vw, 80px); font-weight: 900; line-height: 1.0;
+      color: var(--white); text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 24px;
+    }
+    .hero h1 span { color: var(--amber); }
+    .hero-sub {
+      font-size: 18px; font-weight: 400; color: rgba(255,255,255,0.85);
+      line-height: 1.65; max-width: 520px; margin-bottom: 40px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* ── FLOATING CARD ── */
+    .intro-card {
+      background: var(--white); border-radius: 12px;
+      margin: -60px 64px 0; padding: 56px 80px; text-align: center;
+      position: relative; z-index: 10; box-shadow: 0 8px 48px rgba(0,0,0,0.10);
+    }
+    .intro-card h2 {
+      font-size: clamp(20px, 2.5vw, 28px); font-weight: 700; color: var(--navy);
+      max-width: 760px; margin: 0 auto 18px; line-height: 1.35;
+    }
+    .intro-card h2 em { font-style: normal; color: var(--ember); }
+    .intro-card p { font-size: 17px; color: var(--gray); max-width: 660px; margin: 0 auto 32px; line-height: 1.8; }
+
+    /* ── SECTION BASE ── */
+    .section-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ember); margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; text-transform: uppercase;
+      letter-spacing: -0.01em; color: var(--navy); line-height: 1.1; margin-bottom: 16px;
+    }
+    .section-lead { font-size: 17px; color: var(--gray); line-height: 1.8; max-width: 580px; }
+
+    /* ── PROCESS STRIP ── */
+    .process-strip {
+      background: var(--black); padding: 44px 64px;
+      display: flex; align-items: center; gap: 0;
+    }
+    .process-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); min-width: 100px; padding-right: 40px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .process-steps { display: flex; flex: 1; margin-left: 40px; }
+    .process-step { flex: 1; position: relative; padding-right: 40px; }
+    .process-step:last-child { padding-right: 0; }
+    .process-step::after {
+      content: '→'; position: absolute; right: 14px; top: 50%;
+      transform: translateY(-50%); color: rgba(255,255,255,0.2); font-size: 1rem;
+    }
+    .process-step:last-child::after { display: none; }
+    .process-step-num {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 4px;
+    }
+    .process-step-text { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.7); }
+
+    /* ── VOLUNTEER QUOTES (hero right replacement) ── */
+    .vol-quotes { background: var(--light); padding: 80px 64px; }
+    .vol-quotes-inner { max-width: 1160px; margin: 0 auto; }
+    .vol-quote-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .vol-quote-card {
+      background: var(--white); border-radius: 6px; border: 1px solid var(--rule);
+      padding: 32px 28px; position: relative;
+      border-left: 4px solid var(--ember);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .vol-quote-card:hover { box-shadow: 0 6px 28px rgba(0,0,0,0.08); transform: translateY(-3px); }
+    .vol-quote-text {
+      font-size: 15px; font-style: italic; color: var(--black);
+      line-height: 1.65; margin-bottom: 20px;
+    }
+    .vol-quote-meta { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray); }
+    .vol-quote-role { font-weight: 400; text-transform: none; letter-spacing: 0; }
+
+    /* STAT STRIP */
+    .vol-stat-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--navy); margin-top: 48px; border-radius: 6px; overflow: hidden; }
+    .vol-strip-cell { background: var(--navy); padding: 28px 24px; text-align: center; }
+    .vol-strip-num { font-size: 2.2rem; font-weight: 900; color: var(--amber); line-height: 1; }
+    .vol-strip-label { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 6px; line-height: 1.4; }
+
+    /* ── WHAT TO EXPECT ── */
+    .expect { background: var(--white); padding: 96px 64px; border-bottom: 1px solid var(--rule); }
+    .expect-inner { max-width: 1160px; margin: 0 auto; }
+    .expect-header {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      margin-bottom: 56px; padding-bottom: 44px; border-bottom: 1px solid var(--rule); align-items: end;
+    }
+    .expect-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+      background: var(--rule); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden;
+    }
+    .expect-card { background: var(--white); padding: 40px 32px; }
+    .expect-card-step {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ember); margin-bottom: 16px;
+    }
+    .expect-card-icon {
+      width: 44px; height: 44px; margin-bottom: 18px;
+      border: 2px solid rgba(227,111,30,0.25); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--ember); font-size: 18px;
+    }
+    .expect-card h4 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .expect-card p { font-size: 14px; color: var(--gray); line-height: 1.7; }
+
+    /* ── ROLES ── */
+    .roles { background: var(--light); padding: 96px 64px; border-bottom: 1px solid var(--rule); }
+    .roles-inner { max-width: 1160px; margin: 0 auto; }
+    .roles-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-bottom: 56px; }
+    .roles-match-box {
+      background: var(--navy); border-radius: 6px; padding: 36px 32px;
+    }
+    .roles-match-box .section-eyebrow { color: var(--amber); }
+    .roles-match-box p { font-size: 15px; color: rgba(255,255,255,0.70); line-height: 1.7; margin-bottom: 20px; }
+    .roles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .role-card {
+      background: var(--white); border: 1px solid var(--rule); border-radius: 6px;
+      padding: 32px 28px; transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .role-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+    .role-tag {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 999px; margin-bottom: 14px;
+    }
+    .role-tag.inside   { background: rgba(13,35,115,0.08); color: var(--navy); }
+    .role-tag.outside  { background: rgba(45,106,79,0.10); color: #2D6A4F; }
+    .role-tag.virtual  { background: rgba(139,94,26,0.10); color: #8B5E1A; }
+    .role-card h4 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .role-card p { font-size: 14px; color: var(--gray); line-height: 1.65; margin-bottom: 18px; }
+
+    /* ── WHO WE NEED ── */
+    .who { background: var(--navy); padding: 96px 64px; }
+    .who-inner { max-width: 1160px; margin: 0 auto; }
+    .who .section-eyebrow { color: var(--amber); }
+    .who .section-title { color: white; }
+    .who .section-lead { color: rgba(255,255,255,0.65); }
+    .who-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start; margin-top: 0; }
+    .who-list {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+      background: rgba(255,255,255,0.08); border-radius: 6px; overflow: hidden;
+    }
+    .who-item { background: rgba(13,35,115,0.7); padding: 28px 24px; transition: background 0.15s; }
+    .who-item:hover { background: rgba(34,119,242,0.2); }
+    .who-item h4 { font-size: 15px; font-weight: 700; color: white; margin-bottom: 6px; }
+    .who-item p { font-size: 13px; color: rgba(255,255,255,0.50); line-height: 1.6; }
+    .who-note {
+      grid-column: 1 / -1; background: rgba(246,160,26,0.10); border: 1px solid rgba(246,160,26,0.3);
+      padding: 20px 24px; font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.65; margin-top: 4px;
+      border-radius: 4px;
+    }
+    .who-note strong { color: var(--amber); }
+
+    /* ── COMMITMENT TABLE ── */
+    .commitment { background: var(--white); padding: 96px 64px; border-bottom: 1px solid var(--rule); }
+    .commitment-inner { max-width: 1160px; margin: 0 auto; }
+    .commit-table { width: 100%; border-collapse: collapse; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; margin-top: 48px; }
+    .commit-table th {
+      background: var(--light); padding: 16px 24px; text-align: left;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gray); border-bottom: 1px solid var(--rule); border-right: 1px solid var(--rule);
+    }
+    .commit-table th:last-child { border-right: none; }
+    .commit-table td {
+      padding: 20px 24px; font-size: 14px; color: var(--gray);
+      border-bottom: 1px solid var(--rule); border-right: 1px solid var(--rule);
+      vertical-align: top; line-height: 1.55;
+    }
+    .commit-table td:first-child { font-weight: 700; color: var(--black); }
+    .commit-table td:last-child { border-right: none; }
+    .commit-table tr:last-child td { border-bottom: none; }
+    .commit-table tr:hover td { background: var(--light); }
+    .commit-badge {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 999px;
+      background: rgba(13,35,115,0.08); color: var(--navy); margin-left: 6px;
+    }
+
+    /* ── IMPACT OF VOLUNTEERING ── */
+    .vol-impact { background: var(--light); padding: 96px 64px; }
+    .vol-impact-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .impact-stat-list { display: flex; flex-direction: column; }
+    .impact-stat-row {
+      display: flex; align-items: baseline; gap: 24px;
+      padding: 28px 0; border-bottom: 1px solid var(--rule);
+    }
+    .impact-stat-row:first-child { padding-top: 0; }
+    .impact-stat-num { font-size: 2.5rem; font-weight: 900; color: var(--navy); white-space: nowrap; min-width: 96px; line-height: 1; }
+    .impact-stat-text { font-size: 15px; color: var(--gray); line-height: 1.6; }
+    .impact-stat-text strong { color: var(--black); font-weight: 700; }
+
+    /* ── APPLY ── */
+    .apply { background: var(--white); padding: 96px 64px; }
+    .apply-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .apply-faqs { margin-top: 44px; display: flex; flex-direction: column; }
+    .faq-item { padding: 20px 0; border-top: 1px solid var(--rule); }
+    .faq-item:last-child { border-bottom: 1px solid var(--rule); }
+    .faq-q { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+    .faq-a { font-size: 14px; color: var(--gray); line-height: 1.65; }
+
+    /* FORM */
+    .vol-form { background: var(--light); border: 1px solid var(--rule); border-radius: 8px; padding: 48px 40px; }
+    .form-title { font-size: 24px; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
+    .form-subtitle { font-size: 14px; color: var(--gray); line-height: 1.55; margin-bottom: 32px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group.half { margin-bottom: 0; }
+    label { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--black); }
+    input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+      font-family: var(--font); font-size: 15px; color: var(--black);
+      background: var(--white); border: 1.5px solid var(--rule); border-radius: 6px;
+      padding: 12px 14px; width: 100%; outline: none; transition: border-color 0.15s; appearance: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--navy); }
+    textarea { resize: vertical; min-height: 96px; }
+    .checkbox-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+    .checkbox-label { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--gray); cursor: pointer; text-transform: none; letter-spacing: 0; }
+    .checkbox-label input[type="checkbox"] { width: 16px; height: 16px; flex-shrink: 0; accent-color: var(--ember); }
+    .select-wrapper { position: relative; }
+    .select-wrapper::after {
+      content: '↓'; position: absolute; right: 14px; top: 50%;
+      transform: translateY(-50%); color: var(--gray); pointer-events: none; font-size: 13px;
+    }
+    .form-submit {
+      width: 100%; font-family: var(--font); font-size: 14px;
+      font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 16px 28px; border-radius: 999px;
+      background: var(--ember); color: white; border: none; cursor: pointer; transition: background 0.15s;
+    }
+    .form-submit:hover { background: #c95f18; }
+    .form-note { font-size: 12px; color: var(--gray); text-align: center; margin-top: 12px; line-height: 1.5; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--navy); padding: 64px 64px 0; }
+    .footer-top {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 48px;
+      padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+    .footer-brand img { height: 30px; margin-bottom: 18px; }
+    .footer-brand p { font-size: 14px; color: rgba(255,255,255,0.50); line-height: 1.8; margin-bottom: 24px; max-width: 280px; }
+    .footer-social { display: flex; gap: 10px; }
+    .social-btn {
+      width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.55); transition: background 0.2s;
+    }
+    .social-btn:hover { background: var(--ember); color: #fff; }
+    .footer-col h4 { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.30); margin-bottom: 18px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a { font-size: 14px; color: rgba(255,255,255,0.55); transition: color 0.2s; }
+    .footer-col a:hover { color: var(--amber); }
+    .footer-bottom {
+      max-width: 1160px; margin: 0 auto; padding: 28px 0;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px; color: rgba(255,255,255,0.30);
+    }
+    .footer-bottom-links { display: flex; gap: 24px; }
+    .footer-bottom-links a { color: rgba(255,255,255,0.30); }
+    .footer-bottom-links a:hover { color: var(--amber); }
+
+    /* ── STICKY APPLY BUTTON ── */
+    .sticky-apply {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 200;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+    }
+    .sticky-apply.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .sticky-apply a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--ember);
+      color: #fff;
+      font-family: var(--font);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 24px 14px 28px;
+      border-radius: 999px;
+      box-shadow: 0 8px 28px rgba(227,111,30,0.45);
+      transition: transform 0.18s, box-shadow 0.18s;
+      text-decoration: none;
+    }
+    .sticky-apply a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(227,111,30,0.55);
+    }
+    .sticky-apply-icon {
+      width: 28px; height: 28px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="https://www.pep.org/wp-content/uploads/2022/02/PEP_Logo_Fav.png" alt="PEP" style="height:52px;width:auto;" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about-pep.html">About</a></li>
+    <li><a href="our-programs.html">Programs</a></li>
+    <li><a href="our-impact.html">Impact</a></li>
+    <li><a href="stories.html">Stories</a></li>
+    <li><a href="newsroom.html">Newsroom</a></li>
+    <li><a href="calendar.html">Calendar</a></li>
+  </ul>
+  <div class="nav-ctas">
+    <a href="#apply" class="btn btn-outline-amber btn-sm">
+      Volunteer <span class="btn-icon">→</span>
+    </a>
+    <a href="Sample Donor Page.html" class="btn btn-amber btn-sm">
+      Donate <span class="btn-icon">♥</span>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Volunteer with PEP</span>
+    <h1>You have experience.<br/>They have<br/><span>drive.</span></h1>
+    <p class="hero-sub">
+      PEP volunteers come from every professional background &mdash; and every one of them leaves
+      with more than they gave. Whatever you've built, learned, or lived through,
+      there's a role for you inside. And your first time? You won't go alone &mdash; every new volunteer
+      is paired with an experienced PEP volunteer who knows the ropes and will be right there with you.
+    </p>
+    <div class="hero-btns">
+      <a href="#apply" class="btn btn-amber">Apply to Volunteer <span class="btn-icon">→</span></a>
+      <a href="#roles" class="btn btn-outline-white">See Volunteer Roles <span class="btn-icon">↓</span></a>
+    </div>
+    <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:16px;letter-spacing:0.02em;">Come once. Come monthly. Come whenever &mdash; no long-term commitment required.</p>
+  </div>
+</section>
+
+<!-- FLOATING CARD -->
+<div class="intro-card">
+  <h2>Your presence signals something no curriculum can: <em>"You matter."</em></h2>
+  <p>
+    PEP's ~800 annual executive volunteers aren't just giving back &mdash; they're essential to the program's
+    results. The "collision" between a hungry entrepreneur inside and a seasoned leader outside is where
+    transformation ignites. And the volunteers? They leave changed too.
+  </p>
+  <a href="#roles" class="btn btn-navy" style="margin: 0 auto;">
+    Find Your Role <span class="btn-icon">→</span>
+  </a>
+</div>
+
+
+<!-- VOLUNTEER QUOTES -->
+<section class="vol-quotes">
+  <div class="vol-quotes-inner">
+    <p class="section-eyebrow">What Volunteers Say</p>
+    <h2 class="section-title">They came to teach.<br/>They left transformed.</h2>
+    <div style="background:var(--navy);border-radius:6px;padding:36px 40px;margin-top:40px;margin-bottom:24px;border-left:5px solid var(--amber);">
+      <div style="font-size:clamp(17px,2vw,22px);font-style:italic;color:white;line-height:1.6;font-weight:500;">
+        "I thought I was going to give back, but I received so much more than I expected."
+      </div>
+      <div style="margin-top:16px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);">PEP Volunteer</div>
+    </div>
+    <div class="vol-quote-grid">
+      <div class="vol-quote-card">
+        <div class="vol-quote-text">"I walked in thinking I'd teach them something. I left realizing they taught me more about resilience and hunger than any boardroom ever has."</div>
+        <div class="vol-quote-meta">David R. <span class="vol-quote-role"> · CFO, Dallas · Volunteer since 2019</span></div>
+      </div>
+      <div class="vol-quote-card">
+        <div class="vol-quote-text">"The men in PEP outwork, outthink, and out-hustle most MBAs I've interviewed. I ended up hiring two of them."</div>
+        <div class="vol-quote-meta">Sandra L. <span class="vol-quote-role"> · Founder, Austin · Volunteer since 2021</span></div>
+      </div>
+      <div class="vol-quote-card">
+        <div class="vol-quote-text">"Every attorney at our firm who has volunteered with PEP has come back a better lawyer &mdash; and a better person."</div>
+        <div class="vol-quote-meta">James M. <span class="vol-quote-role"> · Managing Partner, Houston · Volunteer since 2017</span></div>
+      </div>
+    </div>
+    <div class="vol-stat-strip">
+      <div class="vol-strip-cell">
+        <div class="vol-strip-num">~800</div>
+        <div class="vol-strip-label">Executive volunteers annually</div>
+      </div>
+      <div class="vol-strip-cell">
+        <div class="vol-strip-num">20+</div>
+        <div class="vol-strip-label">Years of proven results</div>
+      </div>
+      <div class="vol-strip-cell">
+        <div class="vol-strip-num">94%</div>
+        <div class="vol-strip-label">Would volunteer again</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOLUNTEER VIDEO -->
+<section style="background:var(--navy);padding:64px 64px 80px;">
+  <div style="max-width:860px;margin:0 auto;">
+    <p style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--amber);margin-bottom:14px;">Volunteer Perspective</p>
+    <h2 style="font-size:clamp(24px,3vw,36px);font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;color:var(--white);line-height:1.1;margin-bottom:32px;">Finding Joy Behind the Walls</h2>
+    <div style="position:relative;width:100%;padding-top:56.25%;border-radius:8px;overflow:hidden;">
+      <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
+        src="https://www.youtube.com/embed/1bZNaG-CGbo"
+        title="Finding Joy Behind the Walls"
+        allowfullscreen loading="lazy"></iframe>
+    </div>
+    <p style="font-size:15px;color:rgba(255,255,255,0.65);line-height:1.7;margin-top:24px;">A volunteer reflects on what she found when she walked into a Texas prison expecting to give &mdash; and instead received something she didn&rsquo;t expect.</p>
+  </div>
+</section>
+
+<!-- WHAT TO EXPECT -->
+<section class="expect">
+  <div class="expect-inner">
+    <div class="expect-header">
+      <div>
+        <p class="section-eyebrow">What to Expect</p>
+        <h2 class="section-title">Real classroom.<br/>Real stakes. Real results.</h2>
+      </div>
+      <p class="section-lead">
+        PEP runs a structured semester inside TDCJ units. Volunteers are the faculty. You bring
+        your professional expertise; PEP provides training, materials, and full logistics support.
+        The only thing you supply is your time and candor.
+      </p>
+    </div>
+    <div class="expect-grid">
+      <div class="expect-card">
+        <div class="expect-card-step">Before you arrive</div>
+        <div class="expect-card-icon">✏️</div>
+        <h4>Orientation &amp; Preparation</h4>
+        <p>PEP provides thorough orientation covering what to expect inside a correctional unit, TDCJ protocols, and how to communicate effectively.</p>
+      </div>
+      <div class="expect-card">
+        <div class="expect-card-step">Inside the unit</div>
+        <div class="expect-card-icon">🤝</div>
+        <h4>Teaching &amp; Mentoring</h4>
+        <p>Teach in small groups, review business plans, judge pitch competitions, or run workshops in your expertise area &mdash; from accounting to HR to marketing. Participants are motivated, prepared, and sharp.</p>
+      </div>
+      <div class="expect-card">
+        <div class="expect-card-step">After graduation</div>
+        <div class="expect-card-icon">✓</div>
+        <h4>Ongoing Mentorship</h4>
+        <p>Stay connected post-release as an accountability partner, employer connection, or business advisor. Many of PEP's strongest success stories trace back to a single sustained relationship.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOLUNTEER ROLES -->
+<section class="roles" id="roles">
+  <div class="roles-inner">
+    <div class="roles-intro">
+      <div>
+        <p class="section-eyebrow">Volunteer Roles</p>
+        <h2 class="section-title">Find your fit.</h2>
+        <p class="section-lead">
+          Whether you can give one afternoon a year or one day a month, there's a role matched
+          to your schedule and skillset. All are meaningful. None require prior correctional experience.
+        </p>
+      </div>
+      <div class="roles-match-box">
+        <p class="section-eyebrow">Not sure where you fit?</p>
+        <p>Tell us your background and availability &mdash; our volunteer coordinator will match you to the right role within two business days.</p>
+        <a href="#apply" class="btn btn-amber btn-sm">Get Matched <span class="btn-icon">→</span></a>
+      </div>
+    </div>
+    <div class="roles-grid">
+      <div class="role-card">
+        <div class="role-tag inside">Inside the Unit</div>
+        <h4>Business Curriculum Instructor</h4>
+        <p>Teach a module of PEP's MBA-style curriculum: finance, marketing, operations, or strategy. Materials provided. You bring your professional experience and real-world perspective.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag inside">Inside the Unit</div>
+        <h4>Business Plan Judge</h4>
+        <p>Evaluate participant business plans at the culminating pitch competition &mdash; PEP's equivalent of Demo Day. Provide written feedback and score presentations against real entrepreneurial criteria.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag inside">Inside the Unit</div>
+        <h4>Character Formation Facilitator</h4>
+        <p>Lead discussions on leadership, ethics, accountability, and servant leadership. Conversation-driven, not lecture-driven. Your life experience matters more than your credentials.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag outside">Post-Release</div>
+        <h4>Reentry Mentor</h4>
+        <p>Walk alongside a graduate in their first 12 months post-release &mdash; meeting monthly, making connections, and providing accountability during the critical window when most relapses occur.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag outside">Post-Release</div>
+        <h4>Employment Connector</h4>
+        <p>Open your network. Introduce graduates to hiring managers. Host a lunch. Make the call. Even one connection can break the cycle &mdash; and you may find your next great employee in the process.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-tag virtual">Virtual</div>
+        <h4>Online Workshop Facilitator</h4>
+        <p>Deliver a workshop remotely on resume writing, interview skills, financial literacy, or digital tools. Reach participants across multiple TDCJ units simultaneously.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE NEED -->
+<section class="who">
+  <div class="who-inner">
+    <p class="section-eyebrow">Who We Need</p>
+    <h2 class="section-title" style="color:white; margin-bottom:16px;">If you've built something,<br/>we need you.</h2>
+    <div class="who-grid" style="margin-top:48px;">
+      <div>
+        <p class="section-lead" style="margin-bottom:20px;">
+          PEP works because real operators &mdash; not theorists &mdash; teach real business. Participants
+          can spot inauthenticity immediately. What they respond to is earned credibility:
+          your failures as much as your successes.
+        </p>
+        <p class="section-lead">
+          No prior correctional experience needed. No special certifications required. PEP handles all
+          logistics. You show up prepared to be honest.
+        </p>
+      </div>
+      <div>
+        <div class="who-list">
+          <div class="who-item">
+            <h4>C-Suite Executives</h4>
+            <p>CEOs, CFOs, COOs who can teach strategy, operations, and leadership from lived experience.</p>
+          </div>
+          <div class="who-item">
+            <h4>Attorneys &amp; CPAs</h4>
+            <p>Legal and financial professionals who demystify contracts, taxes, and running a compliant business.</p>
+          </div>
+          <div class="who-item">
+            <h4>Entrepreneurs &amp; Founders</h4>
+            <p>People who have started companies and know what it actually takes &mdash; including the failures no pitch deck shows.</p>
+          </div>
+          <div class="who-item">
+            <h4>Sales &amp; Marketing Pros</h4>
+            <p>Revenue generators who can teach customer acquisition, brand building, and how to communicate value.</p>
+          </div>
+          <div class="who-item">
+            <h4>HR &amp; Talent Leaders</h4>
+            <p>Professionals who can teach hiring, managing people, culture-building, and how to be a great employee first.</p>
+          </div>
+          <div class="who-item">
+            <h4>Anyone with a Story</h4>
+            <p>If you've overcome adversity or built something from nothing &mdash; that is the curriculum PEP teaches best.</p>
+          </div>
+          <div class="who-note" style="grid-column:1/-1;">
+            <strong>Note on background checks:</strong> Volunteers must pass a TDCJ background check. Having a prior record does not automatically disqualify you &mdash; PEP reviews each application individually and believes in second chances at every level.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- IMPACT OF VOLUNTEERING -->
+<section class="vol-impact">
+  <div class="vol-impact-inner">
+    <div>
+      <p class="section-eyebrow">Your Impact</p>
+      <h2 class="section-title">What your time actually produces.</h2>
+      <p class="section-lead" style="margin-top:12px;">
+        Volunteer hours are not charity. They are an economic input that generates a measurable
+        output &mdash; for individuals, families, and Texas taxpayers.
+      </p>
+    </div>
+    <div class="impact-stat-list">
+      <div class="impact-stat-row">
+        <div class="impact-stat-num">&lt;10%</div>
+        <div class="impact-stat-text"><strong>Recidivism rate</strong> among PEP graduates &mdash; compared to 62% nationally. Every volunteer session is part of that number.</div>
+      </div>
+      <div class="impact-stat-row">
+        <div class="impact-stat-num">$8.94</div>
+        <div class="impact-stat-text"><strong>Economic return per dollar invested</strong> in PEP. Your time is the program's primary input &mdash; and it has a dollar value to Texas.</div>
+      </div>
+      <div class="impact-stat-row">
+        <div class="impact-stat-num">100%</div>
+        <div class="impact-stat-text"><strong>Job placement within 90 days</strong> for every graduate. Employer relationships built by volunteers are a direct driver of this number.</div>
+      </div>
+      <div class="impact-stat-row">
+        <div class="impact-stat-num">700+</div>
+        <div class="impact-stat-text"><strong>Alumni businesses launched</strong> since 2004 &mdash; many traced back to business plan feedback from a volunteer judge.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLY -->
+<section class="apply" id="apply">
+  <div class="apply-inner">
+    <div class="apply-left">
+      <p class="section-eyebrow">Apply</p>
+      <h2 class="section-title">Ready to step inside?</h2>
+      <p class="section-lead" style="margin-top:12px;">
+        Have questions? The answers below cover what most first-time volunteers want to know.
+      </p>
+
+      <div class="apply-faqs">
+        <div class="faq-item">
+          <div class="faq-q">Is it safe?</div>
+          <div class="faq-a">Yes. PEP operates inside controlled TDCJ facilities with full security staff present. In 20+ years, no volunteer has been harmed. PEP's thorough orientation fully prepares you for the environment.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What if I have a prior record?</div>
+          <div class="faq-a">Apply and let us know. PEP reviews every application individually. Having a record does not disqualify you &mdash; in many cases, lived experience makes you a more effective teacher.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Do I need to bring anything?</div>
+          <div class="faq-a">Just yourself and a valid state ID. No electronics, no bags beyond what security allows. PEP provides everything else, including materials, name badges, and an escort through the unit.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I bring colleagues?</div>
+          <div class="faq-a">Yes &mdash; corporate groups are welcome and common. PEP can facilitate group volunteer days for teams of 5 to 50. Contact us directly to coordinate.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can my company sponsor volunteering?</div>
+          <div class="faq-a">Many PEP corporate partners formalize their relationship &mdash; gaining recognition, reporting, and coordinated access. Reach out to discuss a corporate partnership structure.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vol-form" id="contact">
+    <div class="form-title">Contact Us</div>
+    <div class="form-subtitle">Fill out the form and our team will be in touch.</div>
+    <div class="form-row">
+      <div class="form-group half"><label for="fname">First Name</label><input type="text" id="fname" placeholder="Jane"></div>
+      <div class="form-group half"><label for="lname">Last Name</label><input type="text" id="lname" placeholder="Smith"></div>
+    </div>
+    <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="jane@company.com"></div>
+    <div class="form-group"><label for="phone">Phone</label><input type="tel" id="phone" placeholder="(555) 000-0000"></div>
+    <div class="form-group"><label for="message">Message</label><textarea id="message" style="min-height:120px;" placeholder="How can we help, or what brings you here?"></textarea></div>
+    <button class="form-submit" type="submit">Send Message</button>
+    <div class="form-note">Your information is never sold or shared. We&rsquo;ll be in touch shortly.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="https://www.pep.org/wp-content/uploads/2025/07/PEP_Logo_White.png" alt="PEP" />
+      <p>Transform Lives, Restore Families, Rebuild Communities.<br/>A 501(c)(3) non-profit serving Texas since 2004.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="https://www.linkedin.com/company/prison-entrepreneurship-program">in</a>
+        <a class="social-btn" href="https://www.instagram.com/prisonentrepreneurshipprogram">ig</a>
+        <a class="social-btn" href="https://www.facebook.com/PrisonEntrepreneurship">f</a>
+        <a class="social-btn" href="https://twitter.com/peptweets">𝕏</a>
+        <a class="social-btn" href="https://www.youtube.com/@PepOrgTX">▶</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="about-pep.html">About PEP</a></li>
+        <li><a href="about-pep.html#mission-values">Mission &amp; Values</a></li>
+        <li><a href="about-pep.html#leadership">Leadership</a></li>
+        <li><a href="about-pep.html#board">Board</a></li>
+        <li><a href="about-pep.html#financials">Financials</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul>
+        <li><a href="our-programs.html#leadership-academy">Leadership Academy</a></li>
+        <li><a href="our-programs.html#core-program">Core Program</a></li>
+        <li><a href="our-programs.html#reentry">Reentry Services</a></li>
+        <li><a href="our-programs.html#family-reunification">Family Reunification</a></li>
+        <li><a href="our-programs.html#entre-capital">Entre Capital</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="index.html#men-we-serve">The Men We Serve</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="index.html#families">For Families</a></li>
+        <li><a href="Sample Donor Page.html">Donate</a></li>
+        <li><a href="newsroom.html">Newsroom</a></li>
+        <li><a href="calendar.html">Calendar</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="mailto:info@pep.org">info@pep.org</a></li>
+        <li style="color:rgba(255,255,255,0.55);font-size:14px;line-height:1.5;"><strong style="color:rgba(255,255,255,0.75);">Houston</strong><br/><a href="tel:8327670928">832-767-0928</a><br/>6501 Navigation Blvd, Ste. H7<br/>Houston, TX 77011</li>
+        <li style="color:rgba(255,255,255,0.55);font-size:14px;line-height:1.5;margin-top:8px;"><strong style="color:rgba(255,255,255,0.75);">North Texas</strong><br/><a href="tel:2145759909">214-575-9909</a><br/>2435 N Central Expy #150<br/>Richardson, TX 75080</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Prison Entrepreneurship Program. All rights reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms</a>
+      <a href="#">Financials</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- STICKY APPLY BUTTON -->
+<div class="sticky-apply" id="stickyApply">
+  <a href="#apply">
+    Apply to Volunteer
+    <span class="sticky-apply-icon">&#8594;</span>
+  </a>
+</div>
+
+<script>
+  (function() {
+    var btn = document.getElementById('stickyApply');
+    var hero = document.querySelector('.hero');
+    function onScroll() {
+      var heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
+      var applySection = document.getElementById('apply');
+      var applyTop = applySection ? applySection.getBoundingClientRect().top : 9999;
+      if (heroBottom < 0 && applyTop > 120) {
+        btn.classList.add('visible');
+      } else {
+        btn.classList.remove('visible');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+</script>
+</body>
+</html>
+
