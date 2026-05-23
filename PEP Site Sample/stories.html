@@ -43,7 +43,7 @@
 
     /* -- HERO -- */
     .hero { position: relative; height: 72vh; min-height: 520px; display: flex; align-items: flex-end; overflow: hidden; margin-top: 72px; }
-    .hero-bg { position: absolute; inset: 0; background-image: url('https://www.pep.org/wp-content/uploads/2026/05/K3_5565-L.jpg'); background-size: cover; background-position: center 25%; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('https://www.pep.org/wp-content/uploads/2026/05/HallJustin-Rosejoshua-TristainRobert-PieperDavid-4K-scaled.jpg'); background-size: cover; background-position: center 30%; }
     .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,35,115,0.92) 0%, rgba(13,35,115,0.50) 55%, rgba(0,0,0,0.15) 100%); }
     .hero-content { position: relative; z-index: 2; padding: 0 72px 72px; max-width: 800px; }
     .hero-eyebrow { display: inline-block; background: var(--ember); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 14px; border-radius: 2px; margin-bottom: 20px; }
@@ -57,21 +57,34 @@
 
     /* -- VIDEO SECTION -- */
     .videos { background: var(--navy); padding: 96px 64px; }
+    .videos-inner { max-width: 1240px; margin: 0 auto; }
     .videos-header { text-align: center; margin-bottom: 56px; }
     .videos-header .section-eyebrow { color: var(--amber); }
     .videos-header .section-title { color: var(--white); }
     .videos-header p { font-size: 17px; color: rgba(255,255,255,0.6); max-width: 600px; margin: 0 auto; line-height: 1.8; }
-    .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 1200px; margin: 0 auto; }
-    .video-card { background: rgba(255,255,255,0.04); border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); transition: transform 0.2s, border-color 0.2s; }
-    .video-card:hover { transform: translateY(-4px); border-color: rgba(246,160,26,0.4); }
-    .video-card.featured { grid-column: span 2; }
+    /* Featured embed */
+    .video-featured { border-radius: 10px; overflow: hidden; margin-bottom: 40px; border: 1px solid rgba(255,255,255,0.10); }
     .video-embed { position: relative; width: 100%; padding-top: 56.25%; background: #000; }
     .video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-    .video-meta { padding: 24px 28px; }
-    .video-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); margin-bottom: 10px; }
-    .video-title { font-size: 18px; font-weight: 700; color: var(--white); line-height: 1.35; margin-bottom: 10px; }
-    .video-card.featured .video-title { font-size: 22px; }
-    .video-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    /* Thumbnail grid */
+    .video-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .vtc {
+      position: relative; padding-top: 56.25%; background: #000;
+      border-radius: 6px; overflow: hidden; cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .vtc:hover { border-color: rgba(246,160,26,0.5); transform: translateY(-3px); }
+    .vtc img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.2s; }
+    .vtc:hover img { opacity: 0.75; }
+    .vtc-play {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 44px; height: 44px; background: rgba(227,111,30,0.92);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      pointer-events: none; transition: transform 0.2s;
+    }
+    .vtc:hover .vtc-play { transform: translate(-50%,-50%) scale(1.12); }
+    .vtc iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
 
     /* -- DIVIDER -- */
     .divider-band { background: var(--ember); padding: 28px 64px; display: flex; align-items: center; justify-content: center; gap: 16px; }
@@ -168,11 +181,11 @@
 
 <!-- NAV -->
 <nav>
-  <a href="Sample Home Page.html" class="nav-logo">
+  <a href="index.html" class="nav-logo">
     <img src="https://www.pep.org/wp-content/uploads/2022/02/PEP_Logo_Fav.png" alt="PEP" style="height:52px;width:auto;" />
   </a>
   <ul class="nav-links">
-    <li><a href="Sample Home Page.html">Home</a></li>
+    <li><a href="index.html">Home</a></li>
     <li><a href="about-pep.html">About</a></li>
     <li><a href="our-programs.html">Programs</a></li>
     <li><a href="our-impact.html">Impact</a></li>
@@ -199,42 +212,42 @@
 
 <!-- VIDEOS -->
 <section class="videos">
-  <div class="videos-header">
-    <p class="section-eyebrow">Watch</p>
-    <h2 class="section-title">See transformation in action</h2>
-    <p>From the inside of a Texas prison to the boardroom&mdash;watch PEP participants describe what the program means to them in their own words.</p>
-  </div>
-  <div class="video-grid">
-    <div class="video-card featured">
+  <div class="videos-inner">
+    <div class="videos-header">
+      <p class="section-eyebrow">Watch</p>
+      <h2 class="section-title">See transformation in action</h2>
+      <p>From inside a Texas prison to the boardroom — watch PEP participants, volunteers, and graduates describe what the program means to them in their own words.</p>
+    </div>
+
+    <!-- Featured video -->
+    <div class="video-featured">
       <div class="video-embed">
         <iframe src="https://www.youtube.com/embed/OwwuKLnGdDM" title="What Is PEP?" allowfullscreen loading="lazy"></iframe>
       </div>
-      <div class="video-meta">
-        <div class="video-tag">About PEP</div>
-        <div class="video-title">What Is PEP? An Introduction to the Prison Entrepreneurship Program</div>
-        <div class="video-desc">An overview of who we are, what we do, and why it works&mdash;told by the people who live it every day.</div>
-      </div>
     </div>
-    <div class="video-card" style="display:flex;flex-direction:column;">
-      <div class="video-embed">
-        <iframe src="https://www.youtube.com/embed/91hbXSk3BtI" title="PEP Stories" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video-meta">
-        <div class="video-tag">Participant Story</div>
-        <div class="video-title">How PEP Changed My Life</div>
-        <div class="video-desc">PEP participants share how the program reshaped their perspective, their ambitions, and their relationships.</div>
-      </div>
-    </div>
-  
-    <div class="video-card" style="display:flex;flex-direction:column;">
-      <div class="video-embed">
-        <iframe src="https://www.youtube.com/embed/C85IZ-G8GTM" title="PEP Volunteer Spotlights" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video-meta">
-        <div class="video-tag">Volunteer Stories</div>
-        <div class="video-title">Volunteer Spotlights: Why We Show Up</div>
-        <div class="video-desc">Volunteers describe what draws them inside the walls of Texas prisons&mdash;and how the experience transforms them just as much as the men they serve.</div>
-      </div>
+
+    <!-- Thumbnail grid: click to play -->
+    <div class="video-grid">
+      <div class="vtc" data-id="-GMQ4T6FVFc"><img src="https://i.ytimg.com/vi/-GMQ4T6FVFc/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
+      <div class="vtc" data-id="gaJ_PRUqPyo"><img src="https://i.ytimg.com/vi/gaJ_PRUqPyo/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
+      <div class="vtc" data-id="rcV6EfbieLQ"><img src="https://i.ytimg.com/vi/rcV6EfbieLQ/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
+      <div class="vtc" data-id="MbJTEEwk1dk"><img src="https://i.ytimg.com/vi/MbJTEEwk1dk/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
+      <div class="vtc" data-id="XwtPzoSE1Gs"><img src="https://i.ytimg.com/vi/XwtPzoSE1Gs/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
+      <div class="vtc" data-id="LeBJxzAHZx8"><img src="https://i.ytimg.com/vi/LeBJxzAHZx8/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
+      <div class="vtc" data-id="CO8TfIwnyRA"><img src="https://i.ytimg.com/vi/CO8TfIwnyRA/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
+      <div class="vtc" data-id="C85IZ-G8GTM"><img src="https://i.ytimg.com/vi/C85IZ-G8GTM/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
+      <div class="vtc" data-id="m9t8DDRvLig"><img src="https://i.ytimg.com/vi/m9t8DDRvLig/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
+      <div class="vtc" data-id="wyXksmPVh1s"><img src="https://i.ytimg.com/vi/wyXksmPVh1s/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
+      <div class="vtc" data-id="eULZhF643-A"><img src="https://i.ytimg.com/vi/eULZhF643-A/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
+      <div class="vtc" data-id="_e3fWA8c_PI"><img src="https://i.ytimg.com/vi/_e3fWA8c_PI/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
+      <div class="vtc" data-id="9jUChtGTkuU"><img src="https://i.ytimg.com/vi/9jUChtGTkuU/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
+      <div class="vtc" data-id="1PQLELMLAj4"><img src="https://i.ytimg.com/vi/1PQLELMLAj4/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
+      <div class="vtc" data-id="91hbXSk3BtI"><img src="https://i.ytimg.com/vi/91hbXSk3BtI/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
+      <div class="vtc" data-id="UwHKh8I1yJs"><img src="https://i.ytimg.com/vi/UwHKh8I1yJs/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
+      <div class="vtc" data-id="SIDxF0Ha0gk"><img src="https://i.ytimg.com/vi/SIDxF0Ha0gk/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
+      <div class="vtc" data-id="1bZNaG-CGbo"><img src="https://i.ytimg.com/vi/1bZNaG-CGbo/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
+      <div class="vtc" data-id="uQX0ePHKejM"><img src="https://i.ytimg.com/vi/uQX0ePHKejM/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
+      <div class="vtc" data-id="0Wp4lSnJXZk"><img src="https://i.ytimg.com/vi/0Wp4lSnJXZk/hqdefault.jpg" loading="lazy" alt="PEP Video"/><div class="vtc-play"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 3l10 5-10 5z" fill="white"/></svg></div></div>
     </div>
   </div>
 </section>
@@ -440,6 +453,15 @@
     <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms</a><a href="#">Financials</a></div>
   </div>
 </footer>
+
+<script>
+  document.querySelectorAll('.vtc').forEach(function(el) {
+    el.addEventListener('click', function() {
+      var id = el.dataset.id;
+      el.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1" allowfullscreen allow="autoplay; encrypted-media"></iframe>';
+    });
+  });
+</script>
 
 </body>
 </html>
