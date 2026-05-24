@@ -293,16 +293,39 @@
     }
     .page-subnav a:hover { color: var(--ember); border-bottom-color: var(--ember); }
 
-    /* ── MISSION / VALUES ── */
-    .mvv { background: var(--navy); padding: 80px 64px; }
-    .mvv-inner { max-width: 1160px; margin: 0 auto; }
-    .mvv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; }
-    .mvv-card { background: rgba(255,255,255,0.05); padding: 36px 32px; }
+    /* ── MISSION / VISION / VALUE ── */
+    .mvv { background: var(--navy); padding: 96px 64px 80px; }
+    .mvv-inner { max-width: 1060px; margin: 0 auto; }
+    .mvv-mission-block {
+      margin: 40px 0 48px; padding: 48px 56px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 6px; border-left: 4px solid var(--ember);
+    }
+    .mvv-qmark { display: block; font-size: 72px; line-height: 0.6; color: var(--ember); font-weight: 900; margin-bottom: 20px; }
+    .mvv-mission-text {
+      font-size: clamp(18px, 2vw, 23px); font-weight: 600; font-style: italic;
+      color: var(--white); line-height: 1.7; margin-bottom: 22px; max-width: 800px;
+    }
+    .mvv-mission-attr { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber); }
+    .mvv-lower { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .mvv-panel { padding: 36px 40px; }
+    .mvv-panel-vision { background: rgba(227,111,30,0.10); border: 1px solid rgba(227,111,30,0.25); border-radius: 4px 0 0 4px; }
+    .mvv-panel-value { background: rgba(255,255,255,0.05); border-radius: 0 4px 4px 0; }
     .mvv-label { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber); margin-bottom: 14px; }
-    .mvv-text { font-size: 15px; color: rgba(255,255,255,0.80); line-height: 1.75; }
-    .mvv-vision { background: rgba(227,111,30,0.10); border: 1px solid rgba(227,111,30,0.25); }
-    .mvv-values-list { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 40px; }
-    .mvv-value-tag { padding: 6px 14px; border: 1px solid rgba(246,160,26,0.35); border-radius: 3px; font-size: 12px; font-weight: 600; color: var(--amber); letter-spacing: 0.04em; }
+    .mvv-text { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.8; }
+
+    /* ── 10 DRIVING VALUES ── */
+    .driving-values { background: var(--light); padding: 80px 64px; border-top: 4px solid var(--ember); }
+    .dv-inner { max-width: 1060px; margin: 0 auto; }
+    .dv-header { margin-bottom: 48px; }
+    .dv-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px;
+      background: var(--rule); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden;
+    }
+    .dv-card { background: var(--white); padding: 32px 24px; transition: background 0.15s; }
+    .dv-card:hover { background: #faf9f7; }
+    .dv-num { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--ember); margin-bottom: 12px; display: block; }
+    .dv-name { font-size: 15px; font-weight: 700; color: var(--navy); line-height: 1.3; }
 
     /* ── EXEC FEATURE CARDS ── */
     .exec-feature-grid { display: flex; justify-content: center; margin-bottom: 32px; }
@@ -428,37 +451,52 @@
 </div>
 
 
-<!-- MISSION / VISION / VALUES -->
+<!-- MISSION / VISION / VALUE -->
 <section class="mvv" id="mission-values">
   <div class="mvv-inner">
     <p class="section-eyebrow" style="color:var(--amber);">Who We Are</p>
-    <h2 class="section-title" style="color:var(--white);">Mission. Vision. Values.</h2>
-    <div class="mvv-grid">
-      <div class="mvv-card">
-        <div class="mvv-label">Our Mission</div>
-        <p class="mvv-text">To unite executives and inmates through entrepreneurial passion and servant leadership to transform lives, restore families and rebuild communities.</p>
-      </div>
-      <div class="mvv-card mvv-vision">
+    <h2 class="section-title" style="color:var(--white);">Mission. Vision. Value.</h2>
+
+    <!-- Mission — large quote treatment -->
+    <div class="mvv-mission-block">
+      <span class="mvv-qmark">&ldquo;</span>
+      <p class="mvv-mission-text">To unite executives and inmates through entrepreneurial passion and servant leadership to transform lives, restore families and rebuild communities.</p>
+      <span class="mvv-mission-attr">Our Mission</span>
+    </div>
+
+    <!-- Vision + Value — side by side -->
+    <div class="mvv-lower">
+      <div class="mvv-panel mvv-panel-vision">
         <div class="mvv-label">Our Vision</div>
         <p class="mvv-text">PEP will scale across the major release pathways of Texas, creating a seamless continuum from incarceration to reentry to economic mobility, while codifying the intellectual property, culture, and operating standards required for mission-aligned partners to replicate the model with fidelity in other regions.</p>
       </div>
+      <div class="mvv-panel mvv-panel-value">
+        <div class="mvv-label">Our Value</div>
+        <p class="mvv-text">Inspired by the God-given dignity of every person, the hope created by a community of second chances, and entrepreneurship as a transformative tool for character, skill, work, and ownership, PEP increases the success of men returning to society after incarceration.</p>
+      </div>
     </div>
-    <div class="mvv-card" style="margin-top:2px;">
-      <div class="mvv-label">Our Value</div>
-      <p class="mvv-text">Inspired by the God-given dignity of every person, the hope created by a community of second chances, and entrepreneurship as a transformative tool for character, skill, work, and ownership, PEP increases the success of men returning to society after incarceration.</p>
+  </div>
+</section>
+
+<!-- 10 DRIVING VALUES -->
+<section class="driving-values">
+  <div class="dv-inner">
+    <div class="dv-header">
+      <p class="section-eyebrow">What Guides Us</p>
+      <h2 class="section-title" style="margin-bottom:0;">10 Driving Values</h2>
     </div>
-    <ul class="mvv-values-list">
-      <li class="mvv-value-tag">Fresh-Start Outlook</li>
-      <li class="mvv-value-tag">Servant-Leader Mentality</li>
-      <li class="mvv-value-tag">Love</li>
-      <li class="mvv-value-tag">Innovation</li>
-      <li class="mvv-value-tag">Accountability</li>
-      <li class="mvv-value-tag">Integrity</li>
-      <li class="mvv-value-tag">Execution</li>
-      <li class="mvv-value-tag">Fun</li>
-      <li class="mvv-value-tag">Excellence</li>
-      <li class="mvv-value-tag">Wise Stewardship</li>
-    </ul>
+    <div class="dv-grid">
+      <div class="dv-card"><span class="dv-num">01</span><div class="dv-name">Fresh-Start Outlook</div></div>
+      <div class="dv-card"><span class="dv-num">02</span><div class="dv-name">Servant-Leader Mentality</div></div>
+      <div class="dv-card"><span class="dv-num">03</span><div class="dv-name">Love</div></div>
+      <div class="dv-card"><span class="dv-num">04</span><div class="dv-name">Innovation</div></div>
+      <div class="dv-card"><span class="dv-num">05</span><div class="dv-name">Accountability</div></div>
+      <div class="dv-card"><span class="dv-num">06</span><div class="dv-name">Integrity</div></div>
+      <div class="dv-card"><span class="dv-num">07</span><div class="dv-name">Execution</div></div>
+      <div class="dv-card"><span class="dv-num">08</span><div class="dv-name">Fun</div></div>
+      <div class="dv-card"><span class="dv-num">09</span><div class="dv-name">Excellence</div></div>
+      <div class="dv-card"><span class="dv-num">10</span><div class="dv-name">Wise Stewardship</div></div>
+    </div>
   </div>
 </section>
 
