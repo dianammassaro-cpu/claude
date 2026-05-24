@@ -147,12 +147,13 @@
     .phase-divider-label { font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; color: white; }
 
     /* -- PAGE SUBNAV -- */
-    .page-subnav { background: var(--white); border-bottom: 2px solid var(--rule); padding: 0 64px; display: flex; align-items: center; position: sticky; top: 72px; z-index: 100; overflow-x: auto; }
-    .page-subnav a { padding: 16px 18px; font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--gray); border-bottom: 2px solid transparent; margin-bottom: -2px; white-space: nowrap; transition: color 0.2s, border-color 0.2s; }
-    .page-subnav a:hover { color: var(--ember); border-bottom-color: var(--ember); }
-    .subnav-divider { width: 1px; height: 28px; background: var(--rule); margin: 0 8px; flex-shrink: 0; }
-    .subnav-subsidiary { color: var(--amber) !important; }
-    .subnav-subsidiary:hover { color: var(--ember) !important; }
+    .page-subnav { background: var(--light); border-bottom: 1px solid var(--rule); padding: 10px 64px; display: flex; align-items: center; gap: 8px; position: sticky; top: 72px; z-index: 100; overflow-x: auto; }
+    .page-subnav-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); white-space: nowrap; margin-right: 6px; flex-shrink: 0; opacity: 0.6; }
+    .page-subnav a { padding: 5px 14px; font-size: 12px; font-weight: 600; color: var(--gray); white-space: nowrap; border-radius: 999px; border: 1.5px solid var(--rule); background: var(--white); transition: color 0.15s, border-color 0.15s, background 0.15s; }
+    .page-subnav a:hover { color: var(--ember); border-color: var(--ember); background: rgba(227,111,30,0.05); }
+    .subnav-divider { width: 1px; height: 20px; background: var(--rule); margin: 0 4px; flex-shrink: 0; }
+    .subnav-subsidiary { border-color: rgba(246,160,26,0.4) !important; color: #b07a00 !important; }
+    .subnav-subsidiary:hover { color: var(--ember) !important; border-color: var(--ember) !important; }
 
     /* -- ENTRE CAPITAL SUBSIDIARY BANNER -- */
     .subsidiary-banner { background: var(--amber); padding: 10px 64px; display: flex; align-items: center; gap: 14px; }
@@ -204,6 +205,7 @@
 
 <!-- PAGE SUBNAV -->
 <nav class="page-subnav">
+  <span class="page-subnav-label">On this page →</span>
   <a href="#leadership-academy">Leadership Academy</a>
   <a href="#core-program">Core Program</a>
   <a href="#reentry">Reentry Services</a>
