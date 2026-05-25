@@ -1,3 +1,2 @@
 [build]
-  command = "mkdir -p dist && (cd 'PEP Site Sample' && cp -r . ../dist/)"
-  publish = "dist"
+  publish = "."
