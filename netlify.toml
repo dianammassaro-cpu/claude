@@ -1,2 +1,3 @@
 [build]
-  publish = "PEP Site Sample"
+  command = "cp -r 'PEP Site Sample' dist"
+  publish = "dist"
