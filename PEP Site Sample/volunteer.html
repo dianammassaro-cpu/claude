@@ -293,8 +293,8 @@
 
     /* ── APPLY ── */
     .apply { background: var(--white); padding: 96px 64px; }
-    .apply-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .apply-faqs { margin-top: 44px; display: flex; flex-direction: column; }
+    .apply-inner { max-width: 1160px; margin: 0 auto; }
+    .apply-faqs { margin-top: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 64px; }
     .faq-item { padding: 20px 0; border-top: 1px solid var(--rule); }
     .faq-item:last-child { border-bottom: 1px solid var(--rule); }
     .faq-q { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
@@ -700,44 +700,34 @@
 <!-- APPLY -->
 <section class="apply" id="apply">
   <div class="apply-inner">
-    <div class="apply-left">
-      <p class="section-eyebrow">Sign Up</p>
-      <h2 class="section-title">Ready to step inside?</h2>
-      <p class="section-lead" style="margin-top:12px;">
-        Have questions? The answers below cover what most first-time volunteers want to know.
-      </p>
-
-      <div class="apply-faqs">
-        <div class="faq-item">
-          <div class="faq-q">Is it safe?</div>
-          <div class="faq-a">Yes. PEP operates inside controlled TDCJ facilities with full security staff present. In 20+ years, no volunteer has been harmed. PEP's thorough orientation fully prepares you for the environment.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">What if I have a prior record?</div>
-          <div class="faq-a">Reach out and let us know. PEP reviews every application individually. Having a record does not disqualify you &mdash; in many cases, lived experience makes you a more effective teacher.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Do I need to bring anything?</div>
-          <div class="faq-a">Just yourself and a valid state ID. No electronics, no bags beyond what security allows. PEP provides everything else, including materials, name badges, and an escort through the unit.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Can I bring colleagues?</div>
-          <div class="faq-a">Yes &mdash; corporate groups are welcome and common. PEP can facilitate group volunteer days for teams of 5 to 50. Contact us directly to coordinate.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Can my company sponsor volunteering?</div>
-          <div class="faq-a">Many PEP corporate partners formalize their relationship &mdash; gaining recognition, reporting, and coordinated access. Reach out to discuss a corporate partnership structure.</div>
-        </div>
+    <p class="section-eyebrow">Common Questions</p>
+    <h2 class="section-title">Good to know before you sign up.</h2>
+    <p class="section-lead" style="margin-top:12px;">
+      Answers to what most first-time volunteers want to know.
+    </p>
+    <div class="apply-faqs">
+      <div class="faq-item">
+        <div class="faq-q">Is it safe?</div>
+        <div class="faq-a">Yes. PEP operates inside controlled TDCJ facilities with full security staff present. In 20+ years, no volunteer has been harmed. PEP's thorough orientation fully prepares you for the environment.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I have a prior record?</div>
+        <div class="faq-a">Reach out and let us know. PEP reviews every application individually. Having a record does not disqualify you &mdash; in many cases, lived experience makes you a more effective teacher.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I need to bring anything?</div>
+        <div class="faq-a">Just yourself and a valid state ID. No electronics, no bags beyond what security allows. PEP provides everything else, including materials, name badges, and an escort through the unit.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I bring colleagues?</div>
+        <div class="faq-a">Yes &mdash; corporate groups are welcome and common. PEP can facilitate group volunteer days for teams of 5 to 50. Contact us directly to coordinate.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can my company sponsor volunteering?</div>
+        <div class="faq-a">Many PEP corporate partners formalize their relationship &mdash; gaining recognition, reporting, and coordinated access. Reach out to discuss a corporate partnership structure.</div>
       </div>
     </div>
-
-    <div style="background:var(--light);border:1px solid var(--rule);border-radius:8px;padding:48px 40px;text-align:center;">
-      <p class="section-eyebrow">Ready to sign up?</p>
-      <h3 style="font-size:24px;font-weight:800;color:var(--navy);margin-bottom:16px;text-transform:uppercase;">Take the next step.</h3>
-      <p style="font-size:15px;color:var(--gray);line-height:1.75;margin-bottom:32px;">Fill out our brief volunteer form &mdash; our coordinator will match you to the right role within two business days. No prior correctional experience needed.</p>
-      <a href="get-involved.html" class="btn btn-ember" style="justify-content:center;width:100%;">Sign Up to Volunteer <span class="btn-icon">&#8594;</span></a>
-      <p style="font-size:12px;color:var(--gray);margin-top:16px;line-height:1.5;">Have questions first? Email <a href="mailto:info@pep.org" style="color:var(--ember);">info@pep.org</a></p>
-    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
