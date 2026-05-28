@@ -129,6 +129,17 @@
     <li><a href="calendar.html">Calendar</a></li>
   </ul>
   <div class="nav-ctas">
+    <div class="nav-search" style="position:relative;">
+      <button type="button" aria-label="Search the site" data-nav-search-toggle style="width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(0,0,0,0.15);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#1A1A1A;transition:border-color 0.18s,color 0.18s;padding:0;" onmouseover="this.style.borderColor='#E36F1E';this.style.color='#E36F1E';" onmouseout="this.style.borderColor='rgba(0,0,0,0.15)';this.style.color='#1A1A1A';">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
+      </button>
+      <div data-nav-search-panel hidden style="position:absolute;top:calc(100% + 12px);right:0;width:340px;background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:10px;box-shadow:0 12px 36px rgba(0,0,0,0.14);padding:18px;z-index:300;">
+        <label for="nav-search-input" style="display:block;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E36F1E;margin-bottom:8px;font-family:inherit;">Search PEP</label>
+        <input id="nav-search-input" type="search" placeholder="Search the site..." style="width:100%;padding:10px 12px;font-size:14px;font-family:inherit;border:1.5px solid rgba(0,0,0,0.15);border-radius:6px;outline:none;color:#1A1A1A;background:#F7F5F2;box-sizing:border-box;" />
+        <p style="margin:10px 0 0;font-size:11px;color:#666;line-height:1.4;font-family:inherit;"><strong style="color:#E36F1E;">Placeholder:</strong> site search is not wired up yet.</p>
+      </div>
+    </div>
+    <script>(function(){var wraps=document.querySelectorAll('.nav-search');wraps.forEach(function(wrap){if(wrap.dataset.bound)return;wrap.dataset.bound='1';var btn=wrap.querySelector('[data-nav-search-toggle]');var panel=wrap.querySelector('[data-nav-search-panel]');if(!btn||!panel)return;function close(){panel.hidden=true;}function open(){panel.hidden=false;var i=panel.querySelector('input');if(i)i.focus();}btn.addEventListener('click',function(e){e.stopPropagation();panel.hidden?open():close();});document.addEventListener('click',function(e){if(!wrap.contains(e.target))close();});document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});});})();</script>
     <a href="volunteer.html" class="btn btn-outline-amber" style="padding:10px 22px 10px 26px; font-size:11px;">
       Volunteer <span class="btn-icon" style="width:26px;height:26px;background:rgba(246,160,26,0.15);color:var(--amber);">&#8594;</span>
     </a>
