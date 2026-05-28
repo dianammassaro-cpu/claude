@@ -328,17 +328,52 @@
       display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px;
       background: var(--rule); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden;
     }
-    .dv-card { background: var(--white); padding: 32px 24px; transition: background 0.15s, box-shadow 0.15s; cursor: pointer; border: none; text-align: left; font-family: inherit; width: 100%; }
-    .dv-card:hover { background: #faf9f7; }
-    .dv-card.active { background: var(--white); box-shadow: 0 0 0 2px var(--ember) inset; }
-    .dv-num { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--ember); margin-bottom: 12px; display: block; }
-    .dv-name { font-size: 15px; font-weight: 700; color: var(--navy); line-height: 1.3; }
-    .dv-detail { margin-top: 24px; background: var(--white); border-left: 4px solid var(--ember); padding: 32px 56px 32px 36px; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); position: relative; }
-    .dv-detail-close { position: absolute; top: 14px; right: 18px; width: 32px; height: 32px; border: none; background: transparent; cursor: pointer; font-size: 24px; line-height: 1; color: var(--gray); padding: 0; }
-    .dv-detail-close:hover { color: var(--ember); }
-    .dv-detail-num { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: var(--ember); text-transform: uppercase; display: block; margin-bottom: 8px; }
-    .dv-detail-name { font-size: 22px; font-weight: 800; color: var(--navy); text-transform: uppercase; letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 14px; }
-    .dv-detail-text { font-size: 15px; color: var(--gray); line-height: 1.7; max-width: 760px; }
+    .dv-grid { perspective: 1400px; }
+    .dv-card {
+      background: transparent; border: none; padding: 0; cursor: pointer;
+      font-family: inherit; min-height: 210px; position: relative;
+    }
+    .dv-card-inner {
+      display: block; position: relative; width: 100%; min-height: 210px;
+      transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    .dv-card.flipped .dv-card-inner { transform: rotateY(180deg); }
+    .dv-face {
+      position: absolute; inset: 0; padding: 28px 24px;
+      background: var(--white);
+      -webkit-backface-visibility: hidden; backface-visibility: hidden;
+      display: flex; flex-direction: column; text-align: left;
+      transition: background 0.15s;
+    }
+    .dv-card:not(.flipped) .dv-face-front:hover { background: #faf9f7; }
+    .dv-face-front .dv-num {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      color: var(--ember); margin-bottom: 12px; display: block;
+    }
+    .dv-face-front .dv-name {
+      font-size: 15px; font-weight: 700; color: var(--navy); line-height: 1.3;
+    }
+    .dv-face-front .dv-flip-hint {
+      margin-top: auto; padding-top: 18px; display: inline-flex; align-items: center; gap: 6px;
+      font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gray); opacity: 0.65;
+    }
+    .dv-face-back {
+      transform: rotateY(180deg); background: var(--navy); color: rgba(255,255,255,0.92);
+      padding: 22px 22px; overflow-y: auto;
+    }
+    .dv-face-back .dv-num {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      color: var(--amber); margin-bottom: 6px; display: block;
+    }
+    .dv-face-back .dv-name {
+      font-size: 13px; font-weight: 800; color: var(--white);
+      text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 10px;
+    }
+    .dv-face-back .dv-desc {
+      font-size: 12.5px; line-height: 1.55; color: rgba(255,255,255,0.88);
+    }
 
     /* ── EXEC FEATURE CARDS ── */
     .exec-feature-grid { display: flex; justify-content: center; margin-bottom: 32px; }
@@ -506,52 +541,155 @@
       <h2 class="section-title" style="margin-bottom:0;">10 Driving Values</h2>
     </div>
     <div class="dv-grid">
-      <button type="button" class="dv-card" data-dv-card><span class="dv-num">01</span><div class="dv-name">Fresh-Start Outlook</div><div class="dv-desc" hidden>PEP believes that every inmate is a human being in need of a true second chance &mdash; which for many may actually be a legitimate first chance. We commit to treating all participants with respect and equipping them to achieve their full potential. People can change, and dignity can be restored.</div></button>
-      <button type="button" class="dv-card" data-dv-card><span class="dv-num">02</span><div class="dv-name">Servant-Leader Mentality</div><div class="dv-desc" hidden>With leadership comes the overriding responsibility to be of service to others. PEP prioritizes contributions to others over personal accomplishments, leading by example with humility &mdash; existing to serve participants, executives, partners, donors, prison staff, and communities.</div></button>
-      <button type="button" class="dv-card" data-dv-card><span class="dv-num">03</span><div class="dv-name">Love</div><div class="dv-desc" hidden>We are committed to service in love. PEP staff and leaders will be patient and kind, never envious or boastful or rude. We do not seek our own way, we endure all things, and we rejoice in truth while finding the best in others.</div></button>
-      <button type="button" class="dv-card" data-dv-card><span class="dv-num">04</span><div class="dv-name">Innovation</div><div class="dv-desc" hidden>PEP embraces a pioneering spirit and pursues constant improvement. We expect dramatic change, look beyond current perceptions and reality to break stereotypes, and work to shape new futures.</div></button>
-      <button type="button" class="dv-card" data-dv-card><span class="dv-num">05</span><div class="dv-name">Accountability</div><div class="dv-desc" hidden>Without accountability, neither our participants nor the executives with whom we work will be changed by the program. PEP provides opportunities and tools but requires that participants demonstrate desire to change &mdash; with "no wiggle room" standards for all involved.</div></button>
-      <button type="button" class="dv-card" data-dv-card><span class="dv-num">06</span><div class="dv-name">Integrity</div><div class="dv-desc" hidden>PEP models complete honesty in all relationships and endeavors. Integrity means being forthright &mdash; saying what needs saying rather than what people want to hear &mdash; and remaining truthful while welcoming feedback and correction.</div></button>
-      <button type="button" class="dv-card" data-dv-card><span class="dv-num">07</span><div class="dv-name">Execution</div><div class="dv-desc" hidden>PEP emphasizes getting things done with outstanding, timely results. Big thoughts don't matter if they are not turned into action. Self-discipline forms the core of our organizational culture, with attention to detail and a bias for hiring people with a strong execution record.</div></button>
-      <button type="button" class="dv-card" data-dv-card><span class="dv-num">08</span><div class="dv-name">Fun</div><div class="dv-desc" hidden>Work should be rewarding and enjoyable. PEP creates environments that encourage laughter, imagination, fellowship, and creativity &mdash; and we regularly celebrate positive results and recognize the people behind them.</div></button>
-      <button type="button" class="dv-card" data-dv-card><span class="dv-num">09</span><div class="dv-name">Excellence</div><div class="dv-desc" hidden>PEP dedicates itself to pursuing excellence despite the difficulties of high standards. We work with and learn from top performers, develop excellent leadership throughout the organization, and partner with those who share our values and mission.</div></button>
-      <button type="button" class="dv-card" data-dv-card><span class="dv-num">10</span><div class="dv-name">Wise Stewardship</div><div class="dv-desc" hidden>Adopting a steward mentality, PEP applies donor funds as promised and maintains lean operations with modest salaries. We use funds intelligently, efficiently, and strategically to achieve maximum benefit for all whom we serve.</div></button>
-    </div>
-    <div class="dv-detail" hidden>
-      <button type="button" class="dv-detail-close" aria-label="Close">&times;</button>
-      <span class="dv-detail-num"></span>
-      <h3 class="dv-detail-name"></h3>
-      <p class="dv-detail-text"></p>
+      <button type="button" class="dv-card" data-dv-card aria-label="Fresh-Start Outlook">
+        <span class="dv-card-inner">
+          <span class="dv-face dv-face-front">
+            <span class="dv-num">01</span>
+            <span class="dv-name">Fresh-Start Outlook</span>
+            <span class="dv-flip-hint">Tap to read &rarr;</span>
+          </span>
+          <span class="dv-face dv-face-back">
+            <span class="dv-num">01</span>
+            <span class="dv-name">Fresh-Start Outlook</span>
+            <span class="dv-desc">Every inmate is a human being in need of a true second chance &mdash; which for many may actually be a legitimate first chance. We treat all participants with respect and equip them to achieve their full potential. People can change, and dignity can be restored.</span>
+          </span>
+        </span>
+      </button>
+      <button type="button" class="dv-card" data-dv-card aria-label="Servant-Leader Mentality">
+        <span class="dv-card-inner">
+          <span class="dv-face dv-face-front">
+            <span class="dv-num">02</span>
+            <span class="dv-name">Servant-Leader Mentality</span>
+            <span class="dv-flip-hint">Tap to read &rarr;</span>
+          </span>
+          <span class="dv-face dv-face-back">
+            <span class="dv-num">02</span>
+            <span class="dv-name">Servant-Leader</span>
+            <span class="dv-desc">With leadership comes the overriding responsibility to be of service to others. We prioritize contributions to others over personal accomplishments and lead with humility &mdash; serving participants, executives, partners, donors, prison staff, and communities.</span>
+          </span>
+        </span>
+      </button>
+      <button type="button" class="dv-card" data-dv-card aria-label="Love">
+        <span class="dv-card-inner">
+          <span class="dv-face dv-face-front">
+            <span class="dv-num">03</span>
+            <span class="dv-name">Love</span>
+            <span class="dv-flip-hint">Tap to read &rarr;</span>
+          </span>
+          <span class="dv-face dv-face-back">
+            <span class="dv-num">03</span>
+            <span class="dv-name">Love</span>
+            <span class="dv-desc">We are committed to service in love. PEP staff and leaders will be patient and kind, never envious, boastful, or rude. We do not seek our own way, we endure all things, and we rejoice in truth while finding the best in others.</span>
+          </span>
+        </span>
+      </button>
+      <button type="button" class="dv-card" data-dv-card aria-label="Innovation">
+        <span class="dv-card-inner">
+          <span class="dv-face dv-face-front">
+            <span class="dv-num">04</span>
+            <span class="dv-name">Innovation</span>
+            <span class="dv-flip-hint">Tap to read &rarr;</span>
+          </span>
+          <span class="dv-face dv-face-back">
+            <span class="dv-num">04</span>
+            <span class="dv-name">Innovation</span>
+            <span class="dv-desc">PEP embraces a pioneering spirit and pursues constant improvement. We expect dramatic change, look beyond current perceptions to break stereotypes, and work to shape new futures.</span>
+          </span>
+        </span>
+      </button>
+      <button type="button" class="dv-card" data-dv-card aria-label="Accountability">
+        <span class="dv-card-inner">
+          <span class="dv-face dv-face-front">
+            <span class="dv-num">05</span>
+            <span class="dv-name">Accountability</span>
+            <span class="dv-flip-hint">Tap to read &rarr;</span>
+          </span>
+          <span class="dv-face dv-face-back">
+            <span class="dv-num">05</span>
+            <span class="dv-name">Accountability</span>
+            <span class="dv-desc">Without accountability, neither participants nor the executives we work with will be changed by the program. PEP provides opportunities and tools, but requires that participants demonstrate desire to change &mdash; with &ldquo;no wiggle room&rdquo; standards for all involved.</span>
+          </span>
+        </span>
+      </button>
+      <button type="button" class="dv-card" data-dv-card aria-label="Integrity">
+        <span class="dv-card-inner">
+          <span class="dv-face dv-face-front">
+            <span class="dv-num">06</span>
+            <span class="dv-name">Integrity</span>
+            <span class="dv-flip-hint">Tap to read &rarr;</span>
+          </span>
+          <span class="dv-face dv-face-back">
+            <span class="dv-num">06</span>
+            <span class="dv-name">Integrity</span>
+            <span class="dv-desc">We model complete honesty in all relationships and endeavors. Integrity means being forthright &mdash; saying what needs saying rather than what people want to hear &mdash; and remaining truthful while welcoming feedback and correction.</span>
+          </span>
+        </span>
+      </button>
+      <button type="button" class="dv-card" data-dv-card aria-label="Execution">
+        <span class="dv-card-inner">
+          <span class="dv-face dv-face-front">
+            <span class="dv-num">07</span>
+            <span class="dv-name">Execution</span>
+            <span class="dv-flip-hint">Tap to read &rarr;</span>
+          </span>
+          <span class="dv-face dv-face-back">
+            <span class="dv-num">07</span>
+            <span class="dv-name">Execution</span>
+            <span class="dv-desc">PEP emphasizes getting things done with outstanding, timely results. Big thoughts don't matter if they are not turned into action. Self-discipline forms the core of our culture, with attention to detail and a bias for hiring people with a strong execution record.</span>
+          </span>
+        </span>
+      </button>
+      <button type="button" class="dv-card" data-dv-card aria-label="Fun">
+        <span class="dv-card-inner">
+          <span class="dv-face dv-face-front">
+            <span class="dv-num">08</span>
+            <span class="dv-name">Fun</span>
+            <span class="dv-flip-hint">Tap to read &rarr;</span>
+          </span>
+          <span class="dv-face dv-face-back">
+            <span class="dv-num">08</span>
+            <span class="dv-name">Fun</span>
+            <span class="dv-desc">Work should be rewarding and enjoyable. PEP creates environments that encourage laughter, imagination, fellowship, and creativity &mdash; and we regularly celebrate positive results and recognize the people behind them.</span>
+          </span>
+        </span>
+      </button>
+      <button type="button" class="dv-card" data-dv-card aria-label="Excellence">
+        <span class="dv-card-inner">
+          <span class="dv-face dv-face-front">
+            <span class="dv-num">09</span>
+            <span class="dv-name">Excellence</span>
+            <span class="dv-flip-hint">Tap to read &rarr;</span>
+          </span>
+          <span class="dv-face dv-face-back">
+            <span class="dv-num">09</span>
+            <span class="dv-name">Excellence</span>
+            <span class="dv-desc">PEP dedicates itself to pursuing excellence despite the difficulties of high standards. We work with and learn from top performers, develop excellent leadership throughout the organization, and partner with those who share our values and mission.</span>
+          </span>
+        </span>
+      </button>
+      <button type="button" class="dv-card" data-dv-card aria-label="Wise Stewardship">
+        <span class="dv-card-inner">
+          <span class="dv-face dv-face-front">
+            <span class="dv-num">10</span>
+            <span class="dv-name">Wise Stewardship</span>
+            <span class="dv-flip-hint">Tap to read &rarr;</span>
+          </span>
+          <span class="dv-face dv-face-back">
+            <span class="dv-num">10</span>
+            <span class="dv-name">Wise Stewardship</span>
+            <span class="dv-desc">Adopting a steward mentality, PEP applies donor funds as promised and maintains lean operations with modest salaries. We use funds intelligently, efficiently, and strategically to achieve maximum benefit for all whom we serve.</span>
+          </span>
+        </span>
+      </button>
     </div>
     <script>
     (function(){
       var cards = document.querySelectorAll('[data-dv-card]');
-      var detail = document.querySelector('.dv-detail');
-      if (!detail || !cards.length) return;
-      var numEl = detail.querySelector('.dv-detail-num');
-      var nameEl = detail.querySelector('.dv-detail-name');
-      var textEl = detail.querySelector('.dv-detail-text');
-      var closeBtn = detail.querySelector('.dv-detail-close');
-      var active = null;
-      function close(){
-        detail.hidden = true;
-        if (active) active.classList.remove('active');
-        active = null;
-      }
       cards.forEach(function(card){
         card.addEventListener('click', function(){
-          if (active === card) { close(); return; }
-          if (active) active.classList.remove('active');
-          active = card;
-          card.classList.add('active');
-          numEl.textContent = card.querySelector('.dv-num').textContent + ' — Driving Value';
-          nameEl.textContent = card.querySelector('.dv-name').textContent;
-          textEl.innerHTML = card.querySelector('.dv-desc').innerHTML;
-          detail.hidden = false;
-          detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          card.classList.toggle('flipped');
         });
       });
-      closeBtn.addEventListener('click', close);
     })();
     </script>
   </div>
